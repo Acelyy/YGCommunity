@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="10px"
+    android:paddingEnd="10px"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:singleLine="true"
+        android:text="永钢集团和苏州理工学院成为校企合作伙伴！"
+        android:textColor="@color/color_black"
+        android:textSize="48px" />
+
+    <ImageView
+        android:id="@+id/news_pic"
+        android:layout_width="match_parent"
+        android:layout_height="607px"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_margin="5dp"
+        android:background="@drawable/shape_register_edit"
+        android:padding="5dp"
+        android:text="广告"
+        android:textSize="35px" />
+
+</LinearLayout>

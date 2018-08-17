@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="30px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.yonggang.ygcommunity.View.RoundAngleImageView
+            android:id="@+id/bbs_head"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/pic_share_duizhe" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20px"
+            android:orientation="vertical"
+            android:paddingBottom="5px"
+            android:paddingTop="5px">
+
+            <TextView
+                android:id="@+id/bbs_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="xiaxia"
+                android:textColor="@color/color_black"
+                android:textSize="40px" />
+
+            <TextView
+                android:id="@+id/bbs_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:text="2017-5-31 09:09:31"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="40px" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/bbs_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25px"
+        android:layout_marginTop="25px"
+        android:singleLine="true"
+        android:text="永联村第二届妇代会"
+        android:textColor="@color/colorPrimary"
+        android:textSize="40px" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280px"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/bbs_pic"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/bbs_pic2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+
+        <ImageView
+            android:id="@+id/bbs_pic3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20px"
+        android:layout_marginTop="20px"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评论"
+                android:textSize="35px" />
+
+            <TextView
+                android:id="@+id/bbs_count"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10px"
+                android:layout_marginStart="20px"
+                android:layout_weight="1"
+                android:text="80"
+                android:textSize="35px" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="40px"
+                android:layout_height="40px"
+                android:src="@mipmap/locate" />
+
+            <TextView
+                android:id="@+id/bbs_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30px"
+                android:singleLine="true"
+                android:textSize="35px" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

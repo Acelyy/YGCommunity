@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#16ADFC</color>
+    <color name="colorPrimaryDark">#14ABFA</color>
+    <color name="colorAccent">#16ADFC</color>
+    <color name="colorBlank">#FFFFFF</color>
+    <color name="colorSystemBack">#F9F9F9</color>
+    <color name="colorMainClick">#16ADFC</color>
+    <color name="colorMainUnclick">#666666</color>
+    <color name="color_black">#000000</color>
+    <color name="back_register_edit">#F0F0F0</color>
+    <color name="text_login_edit">#999999</color>
+    <color name="back_comment_child">#f7f8ea</color>
+
+    <color name="white">#ffffff</color>
+    <color name="canlendar_text_color">#323232</color>
+
+    <color name="refresh_back">#00000000</color>
+
+    <color name="refresh_color">#cd2221</color>
+    <!--<color name="refresh_color">#16ADFC</color>-->
+
+</resources>

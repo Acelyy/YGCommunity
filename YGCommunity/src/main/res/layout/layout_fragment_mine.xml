@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSystemBack">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="350px"
+            android:background="@color/colorPrimary">
+
+            <com.yonggang.ygcommunity.View.CircleImageView
+                android:id="@+id/mine_head"
+                android:layout_width="150px"
+                android:layout_height="150px"
+                android:layout_centerInParent="true"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/pic_head" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/mine_head"
+                android:layout_marginTop="20px">
+
+                <LinearLayout
+                    android:id="@+id/head_mine_inLogin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/button_to_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="6px"
+                        android:text="登录"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40px" />
+
+                    <View
+                        android:layout_width="3px"
+                        android:layout_height="match_parent"
+                        android:layout_margin="10px"
+                        android:background="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/text_to_register"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="6px"
+                        android:text="注册"
+                        android:textColor="#FFFFFF"
+                        android:textSize="40px" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/head_mine_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/mine_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/mine_name"
+                        android:textColor="@color/colorBlank"
+                        android:textSize="40px"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/txt_sign"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginBottom="8dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:textColor="@color/colorBlank"
+                        android:textSize="35px" />
+                </RelativeLayout>
+            </FrameLayout>
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/line_message"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_message" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_message"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_love"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_love" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_love"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_comment"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_comment" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_comment"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_send"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_send" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_send"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_score"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/pic_mine_score" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_score"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_activity"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/pic_mine_activity" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_activity"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_option"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_option" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_option"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_setting"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/back_mine_line"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/mine_image_width"
+                android:layout_height="@dimen/mine_image_width"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:src="@mipmap/mine_pic_setting" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/string_mine_setting"
+                android:textColor="@color/colorMainUnclick"
+                android:textSize="@dimen/mine_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:src="@mipmap/mian_jiantou" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

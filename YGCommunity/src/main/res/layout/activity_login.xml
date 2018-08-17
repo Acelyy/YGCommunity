@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSystemBack"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_finish"
+        android:layout_width="@dimen/width25"
+        android:layout_height="@dimen/width25"
+        android:layout_marginStart="@dimen/magin_10"
+        android:layout_marginTop="@dimen/magin_10"
+        android:src="@mipmap/cha" />
+
+    <ImageView
+        android:layout_width="350px"
+        android:layout_height="350px"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="50px"
+        android:layout_marginTop="20px"
+        android:src="@mipmap/pic_login_logo" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="#DCDCDC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10px"
+            android:layout_marginStart="60px"
+            android:src="@mipmap/pic_sign_name" />
+
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30px"
+            android:layout_weight="1"
+            android:background="@null"
+            android:hint="@string/hint_input_name"
+            android:singleLine="true"
+            android:textColor="@color/text_login_edit"
+            android:textSize="50px" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:layout_marginStart="30px"
+        android:background="#DCDCDC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="160px"
+        android:background="#FFFFFF"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="10px"
+            android:layout_marginStart="60px"
+            android:src="@mipmap/pic_pass" />
+
+        <EditText
+            android:id="@+id/edit_pass"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30px"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="textPassword"
+            android:hint="@string/input_pass"
+            android:singleLine="true"
+            android:textColor="@color/text_login_edit"
+            android:textSize="50px" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3px"
+        android:background="#DCDCDC" />
+
+    <Button
+        android:id="@+id/btn_complete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width55"
+        android:layout_marginEnd="@dimen/magin_20"
+        android:layout_marginStart="@dimen/magin_20"
+        android:layout_marginTop="180px"
+        android:background="@drawable/button_register_login"
+        android:text="@string/string_login"
+        android:textColor="@color/colorBlank"
+        android:textSize="@dimen/text_size18" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/magin_20"
+        android:layout_marginStart="@dimen/magin_20"
+        android:layout_marginTop="@dimen/magin_10">
+
+        <TextView
+            android:id="@+id/btn_login_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10px"
+            android:paddingTop="10px"
+            android:text="新用户注册"
+            android:textColor="@color/colorPrimary"
+            android:textSize="43px" />
+
+        <TextView
+            android:id="@+id/btn_forget_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="10px"
+            android:paddingTop="10px"
+            android:text="@string/string_forget_pass"
+            android:textColor="@color/text_login_edit"
+            android:textSize="43px" />
+
+    </RelativeLayout>
+
+</LinearLayout>

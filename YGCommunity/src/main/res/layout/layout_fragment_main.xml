@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBlank"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/main_title_height"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/title_main"
+            android:textColor="@color/colorBlank"
+            android:textSize="@dimen/main_title_size" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.yonggang.ygcommunity.View.PagerSlidingTabStrip
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/colorSystemBack"
+            app:lyySelectedTabTextColor="@color/colorPrimary"
+            app:lyySelectedTabTextSize="@dimen/text_size18"
+            app:lyyTabTextColor="@color/color_black"
+            app:lyyTabTextSize="@dimen/text_size18"
+            app:pstsDividerColor="#00000000"
+            app:pstsDividerPadding="0dp"
+            app:pstsIndicatorColor="@color/colorPrimary"
+            app:pstsIndicatorHeight="2dp" />
+
+        <com.yonggang.liyangyang.lazyviewpagerlibrary.LazyViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:init_lazy_item_offset="0.3">
+
+        </com.yonggang.liyangyang.lazyviewpagerlibrary.LazyViewPager>
+
+    </LinearLayout>
+
+</LinearLayout>

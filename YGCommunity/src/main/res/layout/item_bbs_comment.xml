@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <com.yonggang.ygcommunity.View.RoundAngleImageView
+        android:id="@+id/head"
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/pic_share_duizhe" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/comments_author"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Acelyy"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/comments_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2017-5-3 14:21:47"
+            android:textColor="#666666"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/comments_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#333333"
+            android:text="111111111111111111"
+            android:textSize="18sp" />
+
+        <com.yonggang.ygcommunity.View.LinearLayoutForListView
+            android:id="@+id/list_child"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.yonggang.ygcommunity.View.LinearLayoutForListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="#DEDEDE" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

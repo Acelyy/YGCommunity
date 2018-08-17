@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="250px">
+
+        <ImageView
+            android:layout_width="125px"
+            android:layout_height="125px"
+            android:layout_marginEnd="35px"
+            android:layout_marginStart="45px"
+            android:layout_marginTop="45px"
+            android:src="@mipmap/pic_head_sys" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45px"
+                android:orientation="horizontal"
+                android:paddingEnd="30px">
+
+                <TextView
+                    android:id="@+id/msg_sender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="系统管理员"
+                    android:textColor="#14B3F4"
+                    android:textSize="40px" />
+
+                <TextView
+                    android:id="@+id/msg_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017-7-5"
+                    android:textColor="#999999"
+                    android:textSize="40px" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/msg_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:singleLine="true"
+                android:text="111111111111111"
+                android:textColor="#000000"
+                android:textSize="60px" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

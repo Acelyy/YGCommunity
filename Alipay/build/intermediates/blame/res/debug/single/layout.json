@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "/Users/liyangyang/Documents/ASWorkspace/YGCommunity/Alipay/build/intermediates/res/merged/debug/layout/pay_main.xml",
+        "source": "/Users/liyangyang/Documents/ASWorkspace/YGCommunity/Alipay/src/main/res/layout/pay_main.xml"
+    },
+    {
+        "merged": "/Users/liyangyang/Documents/ASWorkspace/YGCommunity/Alipay/build/intermediates/res/merged/debug/layout/pay_external.xml",
+        "source": "/Users/liyangyang/Documents/ASWorkspace/YGCommunity/Alipay/src/main/res/layout/pay_external.xml"
+    }
+]

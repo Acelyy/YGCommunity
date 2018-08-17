@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NumberProgressBarLib/NumberProgressBarLib.iml" filepath="$PROJECT_DIR$/NumberProgressBarLib/NumberProgressBarLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OCRUI/OCRUI.iml" filepath="$PROJECT_DIR$/OCRUI/OCRUI.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PagerSlidingTabStriplibrary/PagerSlidingTabStriplibrary.iml" filepath="$PROJECT_DIR$/PagerSlidingTabStriplibrary/PagerSlidingTabStriplibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YGCommunity.iml" filepath="$PROJECT_DIR$/YGCommunity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/YGCommunity/YGCommunity-YGCommunity.iml" filepath="$PROJECT_DIR$/YGCommunity/YGCommunity-YGCommunity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/autolayout/autolayout.iml" filepath="$PROJECT_DIR$/autolayout/autolayout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/banner/banner.iml" filepath="$PROJECT_DIR$/banner/banner.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" filepath="$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lazyviewpagerlibrary/lazyviewpagerlibrary.iml" filepath="$PROJECT_DIR$/lazyviewpagerlibrary/lazyviewpagerlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pullToReflash_library/pullToReflash_library.iml" filepath="$PROJECT_DIR$/pullToReflash_library/pullToReflash_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ucrop/ucrop.iml" filepath="$PROJECT_DIR$/ucrop/ucrop.iml" />
+    </modules>
+  </component>
+</project>

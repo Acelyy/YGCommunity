@@ -1,0 +1,48 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="xunfei_app_id">58c6324d</string>
+    <string name="app_name">永联一点通</string>
+    <string name="name_main_main">首页</string>
+    <string name="name_main_server">服务台</string>
+    <string name="name_main_assembly">议事厅</string>
+    <string name="name_main_mine">我</string>
+    <string name="title_main">中国永联村</string>
+    <string name="title_server">服务台</string>
+    <string name="title_assembly">议事厅</string>
+    <string name="title_sever_search">永联地图</string>
+    <string name="title_server_tel">热线电话</string>
+    <string name="title_server_activity">社区活动</string>
+    <string name="title_server_water">生活缴费</string>
+    <string name="title_server_notice">公告</string>
+    <string name="string_login">登录</string>
+    <string name="mine_name">xiaxia</string>
+    <string name="string_mine_message">我的消息</string>
+    <string name="string_mine_love">我的收藏</string>
+    <string name="string_mine_comment">我的跟帖</string>
+    <string name="string_mine_option">意见反馈</string>
+    <string name="string_mine_setting">设置</string>
+    <string name="hint_register_tel">您的手机号</string>
+    <string name="hint_register_verification">短信验证码</string>
+    <string name="text_button_next">下一步</string>
+    <string name="text_verification">获取验证码</string>
+    <string name="hint_set_name">请设置您的昵称</string>
+    <string name="hint_set_pass">请设置6~20位密码</string>
+    <string name="text_button_complete">完成</string>
+    <string name="hint_input_name">请输入您的手机号码</string>
+    <string name="string_forget_pass">忘记密码?</string>
+    <string name="string_mine_send">我的发表</string>
+    <string name="string_mine_score">我的积分</string>
+    <string name="string_mine_activity">我的活动</string>
+    <string name="input_pass">请输入您的密码</string>
+
+    <string name="sunday">日</string>
+    <string name="monday">一</string>
+    <string name="thesday">二</string>
+    <string name="wednesday">三</string>
+    <string name="thursday">四</string>
+    <string name="friday">五</string>
+    <string name="saturday">六</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>

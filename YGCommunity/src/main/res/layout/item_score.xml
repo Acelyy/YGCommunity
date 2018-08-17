@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="220px"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_marginEnd="40px"
+            android:layout_marginStart="40px"
+            android:layout_marginTop="30px"
+            android:src="@mipmap/pic_item_score" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/score_reason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35px"
+                android:singleLine="true"
+                android:text="注册加积分"
+                android:textColor="#333333"
+                android:textSize="45px" />
+
+            <TextView
+                android:id="@+id/score_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35px"
+                android:singleLine="true"
+                android:text="2017-07-25"
+                android:textColor="#999999"
+                android:textSize="35px" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/score_points"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="30px"
+            android:gravity="center"
+            android:text="28"
+            android:textColor="#888888"
+            android:textSize="90px" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:layout_marginStart="230px"
+        android:background="#CCCCCC" />
+
+</LinearLayout>

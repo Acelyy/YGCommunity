@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E4E4E4"
+    android:orientation="vertical"
+    tools:context=".monitor.MonitorActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_finish"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:src="@mipmap/pic_back2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="事件监控台"
+            android:textColor="@color/colorBlank"
+            android:textSize="25sp" />
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="30px">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/layout_all"
+                        android:layout_width="420px"
+                        android:layout_height="160px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/back_grid_orange"
+                        android:padding="20px">
+
+                        <ImageView
+                            android:layout_width="80px"
+                            android:layout_height="65px"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/pic_gride1" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="总体工作情况"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                            <TextView
+                                android:id="@+id/all_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="(0/0)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="600px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10px">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="上报数"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/all_num_sum"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="已受理"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/all_num_receiver"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="处理中"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/all_num_doing"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="办结量"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/all_num_done"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="未办结"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/all_num_undo"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_layout_orange"
+                    android:padding="5px">
+
+                    <com.daimajia.numberprogressbar.NumberProgressBar
+                        android:id="@+id/progress_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        custom:progress_current="0"
+                        custom:progress_max="100"
+                        custom:progress_reached_bar_height="35px"
+                        custom:progress_reached_color="#fd9840"
+                        custom:progress_text_color="#fd9840"
+                        custom:progress_text_size="10sp"
+                        custom:progress_unreached_bar_height="35px"
+                        custom:progress_unreached_color="#FFFFFF" />
+
+                    <!--<ProgressBar-->
+                    <!--android:id="@+id/progressBar"-->
+                    <!--style="?android:attr/progressBarStyleHorizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="30px" />-->
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="30px">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/layout_grid"
+                        android:layout_width="400px"
+                        android:layout_height="160px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/back_grid_red"
+                        android:padding="20px">
+
+                        <ImageView
+                            android:layout_width="80px"
+                            android:layout_height="65px"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/pic_gride2" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="网格化事件上报"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                            <TextView
+                                android:id="@+id/grid_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="(0/0)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="620px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="20px">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="上报数"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/grid_num_sum"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="已受理"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/grid_num_receiver"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="处理中"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/grid_num_doing"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="办结量"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/grid_num_done"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="未办结"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/grid_num_undo"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_layout_red"
+                    android:padding="5px">
+
+                    <com.daimajia.numberprogressbar.NumberProgressBar
+                        android:id="@+id/progress_grid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        custom:progress_current="0"
+                        custom:progress_max="100"
+                        custom:progress_reached_bar_height="35px"
+                        custom:progress_reached_color="#fb7d7e"
+                        custom:progress_text_color="#fb7d7e"
+                        custom:progress_text_size="10sp"
+                        custom:progress_unreached_bar_height="35px"
+                        custom:progress_unreached_color="#FFFFFF" />
+
+                    <!--<ProgressBar-->
+                    <!--android:id="@+id/progressBar"-->
+                    <!--style="?android:attr/progressBarStyleHorizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="30px" />-->
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="30px">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/layout_assembly"
+                        android:layout_width="400px"
+                        android:layout_height="160px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/back_grid_blue"
+                        android:padding="20px">
+
+                        <ImageView
+                            android:layout_width="80px"
+                            android:layout_height="65px"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/pic_gride3" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="议事厅反应问题"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                            <TextView
+                                android:id="@+id/assembly_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="(0/0)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="620px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="20px">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="上报数"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/assembly_num_sum"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="已受理"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/assembly_num_receiver"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="处理中"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/assembly_num_doing"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="办结量"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/assembly_num_done"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="未办结"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/assembly_num_undo"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_layout_blue"
+                    android:padding="5px">
+
+                    <com.daimajia.numberprogressbar.NumberProgressBar
+                        android:id="@+id/progress_assembly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        custom:progress_current="0"
+                        custom:progress_max="100"
+                        custom:progress_reached_bar_height="35px"
+                        custom:progress_reached_color="#699bfc"
+                        custom:progress_text_color="#699bfc"
+                        custom:progress_text_size="10sp"
+                        custom:progress_unreached_bar_height="35px"
+                        custom:progress_unreached_color="#FFFFFF" />
+
+                    <!--<ProgressBar-->
+                    <!--android:id="@+id/progressBar"-->
+                    <!--style="?android:attr/progressBarStyleHorizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="30px" />-->
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30px"
+                android:background="#FFFFFF"
+                android:orientation="vertical"
+                android:padding="30px">
+
+                <LinearLayout
+                    android:id="@+id/layout_tell"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="400px"
+                        android:layout_height="160px"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/back_grid_green"
+                        android:padding="20px">
+
+                        <ImageView
+                            android:layout_width="80px"
+                            android:layout_height="65px"
+                            android:layout_gravity="center_vertical"
+                            android:src="@mipmap/pic_gride4" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="400热线工单"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                            <TextView
+                                android:id="@+id/tell_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="(0/0)"
+                                android:textColor="#FFFFFF"
+                                android:textSize="38px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="620px"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="20px">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="上报数"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/tell_num_sum"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="已受理"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/tell_num_receiver"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="处理中"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/tell_num_doing"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5px"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="办结量"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/tell_num_done"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_marginBottom="15px"
+                                android:text="未办结"
+                                android:textColor="#000000"
+                                android:textSize="35px" />
+
+                            <com.yonggang.ygcommunity.View.RiseNumberTextView
+                                android:id="@+id/tell_num_undo"
+                                android:layout_width="match_parent"
+                                android:layout_height="80px"
+                                android:background="@color/colorPrimary"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textColor="#FFFFFF"
+                                android:textSize="35px" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/back_layout_green"
+                    android:padding="5px">
+
+                    <com.daimajia.numberprogressbar.NumberProgressBar
+                        android:id="@+id/progress_tell"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        custom:progress_current="0"
+                        custom:progress_max="100"
+                        custom:progress_reached_bar_height="35px"
+                        custom:progress_reached_color="#6ac96b"
+                        custom:progress_text_color="#6ac96b"
+                        custom:progress_text_size="10sp"
+                        custom:progress_unreached_bar_height="35px"
+                        custom:progress_unreached_color="#FFFFFF" />
+
+                    <!--<ProgressBar-->
+                    <!--android:id="@+id/progressBar"-->
+                    <!--style="?android:attr/progressBarStyleHorizontal"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="30px" />-->
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

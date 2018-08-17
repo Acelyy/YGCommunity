@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180px"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_margin="30px"
+            android:src="@mipmap/pic_hotline" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/line_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:singleLine="true"
+                android:text="1111111"
+                android:textColor="#666666"
+                android:textSize="40px" />
+
+            <TextView
+                android:id="@+id/line_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6px"
+                android:singleLine="true"
+                android:text="1111111"
+                android:textColor="#999999"
+                android:textSize="35px" />
+
+            <TextView
+                android:id="@+id/line_des"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10px"
+                android:layout_marginTop="6px"
+                android:text="1111111"
+                android:singleLine="true"
+                android:textColor="#999999"
+                android:textSize="35px" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="30px"
+            android:background="@drawable/back_back_hotline"
+            android:paddingBottom="10px"
+            android:paddingEnd="20px"
+            android:paddingStart="20px"
+            android:paddingTop="10px"
+            android:text="呼叫"
+            android:textColor="#FFFFFF"
+            android:textSize="30px" />
+
+    </LinearLayout>
+
+</LinearLayout>

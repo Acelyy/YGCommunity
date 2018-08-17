@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    tools:context="com.yonggang.ygcommunity.Activity.NewsErrorActivity">
+
+    <RelativeLayout
+        android:id="@+id/activity_head"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_finish"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:src="@mipmap/pic_back2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="我要报错"
+            android:textColor="@color/colorBlank"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="请选择原因"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="低俗色情"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="广告"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="标题党"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="老旧重复内容"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="有错别字"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="内容排版有误"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/reason6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="其他"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="请输入你想投诉的内容"
+                android:textColor="#999999"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/edit_error"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="5dp"
+                android:gravity="top"
+                android:background="@drawable/back_edit" />
+
+            <Button
+                android:id="@+id/btn_complete"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/width55"
+                android:layout_marginEnd="@dimen/magin_20"
+                android:layout_marginStart="@dimen/magin_20"
+                android:layout_marginTop="@dimen/magin_20"
+                android:background="@drawable/button_register_login"
+                android:text="提交"
+                android:textColor="@color/colorBlank"
+                android:textSize="@dimen/text_size18" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

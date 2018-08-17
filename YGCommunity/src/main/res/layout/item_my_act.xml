@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260px"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
+    android:padding="10px">
+
+
+    <ImageView
+        android:id="@+id/act_pic"
+        android:layout_width="320px"
+        android:layout_height="240px" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/act_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5px"
+            android:layout_marginEnd="15px"
+            android:layout_marginStart="15px"
+            android:layout_marginTop="20px"
+            android:maxLines="2"
+            android:singleLine="true"
+            android:text="1111111111111"
+            android:textColor="@color/color_black"
+            android:textSize="50px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15px"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/act_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="2017.06.14"
+                android:textColor="#999999"
+                android:textSize="40px" />
+
+            <TextView
+                android:id="@+id/act_area"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:text="议事厅"
+                android:textColor="#999999"
+                android:textSize="40px" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15px">
+
+            <TextView
+                android:id="@+id/act_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_blue"
+                android:paddingEnd="10px"
+                android:paddingStart="10px"
+                android:text="会议"
+                android:textColor="@color/colorPrimary"
+                android:textSize="40px" />
+
+            <TextView
+                android:id="@+id/act_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/back_blue"
+                android:paddingEnd="10px"
+                android:paddingStart="10px"
+                android:text="会议"
+                android:textColor="@color/colorPrimary"
+                android:textSize="40px" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="560px"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout_love"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px">
+
+        <ImageView
+            android:id="@+id/img_love"
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_love" />
+
+        <TextView
+            android:id="@+id/text_love"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="收藏"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_screen" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="截屏"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_font"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_font" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="正文字体"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_error" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="我要报错"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_shared"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_share" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="分享"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_night"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_pop_item"
+        android:gravity="center_vertical"
+        android:paddingBottom="35px"
+        android:paddingTop="35px">
+
+        <ImageView
+            android:layout_width="80px"
+            android:layout_height="80px"
+            android:layout_marginEnd="50px"
+            android:layout_marginStart="50px"
+            android:src="@mipmap/pic_web_night" />
+
+        <TextView
+            android:id="@+id/text_night"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="50px"
+            android:text="夜间模式"
+            android:textColor="@color/color_black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</LinearLayout>

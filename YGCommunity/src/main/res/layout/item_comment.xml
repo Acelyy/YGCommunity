@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.yonggang.ygcommunity.View.RoundAngleImageView
+            android:id="@+id/head"
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/pic_share_duizhe" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comments_author"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Acelyy"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/comments_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2017-5-3 14:21:47"
+                android:textColor="@color/text_login_edit"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/comments_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="111111111111111111"
+                android:textColor="#333333"
+                android:textSize="18sp" />
+
+            <com.yonggang.ygcommunity.View.LinearLayoutForListView
+                android:id="@+id/comments_child"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.yonggang.ygcommunity.View.LinearLayoutForListView>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#F2F2F2"/>
+
+</LinearLayout>

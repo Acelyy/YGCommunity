@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260px"
+    android:orientation="horizontal"
+    android:padding="10px">
+
+
+
+        <ImageView
+            android:id="@+id/gift_img"
+            android:layout_width="320px"
+            android:layout_height="240px"
+            android:scaleType="centerCrop"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/gift_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1111111111"
+                android:layout_marginBottom="5px"
+                android:layout_marginEnd="15px"
+                android:layout_marginStart="15px"
+                android:layout_marginTop="20px"
+                android:textColor="#666666"
+                android:textSize="40px" />
+
+            <TextView
+                android:id="@+id/gift_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1111111111"
+                android:layout_marginBottom="5px"
+                android:layout_marginEnd="15px"
+                android:layout_marginStart="15px"
+                android:layout_marginTop="20px"
+                android:textColor="@color/colorPrimary"
+                android:textSize="35px" />
+
+            <TextView
+                android:id="@+id/gift_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1111111111"
+                android:layout_marginBottom="5px"
+                android:layout_marginEnd="15px"
+                android:layout_marginStart="15px"
+                android:layout_marginTop="20px"
+                android:textColor="#999999"
+                android:textSize="35px" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/gift_buy"
+            android:layout_width="150px"
+            android:layout_height="150px"
+            android:layout_margin="25px"
+            android:src="@mipmap/pic_gift_pay" />
+</LinearLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:orientation="vertical"
+    tools:context="com.yonggang.ygcommunity.Activity.Personal.ChangePassActivity">
+
+    <RelativeLayout
+        android:id="@+id/activity_head"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+
+        <ImageView
+            android:id="@+id/img_finish"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:src="@mipmap/pic_back2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:text="修改密码"
+            android:textColor="@color/colorBlank"
+            android:textSize="25sp" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:layout_marginTop="10sp"
+        android:background="#DCDCDC" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30px"
+                android:src="@mipmap/pic_pass" />
+
+            <EditText
+                android:id="@+id/pass_old"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20px"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="原密码"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="#222222"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_marginStart="30px"
+            android:background="#DCDCDC" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30px"
+                android:src="@mipmap/pic_new_pass" />
+
+            <EditText
+                android:id="@+id/pass_new"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20px"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="新密码"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="#222222"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_marginStart="30px"
+            android:background="#DCDCDC" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150px"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="60px"
+                android:layout_height="60px"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="30px"
+                android:src="@mipmap/pic_pass" />
+
+            <EditText
+                android:id="@+id/pass_sure"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="20px"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="再次输入新密码"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="#222222"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="#DCDCDC" />
+
+    <Button
+        android:id="@+id/btn_complete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/width55"
+        android:layout_marginEnd="@dimen/magin_20"
+        android:layout_marginStart="@dimen/magin_20"
+        android:layout_marginTop="@dimen/magin_20"
+        android:background="@drawable/button_register_login"
+        android:text="确定"
+        android:textColor="@color/colorBlank"
+        android:textSize="@dimen/text_size18" />
+
+</LinearLayout>

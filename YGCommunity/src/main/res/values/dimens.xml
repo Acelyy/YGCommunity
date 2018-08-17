@@ -1,0 +1,20 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="main_title_height">30dp</dimen>
+    <dimen name="main_tab_height">45dp</dimen>
+    <dimen name="main_icon_size">20dp</dimen>
+
+    <dimen name="server_tab_size">13sp</dimen>
+    <dimen name="main_menu_text">13sp</dimen>
+    <dimen name="main_title_size">20sp</dimen>
+    <dimen name="mine_text_size">18sp</dimen>
+
+    <dimen name="mine_image_width">28dp</dimen>
+    <dimen name="magin_10">10dp</dimen>
+
+    <dimen name="magin_20">20dp</dimen>
+    <dimen name="text_size18">16sp</dimen>
+    <dimen name="width55">55dp</dimen>
+    <dimen name="width25">25dp</dimen>
+
+</resources>

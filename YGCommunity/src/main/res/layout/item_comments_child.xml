@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F0F0F0"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/comments_index"
+            android:layout_width="40px"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15px"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="2px"
+            android:text="11"
+            android:textColor="@color/colorBlank"
+            android:textSize="30px" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20px"
+            android:layout_marginStart="20px"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10px"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/comments_author"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Acelyy"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="40px" />
+
+                <TextView
+                    android:id="@+id/comments_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2017-5-3 14:21:47"
+                    android:textColor="@color/text_login_edit"
+                    android:textSize="40px" />
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/comments_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_black"
+                android:text="11111111111"
+                android:layout_marginTop="15px"
+                android:textSize="45px" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorSystemBack" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

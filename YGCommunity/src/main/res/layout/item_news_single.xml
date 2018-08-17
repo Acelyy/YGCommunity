@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="260px"
+    android:orientation="horizontal"
+    android:padding="10px">
+
+    <ImageView
+        android:id="@+id/news_pic"
+        android:layout_width="320px"
+        android:layout_height="240px" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/news_title"
+            android:layout_width="match_parent"
+            android:layout_height="160px"
+            android:maxLines="2"
+            android:padding="5dp"
+            android:text="永钢集团和苏州理工学院成为校企合作伙伴！永钢集团和苏州理工学院成为校企合作伙伴！永钢集团和苏州理工学院成为校企合作伙伴！"
+            android:textColor="@color/color_black"
+            android:textSize="48px" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/layout_not_stick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp">
+
+                <TextView
+                    android:id="@+id/news_source"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="永钢"
+                    android:textColor="@color/text_login_edit"
+                    android:textSize="35px" />
+
+                <TextView
+                    android:id="@+id/read_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_toRightOf="@+id/news_source"
+                    android:text="永钢"
+                    android:textColor="@color/text_login_edit"
+                    android:textSize="35px" />
+
+                <TextView
+                    android:id="@+id/audit_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="2017-10-09"
+                    android:textColor="@color/text_login_edit"
+                    android:textSize="35px" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/layout_stick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/shape_text_zhiding"
+                    android:padding="3dp"
+                    android:text="置顶"
+                    android:textColor="#3e4e89"
+                    android:textSize="35px" />
+
+            </RelativeLayout>
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

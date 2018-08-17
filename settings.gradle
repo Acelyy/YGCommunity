@@ -1,0 +1,1 @@
+include ':app', ':YGCommunity',':PagerSlidingTabStriplibrary', ':lazyviewpagerlibrary', ':pullToReflash_library', ':autolayout',  ':jcvideoplayer-lib', ':banner', ':ucrop', 'NumberProgressBarLib','OCRUI'
