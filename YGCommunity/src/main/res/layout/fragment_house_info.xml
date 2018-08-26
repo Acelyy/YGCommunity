@@ -26,6 +26,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:background="#E1E1E1"
+                    android:padding="20px">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:layout_marginStart="20px"
+                        android:text="必填信息"
+                        android:textSize="50px"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:padding="40px">
 
                     <TextView
@@ -54,6 +71,54 @@
                         android:src="@mipmap/pic_house_scanner" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="类型"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checkedButton="@+id/floating"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/community"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="社员"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:id="@+id/register"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20px"
+                            android:text="户籍"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:id="@+id/floating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20px"
+                            android:text="流动人口"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -318,6 +383,39 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_education"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="文化程度"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <TextView
+                        android:id="@+id/education"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请选择文化程度"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <ImageView
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:layout_marginStart="20px"
+                        android:src="@mipmap/pic_grid_down" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
@@ -374,6 +472,488 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
+                    android:background="#E1E1E1"
+                    android:padding="20px">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000000"
+                        android:text="必填信息"
+                        android:layout_marginStart="20px"
+                        android:textSize="50px"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否优抚对象"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否残疾/级别"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否精神病"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否空巢"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否独居"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否贫困户"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否扶持对象"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否低保/低边"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否新市民"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="是否房东"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="是"
+                            android:theme="@style/MyCheckBox" />
+
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30px"
+                            android:text="否"
+                            android:theme="@style/MyCheckBox" />
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="重大疾病"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/disease"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入重大疾病"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="志愿者证号"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/volunteerId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入志愿者证号"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="房东联系方式"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/landlordTel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入房东联系方式"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="车牌号"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/carNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入车牌号"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:padding="40px">
 
                     <TextView
@@ -396,46 +976,13 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/layout_education"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:padding="40px">
-
-                    <TextView
-                        android:layout_width="300px"
-                        android:layout_height="wrap_content"
-                        android:text="文化程度"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
-
-                    <TextView
-                        android:id="@+id/education"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="请选择文化程度"
-                        android:singleLine="true"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
-
-                    <ImageView
-                        android:layout_width="70px"
-                        android:layout_height="70px"
-                        android:layout_marginStart="20px"
-                        android:src="@mipmap/pic_grid_down" />
-
-                </LinearLayout>
-
                 <Button
                     android:id="@+id/submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/refresh_color"
-                    android:text="提交"
                     android:layout_margin="40px"
+                    android:background="@color/refresh_color"
+                    android:text="下一步"
                     android:textColor="#FFFFFF"
                     android:textSize="45px" />
 

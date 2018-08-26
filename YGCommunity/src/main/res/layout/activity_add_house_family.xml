@@ -210,22 +210,16 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <TextView
-                android:id="@+id/marriage"
+            <EditText
+                android:id="@+id/relationship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@null"
-                android:hint="请选择关系"
+                android:hint="请输入关系"
                 android:singleLine="true"
                 android:textColor="#000000"
                 android:textSize="45px" />
-
-            <ImageView
-                android:layout_width="70px"
-                android:layout_height="70px"
-                android:layout_marginStart="20px"
-                android:src="@mipmap/pic_grid_down" />
 
         </LinearLayout>
 
@@ -243,6 +237,7 @@
                 android:textSize="45px" />
 
             <EditText
+                android:id="@+id/job"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -255,6 +250,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/layout_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
@@ -268,6 +264,7 @@
                 android:textSize="45px" />
 
             <TextView
+                android:id="@+id/type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -284,6 +281,16 @@
                 android:src="@mipmap/pic_grid_down" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="40px"
+            android:background="@color/refresh_color"
+            android:text="新增"
+            android:textColor="#FFFFFF"
+            android:textSize="45px" />
 
     </LinearLayout>
 

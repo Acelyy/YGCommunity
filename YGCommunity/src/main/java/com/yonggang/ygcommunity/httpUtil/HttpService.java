@@ -27,6 +27,7 @@ import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
+import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -777,5 +778,66 @@ public interface HttpService {
     @FormUrlEncoded
     Observable<HttpResult<HouseInfo>> getHouseInfo(
             @Field("sfzh") String id
+    );
+
+    // 设置家庭成员信息
+    @POST("set_jtcyxx")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> setHouseFamily(
+            @Field("rypk") String rypk,
+            @Field("xm") String name,
+            @Field("xb") String sex,
+            @Field("sfzh") String id,
+            @Field("csrq") String birth,
+            @Field("gx") String relationship,
+            @Field("lxfs") String phone,
+            @Field("type") String type,
+            @Field("zy") String job
+    );
+
+    // 获取家庭成员信息
+    @POST("get_jtcyxx")
+    @FormUrlEncoded
+    Observable<HttpResult<List<HouseFamily>>> getHouseFamily(
+            @Field("rypk") String pk,
+            @Field("jzlx") int type
+    );
+
+    // 上传个人信息
+    @FormUrlEncoded
+    @POST("set_rfxx")
+    Observable<HttpResult<String>> setHouseInfo(
+            @Field("sfldrk") int is_floating,
+            @Field("sfsy") int is_community,
+            @Field("sfzh") String id,
+            @Field("xm") String name,
+            @Field("xb") String sex,
+            @Field("csrq") String birth,
+            @Field("gzdw") String job,
+            @Field("mz") String nation,
+            @Field("zzmm") String political,
+            @Field("fwbm_pk") String address,
+            @Field("lxdh") String phone,
+            @Field("hyzk") String marriage,
+            @Field("whcd") String education,
+            @Field("hjdz") String permanent,
+            @Field("hjbh") String permanentCode,
+
+            @Field("sfyf") int is_special,
+            @Field("sfcj") int is_disability,
+            @Field("sfjsb") int is_mental,
+            @Field("sfkc") int is_empty,
+            @Field("sfdj") int is_alone,
+            @Field("sfpk") int is_poor,
+            @Field("sftf") int is_help,
+            @Field("sfdbh") int is_low,
+            @Field("sfxsm") int is_new,
+            @Field("sffd") int is_landlord,
+
+            @Field("bz") String disease,
+            @Field("zyzzh") String volunteerId,
+            @Field("fdlxdh") String landlordTel,
+            @Field("cph") String carNumber,
+            @Field("xqah") String hobby
     );
 }

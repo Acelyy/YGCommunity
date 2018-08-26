@@ -47,7 +47,7 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="30px"
-            android:text="提交"
+            android:text="确认"
             android:visibility="gone"
             android:textColor="#ffffff"
             android:textSize="45px" />

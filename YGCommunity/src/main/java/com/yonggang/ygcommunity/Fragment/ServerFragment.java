@@ -26,9 +26,9 @@ import com.yonggang.ygcommunity.Activity.WebViewActivity;
 import com.yonggang.ygcommunity.Entry.Fwt_Carousel;
 import com.yonggang.ygcommunity.R;
 import com.yonggang.ygcommunity.YGApplication;
-import com.yonggang.ygcommunity.grid.WorkSpaceActivity;
-import com.yonggang.ygcommunity.monitor.MonitorActivity;
+import com.yonggang.ygcommunity.grid.GridLoginActivity;
 import com.yonggang.ygcommunity.httpUtil.HttpUtil;
+import com.yonggang.ygcommunity.monitor.MonitorActivity;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.loader.ImageLoader;
@@ -98,7 +98,7 @@ public class ServerFragment extends Fragment {
                 startActivity(intent);
                 break;
             case R.id.tab_grid:
-                intent = new Intent(getActivity(), WorkSpaceActivity.class);
+                intent = new Intent(getActivity(), GridLoginActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tab_red:

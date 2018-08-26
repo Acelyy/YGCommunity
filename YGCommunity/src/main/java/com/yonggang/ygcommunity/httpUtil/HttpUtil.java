@@ -26,6 +26,7 @@ import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
+import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -66,7 +67,7 @@ import rx.schedulers.Schedulers;
 
 public class HttpUtil {
 
-        public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
+    public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/index.php/Home/Index/";
 //    public static final String BASE_URL = "http://10.89.13.157:9857/";
@@ -1220,6 +1221,77 @@ public class HttpUtil {
     public void getHouseInfo(Subscriber subscriber, String id) {
         Observable observable = httpService.getHouseInfo(id)
                 .map(new HttpResultFunc<HouseInfo>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取家庭成员信息
+     *
+     * @param subscriber
+     * @param pk
+     * @param type
+     */
+    public void getHouseFamily(Subscriber subscriber, String pk, int type) {
+        Observable observable = httpService.getHouseFamily(pk, type)
+                .map(new HttpResultFunc<List<HouseFamily>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * @param subscriber
+     * @param rypk
+     * @param name
+     * @param sex
+     * @param id
+     * @param relationship
+     * @param phone
+     * @param type
+     * @param job
+     */
+    public void setHouseFamily(Subscriber subscriber, String rypk, String name, String sex, String id, String birth, String relationship, String phone, String type, String job) {
+        Observable observable = httpService.setHouseFamily(rypk, name, sex, id, birth, relationship, phone, type, job)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 上传个人信息
+     *
+     * @param subscriber
+     * @param is_floating
+     * @param is_community
+     * @param id
+     * @param name
+     * @param sex
+     * @param birth
+     * @param job
+     * @param nation
+     * @param political
+     * @param address
+     * @param phone
+     * @param marriage
+     * @param education
+     * @param permanent
+     * @param permanentCode
+     * @param is_special
+     * @param is_disability
+     * @param is_mental
+     * @param is_empty
+     * @param is_alone
+     * @param is_poor
+     * @param is_help
+     * @param is_low
+     * @param is_new
+     * @param is_landlord
+     * @param disease
+     * @param volunteerId
+     * @param landlordTel
+     * @param carNumber
+     * @param hobby
+     */
+    public void setHouseInfo(Subscriber subscriber, int is_floating, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby) {
+        Observable observable = httpService.setHouseInfo(is_floating, is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby)
+                .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
 

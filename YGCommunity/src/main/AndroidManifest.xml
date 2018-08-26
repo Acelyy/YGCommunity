@@ -59,7 +59,7 @@
             android:value="1080" />
         <meta-data
             android:name="design_height"
-            android:value="1920" />
+            android:value="2040" />
 
         <!-- 以下为极光推送配置 -->
         <!-- Rich push 核心功能 since 2.0.6 -->
@@ -291,8 +291,13 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Splash">
 
-        </activity>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
 
         <activity android:name=".Activity.SplashActivity" />
         <activity
@@ -447,13 +452,9 @@
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
         <activity android:name=".grid.event.EventDetailActivity" />
         <activity android:name=".grid.house.HouseActivity"></activity>
-        <activity android:name=".grid.house.HouseInfoActivity"
+        <activity
+            android:name=".grid.house.HouseInfoActivity"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".grid.house.HouseExtraActivity" />
         <activity android:name=".grid.house.HouseFamilyActivity" />
