@@ -314,10 +314,10 @@ class HouseInfoFragment : Fragment() {
                 })
                 education.text = it.whcd
 
-                if (it.sfsy == "1") {
+                if (it.sfsy == 1) {
                     rg_type.check(R.id.community)
                 } else {
-                    if (it.sfhj == "1") {
+                    if (it.sfhj == 1) {
                         rg_type.check(R.id.register)
                     } else {
                         rg_type.check(R.id.floating)

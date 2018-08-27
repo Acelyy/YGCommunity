@@ -73,6 +73,8 @@ public class HouseInfo {
     private String xm;
     private String xqah;
     private String zzmm;
+    private String zdxx;
+    private String xjzdz;
 
     public String getBz() {
         return bz;
@@ -344,5 +346,21 @@ public class HouseInfo {
 
     public void setZzmm(String zzmm) {
         this.zzmm = zzmm;
+    }
+
+    public String getZdxx() {
+        return zdxx;
+    }
+
+    public void setZdxx(String zdxx) {
+        this.zdxx = zdxx;
+    }
+
+    public String getXjzdz() {
+        return xjzdz;
+    }
+
+    public void setXjzdz(String xjzdz) {
+        this.xjzdz = xjzdz;
     }
 }
