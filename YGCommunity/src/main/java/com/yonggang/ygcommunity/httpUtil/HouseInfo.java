@@ -3,54 +3,100 @@ package com.yonggang.ygcommunity.httpUtil;
 public class HouseInfo {
 
     /**
-     * csrq : 1985-10-21
-     * fh : 1503
-     * fwbm_pk : 958fe5f1-938d-48e6-b6ef-673f991d
-     * gzdw :
-     * hjbh : 320582011015386
-     * hjdz : 南丰镇永联村第十六组31号
-     * hyzk : 已婚
-     * lh : 5
-     * lxdh : 13584446811
+     * bz :
+     * comment :
+     * cph : 1
+     * csrq : 1992-12-13
+     * fdlxdh : 1
+     * fwbm_pk : d362bfc4-ab67-96ad-9533-ef075ceee0d4
+     * gzdw : 阿里妈妈
+     * hjbh :
+     * hjdz : 江苏省江阴市华士镇华西一村塔家基51号
+     * hyzk : 初婚
+     * lxdh : 666666666
      * mz : 汉族
-     * rypk : 3d4cb13d-b33e-4790-b291-4ca71e91
-     * sfhj : 1
-     * sflkbk :
-     * sfsy : 1
-     * sfzh : 320826198510212029
-     * type : 户籍社员
-     * whcd : 初中
-     * xb : 女
-     * xjzdz : 永琪园5幢1503
-     * xm : 李海燕
-     * yqmc : 永琪园
-     * zzmm : 群众
+     * rypk : bff1f097-86e6-112f-13d5-e8ee8b7a2280
+     * sfcj : 0
+     * sfdbh : 0
+     * sfdj : 0
+     * sffd : 0
+     * sfhj :
+     * sfjsb : 0
+     * sfkc : 0
+     * sflkbk : 0
+     * sfpk : 0
+     * sfsy :
+     * sftf : 0
+     * sfxsm : 0
+     * sfyf : 0
+     * sfzb : 0
+     * sfzh : 320281199212133310
+     * type : 流动人口
+     * whcd : 硕士及以上
+     * xb : 男
+     * xm : 李阳洋
+     * xqah :
+     * zzmm : 团员
      */
 
+    private String bz;
+    private String comment;
+    private String cph;
     private String csrq;
-    private String fh;
+    private String fdlxdh;
     private String fwbm_pk;
     private String gzdw;
     private String hjbh;
     private String hjdz;
     private String hyzk;
-    private String lh;
     private String lxdh;
     private String mz;
     private String rypk;
-    private String sfhj;
-    private String sflkbk;
-    private String sfsy;
-    private String sfzh;
+    private int sfcj;
+    private int sfdbh;
+    private int sfdj;
+    private int sffd;
+    private int sfhj;
+    private int sfjsb;
+    private int sfkc;
+    private int sflkbk;
+    private int sfpk;
+    private int sfsy;
+    private int sftf;
+    private int sfxsm;
+    private int sfyf;
+    private int sfzb;
+    private int sfzh;
     private String type;
     private String whcd;
     private String xb;
-    private String xjzdz;
     private String xm;
-    private String yqmc;
-    private String zzmm;
-    private String zdxx;
     private String xqah;
+    private String zzmm;
+
+    public String getBz() {
+        return bz;
+    }
+
+    public void setBz(String bz) {
+        this.bz = bz;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getCph() {
+        return cph;
+    }
+
+    public void setCph(String cph) {
+        this.cph = cph;
+    }
 
     public String getCsrq() {
         return csrq;
@@ -60,12 +106,12 @@ public class HouseInfo {
         this.csrq = csrq;
     }
 
-    public String getFh() {
-        return fh;
+    public String getFdlxdh() {
+        return fdlxdh;
     }
 
-    public void setFh(String fh) {
-        this.fh = fh;
+    public void setFdlxdh(String fdlxdh) {
+        this.fdlxdh = fdlxdh;
     }
 
     public String getFwbm_pk() {
@@ -108,14 +154,6 @@ public class HouseInfo {
         this.hyzk = hyzk;
     }
 
-    public String getLh() {
-        return lh;
-    }
-
-    public void setLh(String lh) {
-        this.lh = lh;
-    }
-
     public String getLxdh() {
         return lxdh;
     }
@@ -140,35 +178,123 @@ public class HouseInfo {
         this.rypk = rypk;
     }
 
-    public String getSfhj() {
+    public int getSfcj() {
+        return sfcj;
+    }
+
+    public void setSfcj(int sfcj) {
+        this.sfcj = sfcj;
+    }
+
+    public int getSfdbh() {
+        return sfdbh;
+    }
+
+    public void setSfdbh(int sfdbh) {
+        this.sfdbh = sfdbh;
+    }
+
+    public int getSfdj() {
+        return sfdj;
+    }
+
+    public void setSfdj(int sfdj) {
+        this.sfdj = sfdj;
+    }
+
+    public int getSffd() {
+        return sffd;
+    }
+
+    public void setSffd(int sffd) {
+        this.sffd = sffd;
+    }
+
+    public int getSfhj() {
         return sfhj;
     }
 
-    public void setSfhj(String sfhj) {
+    public void setSfhj(int sfhj) {
         this.sfhj = sfhj;
     }
 
-    public String getSflkbk() {
+    public int getSfjsb() {
+        return sfjsb;
+    }
+
+    public void setSfjsb(int sfjsb) {
+        this.sfjsb = sfjsb;
+    }
+
+    public int getSfkc() {
+        return sfkc;
+    }
+
+    public void setSfkc(int sfkc) {
+        this.sfkc = sfkc;
+    }
+
+    public int getSflkbk() {
         return sflkbk;
     }
 
-    public void setSflkbk(String sflkbk) {
+    public void setSflkbk(int sflkbk) {
         this.sflkbk = sflkbk;
     }
 
-    public String getSfsy() {
+    public int getSfpk() {
+        return sfpk;
+    }
+
+    public void setSfpk(int sfpk) {
+        this.sfpk = sfpk;
+    }
+
+    public int getSfsy() {
         return sfsy;
     }
 
-    public void setSfsy(String sfsy) {
+    public void setSfsy(int sfsy) {
         this.sfsy = sfsy;
     }
 
-    public String getSfzh() {
+    public int getSftf() {
+        return sftf;
+    }
+
+    public void setSftf(int sftf) {
+        this.sftf = sftf;
+    }
+
+    public int getSfxsm() {
+        return sfxsm;
+    }
+
+    public void setSfxsm(int sfxsm) {
+        this.sfxsm = sfxsm;
+    }
+
+    public int getSfyf() {
+        return sfyf;
+    }
+
+    public void setSfyf(int sfyf) {
+        this.sfyf = sfyf;
+    }
+
+    public int getSfzb() {
+        return sfzb;
+    }
+
+    public void setSfzb(int sfzb) {
+        this.sfzb = sfzb;
+    }
+
+    public int getSfzh() {
         return sfzh;
     }
 
-    public void setSfzh(String sfzh) {
+    public void setSfzh(int sfzh) {
         this.sfzh = sfzh;
     }
 
@@ -196,14 +322,6 @@ public class HouseInfo {
         this.xb = xb;
     }
 
-    public String getXjzdz() {
-        return xjzdz;
-    }
-
-    public void setXjzdz(String xjzdz) {
-        this.xjzdz = xjzdz;
-    }
-
     public String getXm() {
         return xm;
     }
@@ -212,12 +330,12 @@ public class HouseInfo {
         this.xm = xm;
     }
 
-    public String getYqmc() {
-        return yqmc;
+    public String getXqah() {
+        return xqah;
     }
 
-    public void setYqmc(String yqmc) {
-        this.yqmc = yqmc;
+    public void setXqah(String xqah) {
+        this.xqah = xqah;
     }
 
     public String getZzmm() {
@@ -226,21 +344,5 @@ public class HouseInfo {
 
     public void setZzmm(String zzmm) {
         this.zzmm = zzmm;
-    }
-
-    public String getZdxx() {
-        return zdxx;
-    }
-
-    public void setZdxx(String zdxx) {
-        this.zdxx = zdxx;
-    }
-
-    public String getXqah() {
-        return xqah;
-    }
-
-    public void setXqah(String xqah) {
-        this.xqah = xqah;
     }
 }

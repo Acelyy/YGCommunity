@@ -291,12 +291,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Splash">
 
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
         </activity>
 
         <activity android:name=".Activity.SplashActivity" />
@@ -455,6 +449,10 @@
         <activity
             android:name=".grid.house.HouseInfoActivity"
             android:windowSoftInputMode="stateHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".grid.house.HouseExtraActivity" />
         <activity android:name=".grid.house.HouseFamilyActivity" />
