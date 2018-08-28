@@ -34,13 +34,18 @@ import rx.Subscriber
  */
 class HouseFamilyFragment : Fragment() {
 
+    private lateinit var pk: String
+    private var sfsy: Int = 0
+
     private var listData = mutableListOf<HouseFamily>()
     private lateinit var adapter: FamilyAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-
+            pk = it.getString("pk")
+            sfsy = it.getInt("sfsy")
+            Log.i("pk", pk)
         }
     }
 
@@ -68,10 +73,12 @@ class HouseFamilyFragment : Fragment() {
          *
          * @return A new instance of fragment HouseFamilyFragment.
          */
-        fun newInstance(pk: String) = HouseFamilyFragment().apply {
-            arguments.apply {
-                this.putString("pk", pk)
+        fun newInstance(pk: String, sfsy: Int) = HouseFamilyFragment().apply {
+            arguments = Bundle().apply {
+                putString("pk", pk)
+                putInt("sfsy", sfsy)
             }
+
         }
     }
 
@@ -95,7 +102,7 @@ class HouseFamilyFragment : Fragment() {
                 refresh.finishRefresh()
             }
         }
-        HttpUtil.getInstance().getHouseFamily(subscriber, "c8a73dff-1625-42e8-8466-c3c9ce74", 2)
+        HttpUtil.getInstance().getHouseFamily(subscriber, pk, sfsy)
     }
 
     /**
@@ -103,50 +110,31 @@ class HouseFamilyFragment : Fragment() {
      */
     inner class FamilyAdapter(var data: List<HouseFamily>, var layoutInflater: LayoutInflater) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-        val TYPE_NOMAL: Int = 0
-        val TYPE_ADD: Int = 1
 
         override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): RecyclerView.ViewHolder {
-            return if (viewType == TYPE_NOMAL) {
-                NormalViewHolder(layoutInflater.inflate(R.layout.item_house_family, parent, false))
-            } else {
-                ButtonViewHolder(layoutInflater.inflate(R.layout.item_house_button, parent, false))
-            }
+            return NormalViewHolder(layoutInflater.inflate(R.layout.item_house_family, parent, false))
         }
 
-        override fun getItemViewType(position: Int): Int {
-            return if (position == data.size) {
-                TYPE_ADD
-            } else {
-                TYPE_NOMAL
-            }
-        }
 
         override fun getItemCount(): Int {
-            return data.size + 1
+            return data.size
         }
 
         override fun onBindViewHolder(_holder: RecyclerView.ViewHolder?, position: Int) {
-            if (getItemViewType(position) == TYPE_NOMAL) {
-                val holder = _holder!! as NormalViewHolder
-                holder.name?.text = data[position].xm
-                holder.relationship?.text = data[position].gx
-                holder.type?.text = data[position].type
-                holder.birth?.text = data[position].csrq
-                holder.tell?.text = data[position].lxdh
-                holder.job?.text = data[position].gzdw
-                holder.id?.text = data[position].sfzh
-                if (data[position].xb == "男") {
-                    holder.sex?.setImageResource(R.mipmap.pic_house_man)
-                } else {
-                    holder.sex?.setImageResource(R.mipmap.pic_house_woman)
-                }
+            val holder = _holder!! as NormalViewHolder
+            holder.name?.text = data[position].xm
+            holder.relationship?.text = data[position].gx
+            holder.type?.text = data[position].type
+            holder.birth?.text = data[position].csrq
+            holder.tell?.text = data[position].lxdh
+            holder.job?.text = data[position].gzdw
+            holder.id?.text = data[position].sfzh
+            if (data[position].xb == "男") {
+                holder.sex?.setImageResource(R.mipmap.pic_house_man)
             } else {
-                val holder = _holder!! as ButtonViewHolder
-                holder.add?.setOnClickListener {
-                    activity.startActivity<AddHouseFamilyActivity>()
-                }
+                holder.sex?.setImageResource(R.mipmap.pic_house_woman)
             }
+
         }
 
         inner class NormalViewHolder(item: View) : RecyclerView.ViewHolder(item) {

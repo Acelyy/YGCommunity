@@ -55,6 +55,7 @@ private const val ARG_PARAM2 = "param2"
 class HouseInfoFragment : Fragment() {
 
     private lateinit var onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener
+    private lateinit var RemoveFragements: HouseInfoActivity.RemoveFragements
     private var dialog: AlertDialog? = null
     private lateinit var myTextWatcher: MyTextWatcher
 
@@ -166,9 +167,10 @@ class HouseInfoFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener) =
+        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener,RF:HouseInfoActivity.RemoveFragements) =
                 HouseInfoFragment().apply {
                     this.onInfoSubmit = onInfoSubmit
+                    this.RemoveFragements = RF
                 }
 
         private val listEducation = listOf(
@@ -323,6 +325,101 @@ class HouseInfoFragment : Fragment() {
                         rg_type.check(R.id.floating)
                     }
                 }
+
+                if (it.sfyf == 1) {
+                    rg_yf.check(R.id.true_yf)
+                } else {
+                    rg_yf.check(R.id.false_yf)
+                }
+
+                if (it.sftf == 1) {
+                    rg_tf.check(R.id.true_tf)
+                } else {
+                    rg_tf.check(R.id.false_ft)
+                }
+
+                if (it.sfjsb == 1) {
+                    rg_jsb.check(R.id.true_jsb)
+                } else {
+                    rg_jsb.check(R.id.false_jsb)
+                }
+
+                if (it.sfkc == 1) {
+                    rg_kc.check(R.id.true_kc)
+                } else {
+                    rg_kc.check(R.id.false_kc)
+                }
+
+                if (it.sfdj == 1) {
+                    rg_dj.check(R.id.true_dj)
+                } else {
+                    rg_dj.check(R.id.false_dj)
+                }
+
+                if (it.sfpk == 1) {
+                    rg_pkh.check(R.id.true_pkh)
+                } else {
+                    rg_pkh.check(R.id.false_pkh)
+                }
+
+                if (it.sfdbh == 1) {
+                    rg_dbh.check(R.id.true_dbh)
+                } else {
+                    rg_dbh.check(R.id.false_dbh)
+                }
+
+                if (it.sfxsm == 1) {
+                    rg_xsm.check(R.id.true_xsm)
+                } else {
+                    rg_xsm.check(R.id.false_xsm)
+                }
+
+                if (it.sffd == 1) {
+                    rg_fd.check(R.id.true_fd)
+                } else {
+                    rg_fd.check(R.id.false_fd)
+                }
+
+                if (it.sfcj == 0) {
+                    rg_cj.check(R.id.false_cj)
+                } else {
+                    when (it.cjdj) {
+                        1 -> rg_cj.check(R.id.cj1);
+                        2 -> rg_cj.check(R.id.cj2);
+                        3 -> rg_cj.check(R.id.cj3);
+                        4 -> rg_cj.check(R.id.cj4);
+                    }
+                }
+
+                disease.text = Editable.Factory.getInstance().newEditable(if (it.bz == null) {
+                    ""
+                } else {
+                    it.bz
+                })
+
+                volunteerId.text = Editable.Factory.getInstance().newEditable(if (it.zyzh == null) {
+                    ""
+                } else {
+                    it.zyzh
+                })
+
+                disease.text = Editable.Factory.getInstance().newEditable(if (it.fdlxdh == null) {
+                    ""
+                } else {
+                    it.fdlxdh
+                })
+
+                disease.text = Editable.Factory.getInstance().newEditable(if (it.cph == null) {
+                    ""
+                } else {
+                    it.cph
+                })
+
+                disease.text = Editable.Factory.getInstance().newEditable(if (it.xqah == null) {
+                    ""
+                } else {
+                    it.xqah
+                })
             } else {
                 if (result != null) {
                     name.text = Editable.Factory.getInstance().newEditable(result.name.toString())
@@ -335,6 +432,7 @@ class HouseInfoFragment : Fragment() {
             }
         }
         HttpUtil.getInstance().getHouseInfo(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "查询是否已存在信息"), id)
+        RemoveFragements.RemoveFragemt()
     }
 
 
@@ -344,8 +442,11 @@ class HouseInfoFragment : Fragment() {
     private fun setHouseInfo() {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("setHouseInfo", it)
-            val json=JSON.parseObject(it)
-            onInfoSubmit.onInfoSubmit(json.getString("rypk"))
+            onInfoSubmit.onInfoSubmit(it, if (rg_type.checkedRadioButtonId == R.id.community) {
+                1
+            } else {
+                0
+            })
         }
         HttpUtil.getInstance().setHouseInfo(ProgressSubscriber<String>(subscriberOnNextListener, activity, "保存信息中"),
                 when (rg_type.checkedRadioButtonId) {
@@ -379,17 +480,53 @@ class HouseInfoFragment : Fragment() {
                 household.text.toString().trim(),
                 house_id.text.toString().trim(),
 
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-
+                when (rg_yf.checkedRadioButtonId) {
+                    R.id.true_yf -> 1
+                    else -> 0
+                },
+                when (rg_tf.checkedRadioButtonId) {
+                    R.id.true_tf -> 1
+                    else -> 0
+                },
+                when (rg_jsb.checkedRadioButtonId) {
+                    R.id.true_jsb -> 1
+                    else -> 0
+                },
+                when (rg_kc.checkedRadioButtonId) {
+                    R.id.true_kc -> 1
+                    else -> 0
+                },
+                when (rg_dj.checkedRadioButtonId) {
+                    R.id.true_dj -> 1
+                    else -> 0
+                },
+                when (rg_pkh.checkedRadioButtonId) {
+                    R.id.true_pkh -> 1
+                    else -> 0
+                },
+                when (rg_dbh.checkedRadioButtonId) {
+                    R.id.true_dbh -> 1
+                    else -> 0
+                },
+                when (rg_xsm.checkedRadioButtonId) {
+                    R.id.true_xsm -> 1
+                    else -> 0
+                },
+                when (rg_fd.checkedRadioButtonId) {
+                    R.id.true_fd -> 1
+                    else -> 0
+                },
+                when (rg_cj.checkedRadioButtonId) {
+                    R.id.false_cj -> 0
+                    else -> 1
+                },
+                when (rg_cj.checkedRadioButtonId) {
+                    R.id.cj1 -> 1
+                    R.id.cj2 -> 2
+                    R.id.cj3 -> 3
+                    R.id.cj4 -> 4
+                    else -> 0
+                },
                 disease.text.toString().trim(),
                 volunteerId.text.toString().trim(),
                 landlordTel.text.toString().trim(),

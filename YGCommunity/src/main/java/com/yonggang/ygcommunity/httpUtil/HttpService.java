@@ -800,7 +800,7 @@ public interface HttpService {
     @FormUrlEncoded
     Observable<HttpResult<List<HouseFamily>>> getHouseFamily(
             @Field("rypk") String pk,
-            @Field("jzlx") int type
+            @Field("sfsy") int type
     );
 
     // 上传个人信息
@@ -825,6 +825,7 @@ public interface HttpService {
 
             @Field("sfyf") int is_special,
             @Field("sfcj") int is_disability,
+            @Field("cjdj") int disabilityLevel,
             @Field("sfjsb") int is_mental,
             @Field("sfkc") int is_empty,
             @Field("sfdj") int is_alone,

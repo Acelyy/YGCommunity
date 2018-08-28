@@ -53,6 +53,7 @@ public class HouseInfo {
     private String mz;
     private String rypk;
     private int sfcj;
+    private int cjdj;
     private int sfdbh;
     private int sfdj;
     private int sffd;
@@ -66,7 +67,7 @@ public class HouseInfo {
     private int sfxsm;
     private int sfyf;
     private int sfzb;
-    private int sfzh;
+    private String sfzh;
     private String type;
     private String whcd;
     private String xb;
@@ -75,6 +76,8 @@ public class HouseInfo {
     private String zzmm;
     private String zdxx;
     private String xjzdz;
+    private String zyzh;
+
 
     public String getBz() {
         return bz;
@@ -292,11 +295,11 @@ public class HouseInfo {
         this.sfzb = sfzb;
     }
 
-    public int getSfzh() {
+    public String getSfzh() {
         return sfzh;
     }
 
-    public void setSfzh(int sfzh) {
+    public void setSfzh(String sfzh) {
         this.sfzh = sfzh;
     }
 
@@ -362,5 +365,21 @@ public class HouseInfo {
 
     public void setXjzdz(String xjzdz) {
         this.xjzdz = xjzdz;
+    }
+
+    public String getZyzh() {
+        return zyzh;
+    }
+
+    public void setZyzh(String zyzh) {
+        this.zyzh = zyzh;
+    }
+
+    public int getCjdj() {
+        return cjdj;
+    }
+
+    public void setCjdj(int cjdj) {
+        this.cjdj = cjdj;
     }
 }

@@ -28,21 +28,34 @@ class HouseInfoActivity : BaseActivity() {
     private lateinit var adapter: HousePageAdapter
 
     private val onInfoSubmit: OnInfoSubmitListener = object : OnInfoSubmitListener {
-        override fun onInfoSubmit(pk: String) {
+        override fun onInfoSubmit(pk: String, sfsy: Int) {
             if (fragments.size == 1) {
+                Log.i("size",fragments.size.toString())
                 titles.add("家庭信息")
-                fragments.add(HouseFamilyFragment.newInstance(pk))
+                fragments.add(HouseFamilyFragment.newInstance(pk, sfsy))
                 adapter.notifyDataSetChanged()
             }
             pager.setCurrentItem(1, true)
         }
     }
 
+    private val RF: RemoveFragements = object : RemoveFragements {
+        override fun RemoveFragemt() {
+            if(fragments.size==2){
+                titles.remove("家庭信息")
+                fragments.remove(fragments[1])
+                adapter.notifyDataSetChanged()
+            }
+            pager.setCurrentItem(0, true)
+        }
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_info)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
-        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit))
+        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit,RF))
         adapter = HousePageAdapter(supportFragmentManager)
         pager.adapter = adapter
         pager.offscreenPageLimit = 2
@@ -101,6 +114,11 @@ class HouseInfoActivity : BaseActivity() {
     }
 
     interface OnInfoSubmitListener {
-        fun onInfoSubmit(pk: String)
+        fun onInfoSubmit(pk: String, sfsy: Int)
     }
+
+    interface RemoveFragements {
+        fun RemoveFragemt()
+    }
+
 }

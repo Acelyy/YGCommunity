@@ -12,9 +12,9 @@ apply plugin: 'kotlin-android'
 android {
     signingConfigs {
         config {
-            keyAlias 'Android_lyy'
+            keyAlias 'android_lyy'
             keyPassword '12348888'
-            storeFile file('/Users/liyangyang/Documents/ASWorkspace/YGCommunity/android_lyy.jks')
+            storeFile file('/Users/huangxinhui/Documents/YGCommunity/android_lyy.jks')
             storePassword '12345678'
         }
     }
