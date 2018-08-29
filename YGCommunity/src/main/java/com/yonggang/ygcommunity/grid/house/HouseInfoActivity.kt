@@ -24,13 +24,11 @@ class HouseInfoActivity : BaseActivity() {
 
     private var titles: MutableList<String> = mutableListOf("基本信息")
     private var fragments: MutableList<Fragment> = mutableListOf()
-
     private lateinit var adapter: HousePageAdapter
 
     private val onInfoSubmit: OnInfoSubmitListener = object : OnInfoSubmitListener {
         override fun onInfoSubmit(pk: String, sfsy: Int) {
             if (fragments.size == 1) {
-                Log.i("size",fragments.size.toString())
                 titles.add("家庭信息")
                 fragments.add(HouseFamilyFragment.newInstance(pk, sfsy))
                 adapter.notifyDataSetChanged()
@@ -43,7 +41,7 @@ class HouseInfoActivity : BaseActivity() {
         override fun RemoveFragemt() {
             if(fragments.size==2){
                 titles.remove("家庭信息")
-                fragments.remove(fragments[1])
+                fragments.remove(fragments.get(1))
                 adapter.notifyDataSetChanged()
             }
             pager.setCurrentItem(0, true)

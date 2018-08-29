@@ -42,6 +42,7 @@ class HouseFamilyFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.i("hhh","hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh")
         arguments?.let {
             pk = it.getString("pk")
             sfsy = it.getInt("sfsy")
@@ -52,6 +53,7 @@ class HouseFamilyFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+
         return inflater.inflate(R.layout.fragment_house_family, container, false)
     }
 
@@ -105,6 +107,7 @@ class HouseFamilyFragment : Fragment() {
         HttpUtil.getInstance().getHouseFamily(subscriber, pk, sfsy)
     }
 
+
     /**
      * 家庭成员适配器
      */
@@ -148,8 +151,8 @@ class HouseFamilyFragment : Fragment() {
             val id: TextView? = item.find(R.id.id)
         }
 
-        inner class ButtonViewHolder(item: View) : RecyclerView.ViewHolder(item) {
-            val add: Button? = item.find(R.id.add)
-        }
+//        inner class ButtonViewHolder(item: View) : RecyclerView.ViewHolder(item) {
+//            val add: Button? = item.find(R.id.add)
+//        }
     }
 }
