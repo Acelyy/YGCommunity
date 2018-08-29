@@ -37,14 +37,14 @@ class HouseInfoActivity : BaseActivity() {
         }
     }
 
-    private val RF: RemoveFragements = object : RemoveFragements {
-        override fun RemoveFragemt() {
-            if(fragments.size==2){
-                titles.remove("家庭信息")
-                fragments.remove(fragments.get(1))
+    private val onRemoveFragment: OnRemoveFragment = object : OnRemoveFragment {
+        override fun onRemoveFragment() {
+            if (fragments.size == 2) {
+                titles.removeAt(1)
+                fragments.removeAt(1)
                 adapter.notifyDataSetChanged()
             }
-            pager.setCurrentItem(0, true)
+//            pager.setCurrentItem(0, true)
         }
 
     }
@@ -53,7 +53,7 @@ class HouseInfoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_info)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
-        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit,RF))
+        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit, onRemoveFragment))
         adapter = HousePageAdapter(supportFragmentManager)
         pager.adapter = adapter
         pager.offscreenPageLimit = 2
@@ -115,8 +115,8 @@ class HouseInfoActivity : BaseActivity() {
         fun onInfoSubmit(pk: String, sfsy: Int)
     }
 
-    interface RemoveFragements {
-        fun RemoveFragemt()
+    interface OnRemoveFragment {
+        fun onRemoveFragment()
     }
 
 }

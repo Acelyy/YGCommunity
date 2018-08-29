@@ -55,7 +55,7 @@ private const val ARG_PARAM2 = "param2"
 class HouseInfoFragment : Fragment() {
 
     private lateinit var onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener
-    private lateinit var RemoveFragements: HouseInfoActivity.RemoveFragements
+    private lateinit var onRemoveFragment: HouseInfoActivity.OnRemoveFragment
     private var dialog: AlertDialog? = null
     private lateinit var myTextWatcher: MyTextWatcher
 
@@ -167,10 +167,10 @@ class HouseInfoFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener,RF:HouseInfoActivity.RemoveFragements) =
+        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener, onRemoveFragment: HouseInfoActivity.OnRemoveFragment) =
                 HouseInfoFragment().apply {
                     this.onInfoSubmit = onInfoSubmit
-                    this.RemoveFragements = RF
+                    this.onRemoveFragment = onRemoveFragment
                 }
 
         private val listEducation = listOf(
@@ -258,6 +258,7 @@ class HouseInfoFragment : Fragment() {
     private fun getHouseInfo(result: IDCardResult?, id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<HouseInfo> {
             Log.i("getHouseInfo", JSON.toJSONString(it))
+            onRemoveFragment.onRemoveFragment()
             if (it != null) {
                 name.text = Editable.Factory.getInstance().newEditable(if (it.xm == null) {
                     ""
@@ -432,7 +433,7 @@ class HouseInfoFragment : Fragment() {
             }
         }
         HttpUtil.getInstance().getHouseInfo(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "查询是否已存在信息"), id)
-        RemoveFragements.RemoveFragemt()
+
     }
 
 
