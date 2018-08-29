@@ -5,7 +5,8 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.app.FragmentStatePagerAdapter
+import android.support.v4.view.PagerAdapter
 import android.util.Log
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
@@ -65,7 +66,7 @@ class HouseInfoActivity : BaseActivity() {
         init()
     }
 
-    inner class HousePageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    inner class HousePageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
             return fragments[position]
         }
@@ -76,6 +77,10 @@ class HouseInfoActivity : BaseActivity() {
 
         override fun getPageTitle(position: Int): CharSequence {
             return titles[position]
+        }
+
+        override fun getItemPosition(`object`: Any?): Int {
+            return PagerAdapter.POSITION_NONE
         }
 
     }
