@@ -64,6 +64,7 @@ class HouseInfoActivity : BaseActivity() {
         tab.setupWithViewPager(pager)
         initAccessTokenWithAkSk()
         init()
+        text_back.setOnClickListener{finish()}
     }
 
     inner class HousePageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {

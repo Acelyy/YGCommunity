@@ -36,7 +36,7 @@ public class Folk {
         this.lrsj = lrsj;
     }
 
-    private String xfsj;
+    private long xfsj;
 
     public String getBlgc() {
         return blgc;
@@ -118,11 +118,11 @@ public class Folk {
         this.xfdd = xfdd;
     }
 
-    public String getXfsj() {
+    public long getXfsj() {
         return xfsj;
     }
 
-    public void setXfsj(String xfsj) {
+    public void setXfsj(long xfsj) {
         this.xfsj = xfsj;
     }
 

@@ -9,6 +9,7 @@ import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.DatePicker
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -81,7 +82,6 @@ class AddFolkActivity : BaseActivity() {
         submit.setOnClickListener { setFolk() }
         pic_back.setOnClickListener { finish() }
     }
-
 
     private fun initDatePicker() {
         val view = LayoutInflater.from(this).inflate(R.layout.item_date_picker, null)

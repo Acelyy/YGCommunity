@@ -345,7 +345,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="150px"
+                    android:layout_height="170px"
                     android:layout_marginBottom="20px"
                     android:background="@drawable/back_add_event"
                     android:gravity="center_vertical"

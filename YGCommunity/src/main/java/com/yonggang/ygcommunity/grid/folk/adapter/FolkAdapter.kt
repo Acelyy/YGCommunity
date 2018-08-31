@@ -1,6 +1,7 @@
 package com.yonggang.ygcommunity.grid.folk.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,10 @@ import com.yonggang.ygcommunity.Entry.Event
 import com.yonggang.ygcommunity.Entry.Folk
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.grid.event.adapter.EventAdapter
+import kotlinx.android.synthetic.main.activity_add_folk.*
 import org.jetbrains.anko.find
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FolkAdapter(var data: MutableList<Folk>, val context: Context): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
@@ -25,7 +29,11 @@ class FolkAdapter(var data: MutableList<Folk>, val context: Context): BaseAdapte
             holder = view.tag as ViewHolder
         }
         holder.title.text = data[position].mqsy
-        holder.time.text = data[position].xfsj
+        var time = data[position].xfsj*1000
+
+        Log.i("time",SimpleDateFormat("yyyy-MM-dd").format(Date(time)))
+
+        holder.time.text = SimpleDateFormat("yyyy-MM-dd").format(Date(time))
         return view
     }
 
