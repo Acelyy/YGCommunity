@@ -42,8 +42,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         layout_app_hourse.setOnClickListener(this)
         layout_app_event.setOnClickListener(this)
         layout_app_note.setOnClickListener(this)
-        layout_app_task.setOnClickListener(this)
-        layout_app_work.setOnClickListener(this)
         layout_app_walk.setOnClickListener(this)
         layout_app_message.setOnClickListener(this)
 

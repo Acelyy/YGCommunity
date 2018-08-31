@@ -500,77 +500,6 @@
                     </RelativeLayout>
 
                     <RelativeLayout
-                        android:id="@+id/layout_app_task"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="80px"
-                                android:layout_height="80px"
-                                android:layout_gravity="center_horizontal"
-                                android:src="@mipmap/pic_grid_task" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="35px"
-                                android:text="我的任务"
-                                android:textColor="#5E5E5E"
-                                android:textSize="35px" />
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="30px"
-                    android:layout_marginStart="30px"
-                    android:layout_marginTop="50px">
-
-                    <RelativeLayout
-                        android:id="@+id/layout_app_work"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:orientation="vertical">
-
-                            <ImageView
-                                android:layout_width="80px"
-                                android:layout_height="80px"
-                                android:layout_gravity="center_horizontal"
-                                android:src="@mipmap/pic_grid_list" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="35px"
-                                android:text="工单处理"
-                                android:textColor="#5E5E5E"
-                                android:textSize="35px" />
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <RelativeLayout
                         android:id="@+id/layout_app_walk"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -601,6 +530,14 @@
 
                     </RelativeLayout>
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="30px"
+                    android:layout_marginStart="30px"
+                    android:layout_marginTop="50px">
                     <RelativeLayout
                         android:id="@+id/layout_app_message"
                         android:layout_width="match_parent"
@@ -635,9 +572,17 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1">
+                        android:layout_weight="1"/>
 
-                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
 
                 </LinearLayout>
 
