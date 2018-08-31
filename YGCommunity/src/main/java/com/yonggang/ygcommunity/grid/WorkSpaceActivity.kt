@@ -8,7 +8,9 @@ import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
+import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseActivity
+import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import kotlinx.android.synthetic.main.activity_work_space.*
 import org.jetbrains.anko.startActivity
 
@@ -51,7 +53,8 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.layout_today_event -> startActivity<EventActivity>()
             R.id.layout_app_event -> startActivity<AddEventActivity>()
-            R.id.layout_today_hourse -> startActivity<HouseActivity>()
+            R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
+            R.id.layout_today_walk -> startActivity<FolkActivity>()
         }
     }
 

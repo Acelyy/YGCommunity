@@ -231,7 +231,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                 val subscriberOnNextListener = SubscriberOnNextListener<String> {
                     Log.i("addEvent", it)
                     Snackbar.make(submit, "上报成功", Snackbar.LENGTH_LONG).show()
-                    finish()
+//                    finish()
                 }
 
 

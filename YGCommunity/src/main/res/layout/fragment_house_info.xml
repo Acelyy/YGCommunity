@@ -85,37 +85,47 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <RadioGroup
+
+                    <com.yonggang.ygcommunity.View.RadioGroup
                         android:id="@+id/rg_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checkedButton="@+id/floating"
-                        android:orientation="horizontal">
+                        android:orientation="vertical">
 
-                        <RadioButton
-                            android:id="@+id/community"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="社员"
-                            android:theme="@style/MyCheckBox" />
+                            android:checkedButton="@+id/floating"
+                            android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/register"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20px"
-                            android:text="户籍"
-                            android:theme="@style/MyCheckBox" />
+                            <RadioButton
+                                android:id="@+id/community"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="户籍社员"
+                                android:theme="@style/MyCheckBox" />
 
-                        <RadioButton
-                            android:id="@+id/floating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="20px"
-                            android:text="流动人口"
-                            android:theme="@style/MyCheckBox" />
+                            <RadioButton
+                                android:id="@+id/register"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="20px"
+                                android:text="非户籍社员"
+                                android:theme="@style/MyCheckBox" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <RadioButton
+                                android:id="@+id/floating"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="流动人口"
+                                android:theme="@style/MyCheckBox" />
+                        </LinearLayout>
 
-                    </RadioGroup>
+                    </com.yonggang.ygcommunity.View.RadioGroup>
+
 
                 </LinearLayout>
 
@@ -479,7 +489,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20px"
-                        android:text="必填信息"
+                        android:text="选填信息"
                         android:textColor="#000000"
                         android:textSize="50px" />
 

@@ -18,6 +18,9 @@ import com.yonggang.ygcommunity.Entry.EventDetail;
 import com.yonggang.ygcommunity.Entry.Expense;
 import com.yonggang.ygcommunity.Entry.Filter;
 import com.yonggang.ygcommunity.Entry.FirstImg;
+import com.yonggang.ygcommunity.Entry.Folk;
+import com.yonggang.ygcommunity.Entry.FolkChoose;
+import com.yonggang.ygcommunity.Entry.FolkDetails;
 import com.yonggang.ygcommunity.Entry.Free;
 import com.yonggang.ygcommunity.Entry.Fwt_Carousel;
 import com.yonggang.ygcommunity.Entry.Gift;
@@ -807,7 +810,6 @@ public interface HttpService {
     @FormUrlEncoded
     @POST("set_rfxx")
     Observable<HttpResult<String>> setHouseInfo(
-            @Field("sfldrk") int is_floating,
             @Field("sfsy") int is_community,
             @Field("sfzh") String id,
             @Field("xm") String name,
@@ -840,5 +842,44 @@ public interface HttpService {
             @Field("fdlxdh") String landlordTel,
             @Field("cph") String carNumber,
             @Field("xqah") String hobby
+    );
+
+    //民情日志
+    @FormUrlEncoded
+    @POST("get_mqrj_list")
+    Observable<HttpResult<List<Folk>>> getFolkList(
+            @Field("page") int page
+    );
+
+    //提交民情日志
+    @FormUrlEncoded
+    @POST("set_mqrj")
+    Observable<HttpResult<String>> setFolk(
+            @Field("name") String name,
+            @Field("dzbxxb_id") String dzbxxb_id,
+            @Field("visit_place") String visit_place,
+            @Field("interviewee") String interviewee,
+            @Field("nature_id") String nature_id,
+            @Field("content") String content,
+            @Field("handling_process") String handling_process,
+            @Field("result") String result,
+            @Field("tag") String tag,
+            @Field("input_person") String input_person,
+            @Field("input_time") String input_time,
+            @Field("visit_time") String visit_time,
+            @Field("mqrj_imgs") String mqrj_imgs
+
+    );
+
+    //获取民情新增选项基础数据
+    @GET("get_mqrj")
+    Observable<FolkChoose> getFolkChoose(
+    );
+
+    //获取民情详情
+    @FormUrlEncoded
+    @POST("get_mqrj_detail")
+    Observable<HttpResult<FolkDetails>> getFolkDetails(
+            @Field("id") String id
     );
 }

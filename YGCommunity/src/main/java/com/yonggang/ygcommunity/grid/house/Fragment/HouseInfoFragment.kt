@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import com.alibaba.fastjson.JSON
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
@@ -25,6 +26,7 @@ import com.baidu.ocr.sdk.model.IDCardResult
 import com.baidu.ocr.ui.camera.CameraActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
+import com.iflytek.cloud.Setting
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
@@ -33,6 +35,7 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
+import kotlinx.android.synthetic.main.layout.*
 import org.jetbrains.anko.find
 import java.io.File
 import java.text.SimpleDateFormat
@@ -317,14 +320,10 @@ class HouseInfoFragment : Fragment() {
                 })
                 education.text = it.whcd
 
-                if (it.sfsy == 1) {
-                    rg_type.check(R.id.community)
-                } else {
-                    if (it.sfhj == 1) {
-                        rg_type.check(R.id.register)
-                    } else {
-                        rg_type.check(R.id.floating)
-                    }
+                when(it.sfsy){
+                    1->rg_type.check(R.id.community)
+                    2->rg_type.check(R.id.register)
+                    3->rg_type.check(R.id.floating)
                 }
 
                 if (it.sfyf == 1) {
@@ -441,99 +440,121 @@ class HouseInfoFragment : Fragment() {
      * 保存个人信息
      */
     private fun setHouseInfo() {
-        val subscriberOnNextListener = SubscriberOnNextListener<String> {
-            Log.i("setHouseInfo", it)
-            onInfoSubmit.onInfoSubmit(it, if (rg_type.checkedRadioButtonId == R.id.community) {
-                1
-            } else {
-                0
-            })
+        if (number.text.toString().equals("")) {
+            Snackbar.make(refresh, "清输入身份证号", 1000)
+            return
+        } else if (name.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入姓名", 1000)
+            return
+        } else if (depart.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入工作地址/学校", 1000)
+            return
+        } else if (nation.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入名族", 1000)
+            return
+        } else if (address.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入居住地址", 1000)
+            return
+        } else if (tell.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入联系电话", 1000)
+            return
+        } else if (household.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入户籍地址", 1000)
+            return
+        } else if (house_id.text.toString().equals("")) {
+            Snackbar.make(refresh, "请输入户籍号", 1000)
+            return
+        } else {
+            val subscriberOnNextListener = SubscriberOnNextListener<String> {
+                Log.i("setHouseInfo", it)
+                onInfoSubmit.onInfoSubmit(it, if (rg_type.checkedRadioButtonId == R.id.community) {
+                    1
+                } else {
+                    0
+                })
+            }
+            HttpUtil.getInstance().setHouseInfo(ProgressSubscriber<String>(subscriberOnNextListener, activity, "保存信息中"),
+                    when (rg_type.checkedRadioButtonId) {
+                        R.id.community -> 1
+                        R.id.register -> 2
+                        R.id.floating -> 3
+                        else -> 0
+                    },
+                    number.text.toString().trim(),
+                    name.text.toString().trim(),
+
+                    when (rg_sex.checkedRadioButtonId) {
+                        R.id.man -> "男"
+                        else -> "女"
+                    },
+
+                    birth.text.toString().trim(),
+                    depart.text.toString().trim(),
+                    nation.text.toString().trim(),
+                    political.text.toString().trim(),
+                    address.text.toString().trim(),
+                    tell.text.toString().trim(),
+                    marriage.text.toString().trim(),
+                    education.text.toString().trim(),
+                    household.text.toString().trim(),
+                    house_id.text.toString().trim(),
+
+                    when (rg_yf.checkedRadioButtonId) {
+                        R.id.true_yf -> 1
+                        else -> 0
+                    },
+                    when (rg_tf.checkedRadioButtonId) {
+                        R.id.true_tf -> 1
+                        else -> 0
+                    },
+                    when (rg_jsb.checkedRadioButtonId) {
+                        R.id.true_jsb -> 1
+                        else -> 0
+                    },
+                    when (rg_kc.checkedRadioButtonId) {
+                        R.id.true_kc -> 1
+                        else -> 0
+                    },
+                    when (rg_dj.checkedRadioButtonId) {
+                        R.id.true_dj -> 1
+                        else -> 0
+                    },
+                    when (rg_pkh.checkedRadioButtonId) {
+                        R.id.true_pkh -> 1
+                        else -> 0
+                    },
+                    when (rg_dbh.checkedRadioButtonId) {
+                        R.id.true_dbh -> 1
+                        else -> 0
+                    },
+                    when (rg_xsm.checkedRadioButtonId) {
+                        R.id.true_xsm -> 1
+                        else -> 0
+                    },
+                    when (rg_fd.checkedRadioButtonId) {
+                        R.id.true_fd -> 1
+                        else -> 0
+                    },
+                    when (rg_cj.checkedRadioButtonId) {
+                        R.id.false_cj -> 0
+                        else -> 1
+                    },
+                    when (rg_cj.checkedRadioButtonId) {
+                        R.id.cj1 -> 1
+                        R.id.cj2 -> 2
+                        R.id.cj3 -> 3
+                        R.id.cj4 -> 4
+                        else -> 0
+                    },
+                    disease.text.toString().trim(),
+                    volunteerId.text.toString().trim(),
+                    landlordTel.text.toString().trim(),
+                    carNumber.text.toString().trim(),
+                    hobby.text.toString().trim()
+            )
         }
-        HttpUtil.getInstance().setHouseInfo(ProgressSubscriber<String>(subscriberOnNextListener, activity, "保存信息中"),
-                when (rg_type.checkedRadioButtonId) {
-                    R.id.community -> 0
-                    R.id.register -> 0
-                    R.id.floating -> 1
-                    else -> 0
-                },
-                when (rg_type.checkedRadioButtonId) {
-                    R.id.community -> 1
-                    R.id.register -> 1
-                    R.id.floating -> 0
-                    else -> 0
-                },
-                number.text.toString().trim(),
-                name.text.toString().trim(),
 
-                when (rg_sex.checkedRadioButtonId) {
-                    R.id.man -> "男"
-                    else -> "女"
-                },
 
-                birth.text.toString().trim(),
-                depart.text.toString().trim(),
-                nation.text.toString().trim(),
-                political.text.toString().trim(),
-                address.text.toString().trim(),
-                tell.text.toString().trim(),
-                marriage.text.toString().trim(),
-                education.text.toString().trim(),
-                household.text.toString().trim(),
-                house_id.text.toString().trim(),
-
-                when (rg_yf.checkedRadioButtonId) {
-                    R.id.true_yf -> 1
-                    else -> 0
-                },
-                when (rg_tf.checkedRadioButtonId) {
-                    R.id.true_tf -> 1
-                    else -> 0
-                },
-                when (rg_jsb.checkedRadioButtonId) {
-                    R.id.true_jsb -> 1
-                    else -> 0
-                },
-                when (rg_kc.checkedRadioButtonId) {
-                    R.id.true_kc -> 1
-                    else -> 0
-                },
-                when (rg_dj.checkedRadioButtonId) {
-                    R.id.true_dj -> 1
-                    else -> 0
-                },
-                when (rg_pkh.checkedRadioButtonId) {
-                    R.id.true_pkh -> 1
-                    else -> 0
-                },
-                when (rg_dbh.checkedRadioButtonId) {
-                    R.id.true_dbh -> 1
-                    else -> 0
-                },
-                when (rg_xsm.checkedRadioButtonId) {
-                    R.id.true_xsm -> 1
-                    else -> 0
-                },
-                when (rg_fd.checkedRadioButtonId) {
-                    R.id.true_fd -> 1
-                    else -> 0
-                },
-                when (rg_cj.checkedRadioButtonId) {
-                    R.id.false_cj -> 0
-                    else -> 1
-                },
-                when (rg_cj.checkedRadioButtonId) {
-                    R.id.cj1 -> 1
-                    R.id.cj2 -> 2
-                    R.id.cj3 -> 3
-                    R.id.cj4 -> 4
-                    else -> 0
-                },
-                disease.text.toString().trim(),
-                volunteerId.text.toString().trim(),
-                landlordTel.text.toString().trim(),
-                carNumber.text.toString().trim(),
-                hobby.text.toString().trim()
-        )
     }
 
 

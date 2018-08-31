@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.yonggang.ygcommunity.Fragment.Main.ImageDetailFragment;
 import com.yonggang.ygcommunity.R;
@@ -31,6 +32,7 @@ public class BbsPicActivity extends AppCompatActivity {
         setContentView(R.layout.activity_bbs_pic);
         ButterKnife.bind(this);
         imgs = getIntent().getExtras().getStringArrayList("imgs");
+        Log.i("imgs",imgs.size()+"");
         index = getIntent().getExtras().getInt("index");
         pagePic.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
         pagePic.setCurrentItem(index);

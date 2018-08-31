@@ -289,10 +289,7 @@
             android:name=".Activity.GuideActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash">
-
-        </activity>
-
+            android:theme="@style/AppTheme.Splash" />
         <activity android:name=".Activity.SplashActivity" />
         <activity
             android:name=".Activity.MainActivity"
@@ -438,27 +435,30 @@
         <activity android:name=".monitor.MonitorDetailActivity" />
         <activity android:name=".grid.WorkSpaceActivity" />
         <activity android:name=".grid.event.EventActivity" />
-        <activity android:name=".grid.GridLoginActivity">
-
-        </activity>
-        <activity
-            android:name=".grid.event.AddEventActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" />
-        <activity android:name=".grid.event.EventDetailActivity" />
-        <activity android:name=".grid.house.HouseActivity"></activity>
-        <activity
-            android:name=".grid.house.HouseInfoActivity"
-            android:windowSoftInputMode="stateHidden">
+        <activity android:name=".grid.GridLoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".grid.event.AddEventActivity"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" >
+        </activity>
+        <activity android:name=".grid.event.EventDetailActivity" />
+        <activity android:name=".grid.house.HouseActivity" />
+        <activity
+            android:name=".grid.house.HouseInfoActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".grid.house.HouseExtraActivity" />
         <activity android:name=".grid.house.HouseFamilyActivity" />
-        <activity android:name=".grid.house.AddHouseFamilyActivity">
+        <activity android:name=".grid.house.AddHouseFamilyActivity" />
+        <activity android:name=".grid.folk.FolkActivity">
 
         </activity>
+        <activity android:name=".grid.folk.FolkDetailsActivity" />
+        <activity android:name=".grid.folk.AddFolkActivity"/>
     </application>
 
 </manifest>

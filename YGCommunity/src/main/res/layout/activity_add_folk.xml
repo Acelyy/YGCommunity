@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".grid.folk.AddFolkActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@color/refresh_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="民情日记增加"
+            android:textColor="#FFFFFF"
+            android:textSize="50px" />
+
+        <ImageView
+            android:id="@+id/pic_back"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:padding="35px"
+            android:src="@mipmap/pic_close" />
+
+    </RelativeLayout>
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="false"
+        app:srlEnableRefresh="false">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15px">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="党员姓名"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入党员姓名"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="所属党组"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_team"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_team"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请选择所属党组"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:padding="25px"
+                            android:src="@mipmap/pic_grid_down" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="下访日期"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_downtime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请选择下访日期"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="下访对象地址"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入下访对象地址"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="下访对象"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_figure"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入下访对象"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="民情性质"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <LinearLayout
+                        android:id="@+id/layout_area"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tv_area"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="请选择民情性质"
+                            android:singleLine="true"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:padding="25px"
+                            android:src="@mipmap/pic_grid_down" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="民事原由"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_reason"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入民事原由"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="代办过程"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_process"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入代办过程"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="处理结果"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_result"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入处理结果"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="自定义分类标签"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_label"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入自定义分类标签"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="录入人"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/tv_person"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请输入录入人"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="录入日期"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                    <TextView
+                        android:id="@+id/tv_uptime"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请选择录入日期"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+
+                </LinearLayout>
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="150px"-->
+                    <!--android:layout_marginBottom="20px"-->
+                    <!--android:background="@drawable/back_add_event"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="30px">-->
+
+                    <!--<TextView-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="3"-->
+                        <!--android:text="所属网格"-->
+                        <!--android:textColor="#000000"-->
+                        <!--android:textSize="45px" />-->
+
+                    <!--<EditText-->
+                        <!--android:id="@+id/tv_grid"-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="7"-->
+                        <!--android:background="@null"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="#000000"-->
+                        <!--android:textSize="45px" />-->
+
+                <!--</LinearLayout>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:orientation="vertical"
+                    android:padding="30px">
+
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:gravity="center_vertical"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="3"-->
+                            <!--android:text="走访基本情况"-->
+                            <!--android:textColor="#000000"-->
+                            <!--android:textSize="45px" />-->
+
+                        <!--<EditText-->
+                            <!--android:id="@+id/tv_description"-->
+                            <!--android:layout_width="0dp"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_weight="7"-->
+                            <!--android:background="@null"-->
+                            <!--android:hint="请输入走访基本情况"-->
+                            <!--android:textColor="#000000"-->
+                            <!--android:textSize="45px" />-->
+
+                    <!--</LinearLayout>-->
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="50px"
+                        android:layout_marginTop="50px">
+
+                    </android.support.v7.widget.RecyclerView>
+
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:background="@drawable/back_button_grid"
+                    android:text="提交"
+                    android:textColor="#FFFFFF"
+                    android:textSize="45px" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>
