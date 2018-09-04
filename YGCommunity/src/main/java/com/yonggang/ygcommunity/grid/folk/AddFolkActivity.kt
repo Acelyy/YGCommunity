@@ -22,6 +22,7 @@ import com.yonggang.ygcommunity.Entry.FolkChoose
 import com.yonggang.ygcommunity.PhotoPicker.PhotoAdapter
 import com.yonggang.ygcommunity.PhotoPicker.RecyclerItemClickListener
 import com.yonggang.ygcommunity.R
+import com.yonggang.ygcommunity.Util.NoDoubleClickListener
 import com.yonggang.ygcommunity.Util.ImageUtils
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
@@ -79,8 +80,13 @@ class AddFolkActivity : BaseActivity() {
                     }
                 }))
 
-        submit.setOnClickListener { setFolk() }
+        submit.setOnClickListener(object: NoDoubleClickListener(){
+            override fun onNoDoubleClick(v: View?) {
+                setFolk()
+            }
+        })
         pic_back.setOnClickListener { finish() }
+
     }
 
     private fun initDatePicker() {

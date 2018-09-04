@@ -11,7 +11,6 @@ import com.yonggang.ygcommunity.Entry.FolkChoose
 import com.yonggang.ygcommunity.Entry.FolkDetails
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
-import com.yonggang.ygcommunity.Util.TimeUtil
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_folk_details.*
 import org.jetbrains.anko.startActivity
@@ -24,7 +23,6 @@ class FolkDetailsActivity : BaseActivity() {
     private lateinit var data: FolkDetails
     private lateinit var datadzb: MutableList<FolkChoose.DataBean.DzbBean>
     private lateinit var datamqxz: MutableList<FolkChoose.DataBean.MqxzBean>
-    private var TimeUtil : TimeUtil = TimeUtil()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_folk_details)

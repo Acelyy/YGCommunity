@@ -3,8 +3,6 @@ package com.yonggang.ygcommunity.grid.Visit
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,16 +15,11 @@ import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_add_visit.*
 import org.jetbrains.anko.find
-import rx.Subscriber
 import java.text.SimpleDateFormat
 import java.util.*
-import com.iflytek.cloud.resource.Resource.setText
-import com.yonggang.ygcommunity.View.LinearLayoutForListView
+import com.yonggang.ygcommunity.Util.NoDoubleClickListener
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
-import kotlinx.android.synthetic.main.activity_address.view.*
-import kotlinx.android.synthetic.main.activity_map_view.*
-import kotlinx.android.synthetic.main.item_collect.view.*
 
 
 class AddVisitActivity : BaseActivity() {
@@ -49,18 +42,20 @@ class AddVisitActivity : BaseActivity() {
             finish()
         }
 
-        submit.setOnClickListener {
-
-            for (item in data.sjfl) {
-                if (item.selection) {
-                    sBuffer.append(item.name + ",")
+        submit.setOnClickListener(object : NoDoubleClickListener() {
+            override fun onNoDoubleClick(v: View) {
+                for (item in data.sjfl) {
+                    if (item.selection) {
+                        sBuffer.append(item.name + ",")
+                    }
                 }
+                if (sBuffer.length > 0) {
+                    listtype = sBuffer.substring(0, sBuffer.length - 1)
+                }
+
+                Log.i("click", "再按一次退出程序")
             }
-            if (sBuffer.length > 0) {
-                listtype = sBuffer.substring(0, sBuffer.length - 1)
-            }
-            finish()
-        }
+        });
     }
 
     private fun initDatePicker() {
