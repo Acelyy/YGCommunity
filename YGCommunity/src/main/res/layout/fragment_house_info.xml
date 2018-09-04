@@ -357,7 +357,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:hint="请输入居住地址"
+                        android:hint="请选择居住地址"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />

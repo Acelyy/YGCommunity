@@ -2,7 +2,10 @@ package com.yonggang.ygcommunity.grid.house.Fragment
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.BroadcastReceiver
+import android.content.Context
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -16,7 +19,6 @@ import android.view.ViewGroup
 import android.widget.DatePicker
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.alibaba.fastjson.JSON
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
@@ -26,7 +28,6 @@ import com.baidu.ocr.sdk.model.IDCardResult
 import com.baidu.ocr.ui.camera.CameraActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
-import com.iflytek.cloud.Setting
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
@@ -35,7 +36,6 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
-import kotlinx.android.synthetic.main.layout.*
 import org.jetbrains.anko.find
 import java.io.File
 import java.text.SimpleDateFormat
@@ -61,6 +61,8 @@ class HouseInfoFragment : Fragment() {
     private lateinit var onRemoveFragment: HouseInfoActivity.OnRemoveFragment
     private var dialog: AlertDialog? = null
     private lateinit var myTextWatcher: MyTextWatcher
+    private var address_pk: String? = null
+    private lateinit var updateAddressBroadcast: UpdateAddressBroadcast
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -101,6 +103,16 @@ class HouseInfoFragment : Fragment() {
         setPicker(layout_political, political, listPolitical, "政治面貌")
         setPicker(layout_education, education, listEducation, "文化程度")
         setPicker(layout_marriage, marriage, listMarriage, "婚姻状况")
+
+        updateAddressBroadcast = UpdateAddressBroadcast()
+        val filter = IntentFilter()
+        filter.addAction("data")
+        activity.registerReceiver(updateAddressBroadcast, filter)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        activity.unregisterReceiver(updateAddressBroadcast)
     }
 
     /**
@@ -453,8 +465,13 @@ class HouseInfoFragment : Fragment() {
             return
         }
         if (nation.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入名族", 1000).show()
+            Snackbar.make(submit, "请输入民族", 1000).show()
             return
+        }
+        if (address_pk == null) {
+            Snackbar.make(submit, "请选择居住地址", 1000).show()
+            return
+
         }
         if (address.text.toString().equals("")) {
             Snackbar.make(submit, "请输入居住地址", 1000).show()
@@ -560,6 +577,15 @@ class HouseInfoFragment : Fragment() {
                 hobby.text.toString().trim()
         )
 
+    }
+
+    inner class UpdateAddressBroadcast : BroadcastReceiver() {
+        override fun onReceive(context: Context?, intent: Intent?) {
+            val house = intent!!.getStringExtra("address")
+            val pk = intent.getStringExtra("")
+            address_pk = intent.getStringExtra("pk")
+            address.text = house
+        }
 
     }
 
