@@ -58,6 +58,15 @@ public class GridStatus {
 
         private String id;
         private String name;
+        private Boolean selection;
+
+        public Boolean getSelection() {
+            return selection;
+        }
+
+        public void setSelection(Boolean selection) {
+            this.selection = selection;
+        }
 
         public String getId() {
             return id;
@@ -79,6 +88,7 @@ public class GridStatus {
         public String toString() {
             return this.name;
         }
+
     }
 
 

@@ -13,7 +13,7 @@ class HouseActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
-
+        text_back.setOnClickListener{finish()}
         layout_info.setOnClickListener { startActivity<HouseInfoActivity>() }
         layout_extra.setOnClickListener { startActivity<HouseExtraActivity>() }
         layout_family.setOnClickListener { startActivity<HouseFamilyActivity>() }

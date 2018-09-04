@@ -351,7 +351,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/address"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -362,6 +362,11 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
+                    <ImageView
+                        android:layout_width="70px"
+                        android:layout_height="70px"
+                        android:layout_marginStart="20px"
+                        android:src="@mipmap/pic_grid_down" />
                 </LinearLayout>
 
                 <LinearLayout

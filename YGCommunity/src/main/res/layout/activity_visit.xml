@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".grid.Visit.VisitActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@color/refresh_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="重点信访人员排查表"
+            android:textColor="#FFFFFF"
+            android:textSize="50px" />
+
+        <ImageView
+            android:id="@+id/pic_back"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15px"
+            android:padding="10px"
+            android:src="@mipmap/pic_back2" />
+
+        <TextView
+            android:id="@+id/text_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/pic_back"
+            android:text="返回"
+            android:textColor="#FFFFFF"
+            android:textSize="45px" />
+
+        <ImageView
+            android:id="@+id/pic_add"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:padding="25px"
+            android:src="@mipmap/pic_add" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:mcv_calendarMode="month"
+            app:mcv_selectionColor="#cd2221"
+            app:mcv_showOtherDates="all" />
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="80px"
+            android:paddingRight="80px" />
+    </LinearLayout>
+
+</LinearLayout>

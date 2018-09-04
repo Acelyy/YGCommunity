@@ -52,7 +52,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_event -> startActivity<EventActivity>()
             R.id.layout_app_event -> startActivity<AddEventActivity>()
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
-            R.id.layout_today_walk -> startActivity<FolkActivity>()
+            R.id.layout_app_note -> startActivity<FolkActivity>()
         }
     }
 

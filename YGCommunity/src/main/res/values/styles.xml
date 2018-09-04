@@ -42,4 +42,10 @@
         <item name="colorAccent">@color/refresh_color</item>
     </style>
 
+    <style name="cb_test">
+        <!--波纹的颜色-->
+        <item name="android:colorControlHighlight">@color/colorPrimary</item>
+        <!--选中的颜色-->
+        <item name="colorAccent">@color/refresh_color</item>
+    </style>
 </resources>

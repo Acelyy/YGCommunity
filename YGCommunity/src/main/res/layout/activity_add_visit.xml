@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".grid.Visit.AddVisitActivity"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150px"
+        android:background="@color/refresh_color">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="111111111111"
+            android:textColor="#FFFFFF"
+            android:textSize="50px" />
+
+        <ImageView
+            android:id="@+id/pic_back"
+            android:layout_width="120px"
+            android:layout_height="120px"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15px"
+            android:padding="10px"
+            android:src="@mipmap/pic_back2" />
+
+        <TextView
+            android:id="@+id/text_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/pic_back"
+            android:text="返回"
+            android:textColor="#FFFFFF"
+            android:textSize="45px" />
+
+    </RelativeLayout>
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="false"
+        app:srlEnableRefresh="false">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="15px">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="安排时间"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <TextView
+                        android:id="@+id/date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请选择安排时间"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="重访人员"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/person"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写重访人员"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="矛盾纠纷类型"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/list"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="涉及人数"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/number"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写涉及人数"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="稳控措施"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/measures"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写稳控措施"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="上午见面情况"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/morning"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写上午见面情况"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="下午见面情况"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/afternoon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写下午见面情况"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/submit"
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:background="@drawable/back_button_grid"
+                    android:text="提交"
+                    android:textColor="#FFFFFF"
+                    android:textSize="45px" />
+
+            </LinearLayout>
+
+        </ScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>
