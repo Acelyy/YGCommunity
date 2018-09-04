@@ -22,12 +22,14 @@ import com.yonggang.ygcommunity.Entry.Folk;
 import com.yonggang.ygcommunity.Entry.FolkDetails;
 import com.yonggang.ygcommunity.Entry.Free;
 import com.yonggang.ygcommunity.Entry.Fwt_Carousel;
+import com.yonggang.ygcommunity.Entry.Garden;
 import com.yonggang.ygcommunity.Entry.Gift;
 import com.yonggang.ygcommunity.Entry.GridEventDetail;
 import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
+import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
@@ -1291,8 +1293,8 @@ public class HttpUtil {
      * @param carNumber
      * @param hobby
      */
-    public void setHouseInfo(Subscriber subscriber,  int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability,int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby) {
-        Observable observable = httpService.setHouseInfo( is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability,disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby)
+    public void setHouseInfo(Subscriber subscriber, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby) {
+        Observable observable = httpService.setHouseInfo(is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
@@ -1303,14 +1305,14 @@ public class HttpUtil {
      * @param subscriber
      * @param page
      */
-    public void getFolkList(Subscriber subscriber,int page){
+    public void getFolkList(Subscriber subscriber, int page) {
         Observable observable = httpService.getFolkList(page)
                 .map(new HttpResultFunc<List<Folk>>());
         toSubscribe(observable, subscriber);
     }
 
     /**
-     *  提交民情日记
+     * 提交民情日记
      *
      * @param subscriber
      * @param name
@@ -1327,8 +1329,8 @@ public class HttpUtil {
      * @param visit_time
      * @param mqrj_imgs
      */
-    public void setFolk(Subscriber subscriber,String name,String dzbxxb_id,String visit_place,String interviewee,String nature_id,String content,String hanling_process,String result,String tag,String input_person,String input_time,String visit_time,String mqrj_imgs){
-        Observable observable = httpService.setFolk(name,dzbxxb_id,visit_place,interviewee,nature_id,content,hanling_process,result,tag,input_person,input_time,visit_time,mqrj_imgs)
+    public void setFolk(Subscriber subscriber, String name, String dzbxxb_id, String visit_place, String interviewee, String nature_id, String content, String hanling_process, String result, String tag, String input_person, String input_time, String visit_time, String mqrj_imgs) {
+        Observable observable = httpService.setFolk(name, dzbxxb_id, visit_place, interviewee, nature_id, content, hanling_process, result, tag, input_person, input_time, visit_time, mqrj_imgs)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
@@ -1337,12 +1339,11 @@ public class HttpUtil {
      * 获取民情新增选项基础数据
      *
      * @param subscriber
-     *
      */
-    public void getFolkChoose(Subscriber subscriber){
+    public void getFolkChoose(Subscriber subscriber) {
         Observable observable = httpService.getFolkChoose();
 //                .map(new HttpResultFunc<String>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
     /**
@@ -1351,9 +1352,38 @@ public class HttpUtil {
      * @param subscriber
      * @param id
      */
-    public void getFolkDetails(Subscriber subscriber,String id){
+    public void getFolkDetails(Subscriber subscriber, String id) {
         Observable observable = httpService.getFolkDetails(id)
                 .map(new HttpResultFunc<FolkDetails>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取园区
+     *
+     * @param subscriber
+     */
+    public void getGarden(Subscriber subscriber) {
+        Observable observable = httpService.getGarden()
+                .map(new HttpResultFunc<List<Garden>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取幢
+     *
+     * @param subscriber
+     * @param garden
+     */
+    public void getBuilding(Subscriber subscriber, String garden) {
+        Observable observable = httpService.getBuilding(garden)
+                .map(new HttpResultFunc<List<String>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    public void getHouse(Subscriber subscriber, String garden, String building) {
+        Observable observable = httpService.getHouse(garden, building)
+                .map(new HttpResultFunc<List<House>>());
         toSubscribe(observable, subscriber);
     }
 }

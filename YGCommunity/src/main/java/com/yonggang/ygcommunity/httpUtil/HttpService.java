@@ -23,6 +23,7 @@ import com.yonggang.ygcommunity.Entry.FolkChoose;
 import com.yonggang.ygcommunity.Entry.FolkDetails;
 import com.yonggang.ygcommunity.Entry.Free;
 import com.yonggang.ygcommunity.Entry.Fwt_Carousel;
+import com.yonggang.ygcommunity.Entry.Garden;
 import com.yonggang.ygcommunity.Entry.Gift;
 import com.yonggang.ygcommunity.Entry.GridEvent;
 import com.yonggang.ygcommunity.Entry.GridEventDetail;
@@ -30,6 +31,7 @@ import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
+import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
@@ -881,5 +883,26 @@ public interface HttpService {
     @POST("get_mqrj_detail")
     Observable<HttpResult<FolkDetails>> getFolkDetails(
             @Field("id") String id
+    );
+
+    // 获取园区列表
+    @GET("get_yq_list")
+    Observable<HttpResult<List<Garden>>> getGarden(
+
+    );
+
+    // 获取幢号
+    @POST("get_lh_list")
+    @FormUrlEncoded
+    Observable<HttpResult<List<String>>> getBuilding(
+            @Field("yqmc") String garden
+    );
+
+    // 获取楼号
+    @POST("get_fh_list")
+    @FormUrlEncoded
+    Observable<HttpResult<List<House>>> getHouse(
+            @Field("yqmc") String garden,
+            @Field("lh") String building
     );
 }
