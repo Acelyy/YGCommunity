@@ -36,7 +36,11 @@ class FolkActivity : BaseActivity() {
         setContentView(R.layout.activity_folk)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
         list_folk = findViewById(R.id.list_folk) as ListView
-        pic_back.setOnClickListener{
+        pic_back.setOnClickListener {
+            finish()
+        }
+
+        text_back.setOnClickListener {
             finish()
         }
         refresh.setOnRefreshListener{getFolkList(1)}

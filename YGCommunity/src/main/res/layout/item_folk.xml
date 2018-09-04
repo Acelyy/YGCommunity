@@ -34,6 +34,7 @@
                     android:layout_height="wrap_content"
                     android:text="上报时间："
                     android:textSize="45px"
+                    android:textColor="#797979"
                 />
                 <TextView
                     android:id="@+id/time"

@@ -435,17 +435,10 @@
         <activity android:name=".monitor.MonitorDetailActivity" />
         <activity android:name=".grid.WorkSpaceActivity" />
         <activity android:name=".grid.event.EventActivity" />
-        <activity android:name=".grid.GridLoginActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".grid.GridLoginActivity"></activity>
         <activity
             android:name=".grid.event.AddEventActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
         <activity android:name=".grid.event.EventDetailActivity" />
         <activity android:name=".grid.house.HouseActivity" />
         <activity
@@ -454,11 +447,24 @@
         <activity android:name=".grid.house.HouseExtraActivity" />
         <activity android:name=".grid.house.HouseFamilyActivity" />
         <activity android:name=".grid.house.AddHouseFamilyActivity" />
-        <activity android:name=".grid.folk.FolkActivity">
+        <activity
+            android:name=".grid.folk.FolkActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".grid.folk.FolkDetailsActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".grid.folk.AddFolkActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.Visit.VisitActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".grid.folk.FolkDetailsActivity" />
-        <activity android:name=".grid.folk.AddFolkActivity"/>
+        <activity android:name=".grid.Visit.AddVisitActivity" />
+        <activity android:name=".grid.Visit.VisitDetailsActivity" />
     </application>
 
 </manifest>
