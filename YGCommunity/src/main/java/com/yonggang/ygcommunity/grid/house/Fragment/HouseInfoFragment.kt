@@ -31,12 +31,14 @@ import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
+import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
 import com.yonggang.ygcommunity.httpUtil.HouseInfo
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -108,6 +110,10 @@ class HouseInfoFragment : Fragment() {
         val filter = IntentFilter()
         filter.addAction("data")
         activity.registerReceiver(updateAddressBroadcast, filter)
+
+        address.setOnClickListener {
+            activity.startActivity<SelectHouseActivity>()
+        }
     }
 
     override fun onDestroy() {
@@ -516,7 +522,7 @@ class HouseInfoFragment : Fragment() {
                 depart.text.toString().trim(),
                 nation.text.toString().trim(),
                 political.text.toString().trim(),
-                address.text.toString().trim(),
+                address_pk,
                 tell.text.toString().trim(),
                 marriage.text.toString().trim(),
                 education.text.toString().trim(),

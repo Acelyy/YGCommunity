@@ -16,6 +16,7 @@ import android.view.LayoutInflater
 import android.widget.TextView
 import com.umeng.socialize.utils.DeviceConfig.context
 import com.yonggang.ygcommunity.grid.folk.adapter.FolkAdapter
+import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
 import kotlinx.android.synthetic.main.activity_event_list.view.*
 import org.jetbrains.anko.find
 import java.util.*

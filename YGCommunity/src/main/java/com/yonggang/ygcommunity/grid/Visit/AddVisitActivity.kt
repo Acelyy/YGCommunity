@@ -28,7 +28,7 @@ import kotlinx.android.synthetic.main.activity_map_view.*
 class AddVisitActivity : BaseActivity() {
     private var dialog: AlertDialog? = null
     val arr: Array<String> = arrayOf()
-    val mapp = mapOf<String,String>()
+    val map = TreeMap<String,String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -129,11 +129,12 @@ class AddVisitActivity : BaseActivity() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             //获取这个TextView
             val check = holder.mTvTitle
-            check.text = data!![position].name
+            var dataName =  data!![position].name
+            check.text = dataName
             check.setOnClickListener {
                 data[position].selection = !data[position].selection
                 if(data[position].selection){
-//                    map.add(data!![position].name to data!![position].id)
+//                    map.add( to data!![position].id)
                 }else{
 
                 }

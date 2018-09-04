@@ -11,6 +11,15 @@ public class GridUser {
     private String id;
     private String sswg;
     private String username;
+    private int appauth;
+
+    public int getAppauth() {
+        return appauth;
+    }
+
+    public void setAppauth(int appauth) {
+        this.appauth = appauth;
+    }
 
     public String getId() {
         return id;
