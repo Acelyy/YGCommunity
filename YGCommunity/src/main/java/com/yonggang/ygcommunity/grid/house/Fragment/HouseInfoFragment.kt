@@ -588,8 +588,8 @@ class HouseInfoFragment : Fragment() {
     inner class UpdateAddressBroadcast : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val house = intent!!.getStringExtra("address")
-            val pk = intent.getStringExtra("")
             address_pk = intent.getStringExtra("pk")
+            Log.i("address_pk", address_pk)
             address.text = house
         }
 

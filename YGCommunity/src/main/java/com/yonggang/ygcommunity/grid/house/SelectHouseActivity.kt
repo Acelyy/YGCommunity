@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.widget.ArrayAdapter
 import com.alibaba.fastjson.JSON
+import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Garden
 import com.yonggang.ygcommunity.Entry.House
 import com.yonggang.ygcommunity.R
@@ -20,7 +21,7 @@ import org.jetbrains.anko.startActivity
 import rx.Subscriber
 
 
-class SelectHouseActivity : AppCompatActivity() {
+class SelectHouseActivity : BaseActivity() {
 
     var page: Int = 0
 
