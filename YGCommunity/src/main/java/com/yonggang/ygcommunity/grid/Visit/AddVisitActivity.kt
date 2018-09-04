@@ -21,19 +21,26 @@ import rx.Subscriber
 import java.text.SimpleDateFormat
 import java.util.*
 import com.iflytek.cloud.resource.Resource.setText
+import com.yonggang.ygcommunity.View.LinearLayoutForListView
+import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
+import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.activity_address.view.*
 import kotlinx.android.synthetic.main.activity_map_view.*
+import kotlinx.android.synthetic.main.item_collect.view.*
 
 
 class AddVisitActivity : BaseActivity() {
     private var dialog: AlertDialog? = null
-    val arr: Array<String> = arrayOf()
-    val map = TreeMap<String,String>()
+    private lateinit var data: GridStatus
+    var sBuffer = StringBuffer()
+    var listtype: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_visit)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
+        getchoose()
+        initDatePicker()
         pic_back.setOnClickListener {
             finish()
         }
@@ -41,9 +48,19 @@ class AddVisitActivity : BaseActivity() {
         text_back.setOnClickListener {
             finish()
         }
-        initDatePicker()
-        list.setLayoutManager(LinearLayoutManager(this));
-        getchoose()
+
+        submit.setOnClickListener {
+
+            for (item in data.sjfl) {
+                if (item.selection) {
+                    sBuffer.append(item.name + ",")
+                }
+            }
+            if (sBuffer.length > 0) {
+                listtype = sBuffer.substring(0, sBuffer.length - 1)
+            }
+            finish()
+        }
     }
 
     private fun initDatePicker() {
@@ -66,96 +83,78 @@ class AddVisitActivity : BaseActivity() {
 
     }
 
+//    private fun getchoose() {
+//        val subscriber = object : Subscriber<GridStatus>() {
+//            override fun onNext(it: GridStatus?) {
+//                data = it!!
+//                var myadapter = AddVisitAdapter(data.sjfl, this@AddVisitActivity)
+//                list.adapter = myadapter
+//                list.setOnItemClickListener {
+//                    data.sjfl[it].selection = !data.sjfl[it].selection
+//                    Log.i("hhh","hhhhhhhhhhhhhh")
+//                    Log.i("selection",data.sjfl[it].selection.toString())
+//                    list.update()
+//                }
+//            }
+//
+//            override fun onCompleted() {
+//
+//            }
+//
+//            override fun onError(e: Throwable?) {
+//                Log.i("visiterror", e.toString())
+//            }
+//        }
+//        HttpUtil.getInstance().getEventStatus(subscriber)
+//    }
+    /**
+     * 获取事件上报的筛选条件
+     */
     private fun getchoose() {
-        val subscriber = object : Subscriber<GridStatus>() {
-            override fun onNext(it: GridStatus?) {
-                list.adapter = MyAdapter(it!!.sjfl,this@AddVisitActivity)
-            }
-
-            override fun onCompleted() {
-
-            }
-
-            override fun onError(e: Throwable?) {
-                Log.i("visiterror", e.toString())
+        val subscriberOnNextListener = SubscriberOnNextListener<GridStatus> {
+            data = it!!
+            val myadapter = AddVisitAdapter(data.sjfl, this@AddVisitActivity)
+            list.adapter = myadapter
+            list.setOnItemClickListener {
+                data.sjfl[it].selection = !data.sjfl[it].selection
+                list.update()
             }
         }
-        HttpUtil.getInstance().getEventStatus(subscriber)
+        HttpUtil.getInstance().getEventStatus(ProgressSubscriber<GridStatus>(subscriberOnNextListener, this, "加载中"))
     }
 
 
-//    class AddVisitAdapter(var data: MutableList<GridStatus.Bean>, val context: Context) : RecyclerView.Adapter<AddVisitAdapter.ViewHolder>) {
-//        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-//            var holder: RecyclerView.ViewHolder
-//            val view: View
-//            if (convertView == null) {
-//                view = LayoutInflater.from(context).inflate(R.layout.item_add_visit, parent, false)
-//                holder = ViewHolder(view)
-//                view.setTag(holder)
-//            } else {
-//                view = convertView
-//                holder = view.tag as ViewHolder
-//            }
-//            Log.i("hhh",data.size.toString())
-//            holder.checklist.text = data[position].name
-//            return view
-//        }
-//
-//        override fun getItem(p0: Int): Any {
-//            return data[p0]
-//        }
-//
-//        override fun getItemId(p0: Int): Long {
-//            return p0.toLong()
-//        }
-//
-//        override fun getCount(): Int {
-//            return data.size
-//        }
-//
-//        inner class ViewHolder(var view: View): RecyclerView.ViewHolder {
-//            var checklist:CheckBox = view.find(R.id.check)
-//        }
-//    }
-    
-    inner class MyAdapter(private val data: MutableList<GridStatus.Bean>?, private val context: Context) : RecyclerView.Adapter<MyAdapter.ViewHolder>() {
-
-        override fun getItemCount(): Int {
-            // 返回数据集合大小
-            return data?.size ?: 0
-        }
-
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            //获取这个TextView
-            val check = holder.mTvTitle
-            var dataName =  data!![position].name
-            check.text = dataName
-            check.setOnClickListener {
-                data[position].selection = !data[position].selection
-                if(data[position].selection){
-//                    map.add( to data!![position].id)
-                }else{
-
-                }
+    class AddVisitAdapter(var data: MutableList<GridStatus.Bean>, val context: Context) : BaseAdapter() {
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            val holder: ViewHolder
+            val view: View
+            if (convertView == null) {
+                view = LayoutInflater.from(context).inflate(R.layout.item_add_visit, parent, false)
+                holder = ViewHolder(view)
+                view.setTag(holder)
+            } else {
+                view = convertView
+                holder = view.tag as ViewHolder
             }
-        }
-
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            var view = ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_add_visit, parent, false))
+            holder.check.text = data[position].name
+            holder.check.isChecked = data[position].selection
             return view
         }
 
+        override fun getItem(position: Int): Any {
+            return data[position]
+        }
 
-        inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
 
-            val mTvTitle: TextView
+        override fun getCount(): Int {
+            return data.size
+        }
 
-            init {
-                mTvTitle = itemView.findViewById(R.id.check) as TextView
-            }
-
+        inner class ViewHolder(var view: View) {
+            var check: CheckBox = view.find(R.id.check)
         }
 
     }

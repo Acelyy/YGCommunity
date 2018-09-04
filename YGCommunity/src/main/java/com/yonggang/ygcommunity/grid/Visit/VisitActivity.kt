@@ -2,6 +2,7 @@ package com.yonggang.ygcommunity.grid.Visit
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.annotation.NonNull
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
@@ -12,14 +13,19 @@ import kotlinx.android.synthetic.main.activity_visit.*
 import org.jetbrains.anko.startActivity
 import com.iflytek.cloud.resource.Resource.setText
 import android.support.design.widget.CoordinatorLayout.Behavior.setTag
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.TextView
+import android.widget.Toast
 import com.umeng.socialize.utils.DeviceConfig.context
 import com.yonggang.ygcommunity.grid.folk.adapter.FolkAdapter
 import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
 import kotlinx.android.synthetic.main.activity_event_list.view.*
 import org.jetbrains.anko.find
 import java.util.*
+import com.prolificinteractive.materialcalendarview.CalendarDay
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 
 
 class VisitActivity : BaseActivity() {
@@ -37,10 +43,21 @@ class VisitActivity : BaseActivity() {
         }
         pic_add.setOnClickListener { startActivity<AddVisitActivity>() }
         calendarView.setSelectedDate(Date())
+        Log.i("date",getTime(calendarView.selectedDate))
+        calendarView.setOnDateChangedListener(object : OnDateSelectedListener {
+            override fun onDateSelected(p0: MaterialCalendarView, p1: CalendarDay, p2: Boolean) {
+                Log.i("date",getTime(p1))
+            }
+        })
 
     }
-
-//    class VisitAdapter : BaseAdapter() {
+    private fun getTime(date:CalendarDay):String{
+        val year = date.year;
+        val month = date.month + 1; //月份跟系统一样是从0开始的，实际获取时要加1
+        val day = date.day;
+        return year.toString() + "-" + month + "-" + day
+    }
+//    class VisitAdapter : BaseAdapter(val data,val context: Contenxt) {
 //        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
 //            var holder: ViewHolder
 //            val view: View

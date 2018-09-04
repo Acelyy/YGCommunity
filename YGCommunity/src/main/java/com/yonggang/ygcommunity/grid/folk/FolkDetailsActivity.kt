@@ -83,7 +83,6 @@ class FolkDetailsActivity : BaseActivity() {
             override fun onNext(it: FolkChoose?) {
                 datadzb = it!!.data.dzb
                 datamqxz = it.data.mqxz
-
             }
 
             override fun onCompleted() {

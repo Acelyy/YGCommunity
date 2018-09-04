@@ -1,6 +1,7 @@
 package com.yonggang.ygcommunity.View;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
@@ -99,6 +100,14 @@ public class LinearLayoutForListView extends LinearLayout {
 
     public interface OnItemClickListener {
         void onclick(int position);
+    }
+
+    public void update(){
+        final int count = mAdapter.getCount();
+        for (int i = 0; i < count; i++) {
+            mAdapter.getView(i, mViewHolders.get(i, null), null);
+        }
+        requestLayout();
     }
 
 }

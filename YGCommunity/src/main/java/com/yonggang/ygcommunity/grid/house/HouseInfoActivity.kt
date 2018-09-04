@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.app.FragmentStatePagerAdapter
 import android.support.v4.view.PagerAdapter
 import android.util.Log
@@ -73,7 +74,7 @@ class HouseInfoActivity : BaseActivity() {
         }
     }
 
-    inner class HousePageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+    inner class HousePageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         override fun getItem(position: Int): Fragment {
             return fragments[position]
         }

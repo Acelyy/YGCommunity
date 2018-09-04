@@ -58,9 +58,9 @@ public class GridStatus {
 
         private String id;
         private String name;
-        private Boolean selection;
+        private Boolean selection = false;
 
-        public Boolean getSelection() {
+        public boolean getSelection() {
             return selection;
         }
 
