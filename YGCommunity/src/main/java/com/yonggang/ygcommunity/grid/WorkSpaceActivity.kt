@@ -8,6 +8,7 @@ import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Gztj
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
+import com.yonggang.ygcommunity.grid.Visit.AddVisitActivity
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
@@ -46,6 +47,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
 
         layout_my_task.setOnClickListener(this)
         layout_my_work.setOnClickListener(this)
+//        layout_my_visit.setOnClickListener(this)
 
         layout_app_hourse.setOnClickListener(this)
         layout_app_event.setOnClickListener(this)
@@ -61,14 +63,13 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_app_event -> startActivity<AddEventActivity>()
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
-            R.id.layout_app_walk -> startActivity<VisitActivity>("id" to user_id, "sswg" to sswg)
+            R.id.layout_app_walk -> startActivity<AddVisitActivity>()
         }
     }
 
     private fun getGztj() {
         val subscriber = object : Subscriber<Gztj>() {
             override fun onNext(data: Gztj?) {
-
                 size_today_event.text = data!!.sbsj.toString()
                 size_today_hourse.text = data.rfcj.toString()
                 size_today_walk.text = data.zfqk.toString()

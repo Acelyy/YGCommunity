@@ -912,4 +912,20 @@ public interface HttpService {
     Observable<HttpResult<Gztj>> getGztj(
 
     );
+
+    // 上报信访热源
+    @POST("set_xfry_info")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> setXfry(
+            @Field("pcsj") String pcsj,
+            @Field("zdry") String zdry,
+            @Field("sswg") String sswg,
+            @Field("mdlx") String mdlx,
+            @Field("sjrs") String sjrs,
+            @Field("wkcs") String wkcs,
+            @Field("sbrid") String sbrid,
+            @Field("swqk") String swqk,
+            @Field("xwqk") String xwqk,
+            @Field("telephone") String telephone
+    );
 }

@@ -94,4 +94,6 @@ class VisitActivity : BaseActivity() {
 //            var afternoon:TextView = view.find(R.id.afternoon)
 //        }
 //    }
+
+//    getXfry
 }

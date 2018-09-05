@@ -138,8 +138,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:background="@null"
-                        android:hint="请填写重访人员"
+                        android:hint="请填写联系电话"
                         android:singleLine="true"
+                        android:inputType="number"
                         android:textColor="#000000"
                         android:textSize="45px" />
 
@@ -194,6 +195,7 @@
                         android:layout_weight="7"
                         android:background="@null"
                         android:hint="请填写涉及人数"
+                        android:inputType="number"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />
