@@ -29,6 +29,7 @@ import com.yonggang.ygcommunity.Entry.GridEvent;
 import com.yonggang.ygcommunity.Entry.GridEventDetail;
 import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
+import com.yonggang.ygcommunity.Entry.Gztj;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
@@ -904,5 +905,11 @@ public interface HttpService {
     Observable<HttpResult<List<House>>> getHouse(
             @Field("yqmc") String garden,
             @Field("lh") String building
+    );
+
+    // 获取工作统计
+    @GET("drgztj")
+    Observable<HttpResult<Gztj>> getGztj(
+
     );
 }

@@ -117,6 +117,36 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="联系电话"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/telephone"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:hint="请填写重访人员"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20px"
                     android:background="@drawable/back_add_event"

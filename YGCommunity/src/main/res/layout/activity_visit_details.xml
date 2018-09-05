@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".grid.Visit.VisitDetailsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".grid.Visit.VisitDetailsActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="150px"
@@ -39,6 +40,7 @@
             android:textSize="45px" />
 
     </RelativeLayout>
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,6 +50,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,6 +105,35 @@
 
                     <TextView
                         android:id="@+id/person"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:background="@null"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="150px"
+                    android:layout_marginBottom="20px"
+                    android:background="@drawable/back_add_event"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="30px">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:text="联系电话"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <TextView
+                        android:id="@+id/telephone"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="7"

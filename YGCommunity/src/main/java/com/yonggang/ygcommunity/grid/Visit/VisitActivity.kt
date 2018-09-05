@@ -29,11 +29,14 @@ import com.prolificinteractive.materialcalendarview.OnDateSelectedListener
 
 
 class VisitActivity : BaseActivity() {
-
+    private lateinit var sswg:String
+    private lateinit var user_id:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visit)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
+        user_id = intent.getStringExtra("id")
+        sswg = intent.getStringExtra("sswg")
         pic_back.setOnClickListener {
             finish()
         }
@@ -41,7 +44,7 @@ class VisitActivity : BaseActivity() {
         text_back.setOnClickListener {
             finish()
         }
-        pic_add.setOnClickListener { startActivity<AddVisitActivity>() }
+        pic_add.setOnClickListener { startActivity<AddVisitActivity>("id" to user_id, "sswg" to sswg) }
         calendarView.setSelectedDate(Date())
         Log.i("date",getTime(calendarView.selectedDate))
         calendarView.setOnDateChangedListener(object : OnDateSelectedListener {

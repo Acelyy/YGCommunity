@@ -27,6 +27,7 @@ import com.yonggang.ygcommunity.Entry.Gift;
 import com.yonggang.ygcommunity.Entry.GridEventDetail;
 import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
+import com.yonggang.ygcommunity.Entry.Gztj;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
@@ -1386,4 +1387,15 @@ public class HttpUtil {
                 .map(new HttpResultFunc<List<House>>());
         toSubscribe(observable, subscriber);
     }
+
+
+    /**
+     * 获取工作统计
+     */
+    public void getGztj(Subscriber subscriber){
+        Observable observable = httpService.getGztj()
+                .map(new HttpResultFunc<Gztj>());
+        toSubscribe(observable, subscriber);
+    }
+
 }

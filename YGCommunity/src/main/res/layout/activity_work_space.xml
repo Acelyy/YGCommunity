@@ -336,32 +336,32 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <LinearLayout
-                            android:id="@+id/layout_my_visit"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:orientation="vertical">
+                        <!--<LinearLayout-->
+                            <!--android:id="@+id/layout_my_visit"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--android:orientation="vertical">-->
 
-                            <TextView
-                                android:id="@+id/size_my_visit"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:text="50"
-                                android:textColor="@color/colorPrimary"
-                                android:textSize="40px" />
+                            <!--<TextView-->
+                                <!--android:id="@+id/size_my_visit"-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="center_horizontal"-->
+                                <!--android:text="50"-->
+                                <!--android:textColor="@color/colorPrimary"-->
+                                <!--android:textSize="40px" />-->
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_horizontal"
-                                android:layout_marginTop="35px"
-                                android:text="信访人员排查"
-                                android:textColor="#5E5E5E"
-                                android:textSize="40px" />
+                            <!--<TextView-->
+                                <!--android:layout_width="wrap_content"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_gravity="center_horizontal"-->
+                                <!--android:layout_marginTop="35px"-->
+                                <!--android:text="信访人员排查"-->
+                                <!--android:textColor="#5E5E5E"-->
+                                <!--android:textSize="40px" />-->
 
-                        </LinearLayout>
+                        <!--</LinearLayout>-->
 
                     </RelativeLayout>
 
