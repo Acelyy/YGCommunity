@@ -38,6 +38,7 @@ import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
+import com.yonggang.ygcommunity.Entry.MissionBean;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
@@ -937,5 +938,12 @@ public interface HttpService {
     Observable<HttpResult<List<HcrwList>>> getHcrw(
             @Field("page") int page,
             @Field("sbrid") String sbrid
+    );
+
+    @POST("get_gdcl_list")
+    @FormUrlEncoded
+    Observable<HttpResult<List<MissionBean>>> getMissionList(
+            @Field("appauth") int appauth,
+            @Field("sbrid") String id
     );
 }

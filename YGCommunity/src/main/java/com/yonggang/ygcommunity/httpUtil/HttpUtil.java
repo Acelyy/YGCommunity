@@ -36,6 +36,7 @@ import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
+import com.yonggang.ygcommunity.Entry.MissionBean;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
@@ -1421,15 +1422,28 @@ public class HttpUtil {
     }
 
     /**
-     * 上报信访人员
+     * 核查任务
      *
      * @param subscriber
      * @param page
      * @param sbrid
      */
-    public void getHcrw(Subscriber subscriber, int page,String sbrid) {
+    public void getHcrw(Subscriber subscriber, int page, String sbrid) {
         Observable observable = httpService.getHcrw(page, sbrid)
                 .map(new HttpResultFunc<List<HcrwList>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取核查任务列表
+     *
+     * @param subscriber
+     * @param appauth
+     * @param id
+     */
+    public void getMissionList(Subscriber subscriber, int appauth, String id) {
+        Observable observable = httpService.getMissionList(appauth, id)
+                .map(new HttpResultFunc<List<MissionBean>>());
         toSubscribe(observable, subscriber);
     }
 }
