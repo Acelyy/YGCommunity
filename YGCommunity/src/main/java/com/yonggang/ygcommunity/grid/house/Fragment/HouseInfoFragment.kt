@@ -30,6 +30,7 @@ import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
+import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
 import com.yonggang.ygcommunity.httpUtil.HouseInfo
@@ -59,6 +60,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class HouseInfoFragment : Fragment() {
 
+    private lateinit var app: YGApplication
     private lateinit var onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener
     private lateinit var onRemoveFragment: HouseInfoActivity.OnRemoveFragment
     private var dialog: AlertDialog? = null
@@ -68,6 +70,7 @@ class HouseInfoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        app = activity.application as YGApplication
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -506,7 +509,7 @@ class HouseInfoFragment : Fragment() {
                 community.isChecked -> 1
                 register.isChecked -> 2
                 floating.isChecked -> 3
-                member.isChecked->4
+                member.isChecked -> 4
                 else -> 0
             })
         }
@@ -515,7 +518,7 @@ class HouseInfoFragment : Fragment() {
                     community.isChecked -> 1
                     register.isChecked -> 2
                     floating.isChecked -> 3
-                    member.isChecked->4
+                    member.isChecked -> 4
                     else -> 0
                 },
                 number.text.toString().trim(),
@@ -588,7 +591,8 @@ class HouseInfoFragment : Fragment() {
                 volunteerId.text.toString().trim(),
                 landlordTel.text.toString().trim(),
                 carNumber.text.toString().trim(),
-                hobby.text.toString().trim()
+                hobby.text.toString().trim(),
+                app.grid.id
         )
 
     }
