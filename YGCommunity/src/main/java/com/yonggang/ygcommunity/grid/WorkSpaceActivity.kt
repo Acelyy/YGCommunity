@@ -14,6 +14,7 @@ import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
+import com.yonggang.ygcommunity.grid.mission.MissionListActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_work_space.*
 import org.jetbrains.anko.startActivity
@@ -34,7 +35,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         refresh.isEnableLoadMore = false
 
         refresh.setOnRefreshListener {
-            refresh.finishRefresh()
+            getGztj()
         }
 
         pic_back.setOnClickListener { finish() }
@@ -62,6 +63,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_app_note -> startActivity<FolkActivity>()
             R.id.layout_app_walk -> startActivity<VisitActivity>()
             R.id.layout_my_task -> startActivity<CheckListActivity>()
+            R.id.layout_my_work -> startActivity<MissionListActivity>()
         }
     }
 
@@ -71,9 +73,10 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
     private fun getGztj() {
         val subscriber = object : Subscriber<Gztj>() {
             override fun onNext(data: Gztj?) {
-                size_today_event.withNumber(data!!.sbsj)
-                size_today_hourse.withNumber(data.rfcj)
-                size_today_walk.withNumber(data.zfqk)
+                size_today_event.withNumber(data!!.sbsj).start()
+                size_today_hourse.withNumber(data.rfcj).start()
+                size_today_walk.withNumber(data.zfqk).start()
+                refresh.finishRefresh()
             }
 
             override fun onCompleted() {
