@@ -1,7 +1,6 @@
 package com.yonggang.ygcommunity.grid
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import com.scwang.smartrefresh.header.WaveSwipeHeader
 import com.yonggang.ygcommunity.BaseActivity
@@ -9,14 +8,13 @@ import com.yonggang.ygcommunity.Entry.Gztj
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
+import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
-import com.yonggang.ygcommunity.grid.house.HouseActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_work_space.*
-import kotlinx.android.synthetic.main.item_date_picker.*
 import org.jetbrains.anko.startActivity
 import rx.Subscriber
 
@@ -62,6 +60,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
             R.id.layout_app_walk -> startActivity<VisitActivity>("id" to user_id, "sswg" to sswg)
+            R.id.layout_my_task-> startActivity<CheckListActivity>()
         }
     }
 
