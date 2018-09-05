@@ -1392,10 +1392,30 @@ public class HttpUtil {
     /**
      * 获取工作统计
      */
-    public void getGztj(Subscriber subscriber){
+    public void getGztj(Subscriber subscriber) {
         Observable observable = httpService.getGztj()
                 .map(new HttpResultFunc<Gztj>());
         toSubscribe(observable, subscriber);
     }
 
+    /**
+     * 上报信访热源
+     *
+     * @param subscriber
+     * @param pcsj
+     * @param zdry
+     * @param sswg
+     * @param mdlx
+     * @param sjrs
+     * @param wkcs
+     * @param sbrid
+     * @param swqk
+     * @param xwqk
+     * @param telephone
+     */
+    public void setXfry(Subscriber subscriber, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone) {
+        Observable observable = httpService.setXfry(pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
 }

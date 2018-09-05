@@ -8,7 +8,6 @@ import com.yonggang.ygcommunity.Entry.Gztj
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
-import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
@@ -60,7 +59,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
             R.id.layout_app_walk -> startActivity<VisitActivity>("id" to user_id, "sswg" to sswg)
-            R.id.layout_my_task-> startActivity<CheckListActivity>()
         }
     }
 

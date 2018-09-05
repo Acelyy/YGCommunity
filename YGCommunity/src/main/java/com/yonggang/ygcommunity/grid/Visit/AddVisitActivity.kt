@@ -3,11 +3,13 @@ package com.yonggang.ygcommunity.grid.Visit
 import android.app.AlertDialog
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.alibaba.fastjson.JSON
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.GridStatus
 import com.yonggang.ygcommunity.R
@@ -18,8 +20,10 @@ import org.jetbrains.anko.find
 import java.text.SimpleDateFormat
 import java.util.*
 import com.yonggang.ygcommunity.Util.NoDoubleClickListener
+import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
+import rx.Subscriber
 
 
 class AddVisitActivity : BaseActivity() {
@@ -27,11 +31,12 @@ class AddVisitActivity : BaseActivity() {
     private lateinit var data: GridStatus
     var sBuffer = StringBuffer()
     var listtype: String = ""
-
+    lateinit var app: YGApplication
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_visit)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
+        app = application as YGApplication
         getchoose()
         initDatePicker()
         pic_back.setOnClickListener {
@@ -46,14 +51,13 @@ class AddVisitActivity : BaseActivity() {
             override fun onNoDoubleClick(v: View) {
                 for (item in data.sjfl) {
                     if (item.selection) {
-                        sBuffer.append(item.name + ",")
+                        sBuffer.append(item.id + ",")
                     }
                 }
                 if (sBuffer.length > 0) {
                     listtype = sBuffer.substring(0, sBuffer.length - 1)
                 }
-
-                Log.i("click", "再按一次退出程序")
+                setGztj()
             }
         });
     }
@@ -151,6 +155,60 @@ class AddVisitActivity : BaseActivity() {
         inner class ViewHolder(var view: View) {
             var check: CheckBox = view.find(R.id.check)
         }
+
+    }
+
+    private fun setGztj() {
+        if (date.text.toString() == "") {
+            Snackbar.make(submit, "请选择日期", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (person.text.toString() == "") {
+            Snackbar.make(submit, "请填写重访人员", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (telephone.text.toString() == "") {
+            Snackbar.make(submit, "请填写联系电话", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (number.text.toString() == "") {
+            Snackbar.make(submit, "请填写涉及人数", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (measures.text.toString() == "") {
+            Snackbar.make(submit, "请填写稳控措施", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (morning.text.toString() == "") {
+            Snackbar.make(submit, "请填写上午见面情况", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (afternoon.text.toString() == "") {
+            Snackbar.make(submit, "请填写下午见面情况", Snackbar.LENGTH_LONG).show()
+            return
+        }
+        if (listtype == "") {
+            Snackbar.make(submit, "请勾选矛盾纠纷类型", Snackbar.LENGTH_LONG).show()
+            return
+        }
+
+        val subscriberOnNextListener = SubscriberOnNextListener<String> {
+            Log.i("addVisit", it)
+            Snackbar.make(submit, "上报成功", Snackbar.LENGTH_LONG).show()
+//            finish()
+        }
+        HttpUtil.getInstance().setXfry(ProgressSubscriber<String>(subscriberOnNextListener, this@AddVisitActivity, "上报中"),
+                date.text.toString().trim(),
+                person.text.toString().trim(),
+                app.grid.sswg,
+                listtype,
+                number.text.toString().trim(),
+                measures.text.toString().trim(),
+                app.grid.id,
+                morning.text.toString().trim(),
+                afternoon.text.toString().trim(),
+                telephone.text.toString().trim()
+        )
 
     }
 }
