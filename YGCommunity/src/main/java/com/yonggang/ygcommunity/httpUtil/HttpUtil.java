@@ -1297,8 +1297,8 @@ public class HttpUtil {
      * @param carNumber
      * @param hobby
      */
-    public void setHouseInfo(Subscriber subscriber, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby) {
-        Observable observable = httpService.setHouseInfo(is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby)
+    public void setHouseInfo(Subscriber subscriber, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby,String sbrid) {
+        Observable observable = httpService.setHouseInfo(is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby,sbrid)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
