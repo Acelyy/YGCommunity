@@ -951,7 +951,7 @@ public interface HttpService {
     //获取事件核查列表详情
     @POST("get_hcrw_detail")
     @FormUrlEncoded
-    Observable<HttpResult<String>> getTeskDetails(
+    Observable<HttpResult<String>> getTaskDetails(
             @Field("id") String id
     );
 }

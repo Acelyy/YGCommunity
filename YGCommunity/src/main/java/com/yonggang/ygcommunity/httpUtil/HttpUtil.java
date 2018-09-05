@@ -1452,8 +1452,8 @@ public class HttpUtil {
      *
      * @param id
      */
-    public void getTeskDetails(Subscriber subscriber,String id) {
-        Observable observable = httpService.getTeskDetails( id)
+    public void getTaskDetails(Subscriber subscriber,String id) {
+        Observable observable = httpService.getTaskDetails( id)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
