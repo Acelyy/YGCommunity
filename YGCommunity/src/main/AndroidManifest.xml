@@ -474,12 +474,17 @@
         <activity
             android:name=".grid.folk.AddFolkActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.Visit.VisitActivity">
+        <activity android:name=".grid.Visit.VisitActivity"
+            android:launchMode="singleTop" >
 
         </activity>
-        <activity android:name=".grid.Visit.AddVisitActivity" />
-        <activity android:name=".grid.Visit.VisitDetailsActivity" />
+        <activity android:name=".grid.Visit.AddVisitActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.Visit.VisitDetailsActivity"
+            android:launchMode="singleTop" />
         <activity android:name=".grid.house.SelectHouseActivity"/>
+        <activity android:name=".grid.check.CheckListActivity"/>
+
     </application>
 
 </manifest>

@@ -28,6 +28,7 @@ import com.yonggang.ygcommunity.Entry.GridEventDetail;
 import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Gztj;
+import com.yonggang.ygcommunity.Entry.HcrwList;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
@@ -1399,7 +1400,7 @@ public class HttpUtil {
     }
 
     /**
-     * 上报信访热源
+     * 上报信访人员
      *
      * @param subscriber
      * @param pcsj
@@ -1416,6 +1417,19 @@ public class HttpUtil {
     public void setXfry(Subscriber subscriber, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone) {
         Observable observable = httpService.setXfry(pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone)
                 .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 上报信访人员
+     *
+     * @param subscriber
+     * @param page
+     * @param sbrid
+     */
+    public void getHcrw(Subscriber subscriber, int page,String sbrid) {
+        Observable observable = httpService.getHcrw(page, sbrid)
+                .map(new HttpResultFunc<List<HcrwList>>());
         toSubscribe(observable, subscriber);
     }
 }

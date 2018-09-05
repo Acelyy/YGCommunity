@@ -30,6 +30,7 @@ import com.yonggang.ygcommunity.Entry.GridEventDetail;
 import com.yonggang.ygcommunity.Entry.GridStatus;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.Gztj;
+import com.yonggang.ygcommunity.Entry.HcrwList;
 import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
@@ -927,5 +928,14 @@ public interface HttpService {
             @Field("swqk") String swqk,
             @Field("xwqk") String xwqk,
             @Field("telephone") String telephone
+    );
+
+
+    // 核查任务
+    @POST("get_hcrw_list")
+    @FormUrlEncoded
+    Observable<HttpResult<List<HcrwList>>> getHcrw(
+            @Field("page") int page,
+            @Field("sbrid") String sbrid
     );
 }
