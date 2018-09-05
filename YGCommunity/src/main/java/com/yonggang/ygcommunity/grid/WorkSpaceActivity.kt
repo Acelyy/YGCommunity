@@ -7,8 +7,8 @@ import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Gztj
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
+import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
-import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
@@ -19,14 +19,14 @@ import org.jetbrains.anko.startActivity
 import rx.Subscriber
 
 class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
-    private lateinit var sswg: String
-    private lateinit var user_id: String
+
+    lateinit var app: YGApplication
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_work_space)
+        app = application as YGApplication
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
-        user_id = intent.getStringExtra("id")
-        sswg = intent.getStringExtra("sswg")
         val header = WaveSwipeHeader(this)
         refresh.setPrimaryColorsId(R.color.refresh_color)
         refresh.setRefreshHeader(header)
@@ -60,18 +60,18 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
             R.id.layout_app_walk -> startActivity<VisitActivity>()
-            R.id.layout_my_task -> startActivity<CheckListActivity>()
         }
     }
 
+    /**
+     * 获取工作统计
+     */
     private fun getGztj() {
         val subscriber = object : Subscriber<Gztj>() {
             override fun onNext(data: Gztj?) {
-
-                size_today_event.text = data!!.sbsj.toString()
-                size_today_hourse.text = data.rfcj.toString()
-                size_today_walk.text = data.zfqk.toString()
-
+                size_today_event.withNumber(data!!.sbsj)
+                size_today_hourse.withNumber(data.rfcj)
+                size_today_walk.withNumber(data.zfqk)
             }
 
             override fun onCompleted() {
