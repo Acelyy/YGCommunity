@@ -115,15 +115,8 @@ class HouseInfoFragment : Fragment() {
             activity.startActivity<SelectHouseActivity>()
         }
 
-        rg_type.setOnCheckedChangeListener { group, checkedId ->
-            var i = when (rg_type.checkedRadioButtonId) {
-                R.id.community -> 1
-                R.id.register -> 2
-                R.id.floating -> 3
-                else -> 0
-            }
-            Snackbar.make(rg_type, ""+i, 1000).show()
-        }
+        rg_type.check(R.id.floating)
+
     }
 
     override fun onDestroy() {
@@ -515,10 +508,10 @@ class HouseInfoFragment : Fragment() {
             })
         }
         HttpUtil.getInstance().setHouseInfo(ProgressSubscriber<String>(subscriberOnNextListener, activity, "保存信息中"),
-                when (rg_type.checkedRadioButtonId) {
-                    R.id.community -> 1
-                    R.id.register -> 2
-                    R.id.floating -> 3
+                when {
+                    community.isChecked -> 1
+                    register.isChecked -> 2
+                    floating.isChecked -> 3
                     else -> 0
                 },
                 number.text.toString().trim(),
@@ -580,11 +573,11 @@ class HouseInfoFragment : Fragment() {
                     R.id.false_cj -> 0
                     else -> 1
                 },
-                when (rg_cj.checkedRadioButtonId) {
-                    R.id.cj1 -> 1
-                    R.id.cj2 -> 2
-                    R.id.cj3 -> 3
-                    R.id.cj4 -> 4
+                when {
+                    cj1.isChecked -> 1
+                    cj2.isChecked -> 2
+                    cj3.isChecked -> 3
+                    cj4.isChecked -> 4
                     else -> 0
                 },
                 disease.text.toString().trim(),
