@@ -11,6 +11,7 @@ import com.yonggang.ygcommunity.Entry.Answer;
 import com.yonggang.ygcommunity.Entry.Bbs;
 import com.yonggang.ygcommunity.Entry.BbsSystem;
 import com.yonggang.ygcommunity.Entry.BbsUser;
+import com.yonggang.ygcommunity.Entry.CheckDetails;
 import com.yonggang.ygcommunity.Entry.Collect;
 import com.yonggang.ygcommunity.Entry.Comments;
 import com.yonggang.ygcommunity.Entry.Contacts;
@@ -1454,7 +1455,7 @@ public class HttpUtil {
      */
     public void getTaskDetails(Subscriber subscriber,String id) {
         Observable observable = httpService.getTaskDetails( id)
-                .map(new HttpResultFunc<String>());
+                .map(new HttpResultFunc<CheckDetails>());
         toSubscribe(observable, subscriber);
     }
 
