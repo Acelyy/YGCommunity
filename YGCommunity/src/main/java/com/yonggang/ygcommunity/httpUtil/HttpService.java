@@ -956,4 +956,12 @@ public interface HttpService {
     Observable<HttpResult<CheckDetails>> getTaskDetails(
             @Field("id") String id
     );
+
+    //提交事件核查列表详情
+    @POST("app_wgy_end_event")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> setTaskDetails(
+            @Field("id") String id,
+            @Field("comment") String comment
+    );
 }

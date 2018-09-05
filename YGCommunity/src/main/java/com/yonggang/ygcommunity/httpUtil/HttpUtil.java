@@ -1459,4 +1459,16 @@ public class HttpUtil {
         toSubscribe(observable, subscriber);
     }
 
+    /**
+     * 提交核查任务列表详情
+     *
+     * @param id
+     * @param comment
+     */
+    public void setTaskDetails(Subscriber subscriber,String id,String comment) {
+        Observable observable = httpService.setTaskDetails( id, comment)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
 }
