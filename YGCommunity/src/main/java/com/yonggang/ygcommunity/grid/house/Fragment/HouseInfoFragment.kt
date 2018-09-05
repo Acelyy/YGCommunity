@@ -114,6 +114,16 @@ class HouseInfoFragment : Fragment() {
         address.setOnClickListener {
             activity.startActivity<SelectHouseActivity>()
         }
+
+        rg_type.setOnCheckedChangeListener { group, checkedId ->
+            var i = when (rg_type.checkedRadioButtonId) {
+                R.id.community -> 1
+                R.id.register -> 2
+                R.id.floating -> 3
+                else -> 0
+            }
+            Snackbar.make(rg_type, ""+i, 1000).show()
+        }
     }
 
     override fun onDestroy() {
@@ -281,6 +291,7 @@ class HouseInfoFragment : Fragment() {
             Log.i("getHouseInfo", JSON.toJSONString(it))
             onRemoveFragment.onRemoveFragment()
             if (it != null) {
+                address_pk = it.fwbm_pk
                 name.text = Editable.Factory.getInstance().newEditable(if (it.xm == null) {
                     ""
                 } else {
