@@ -78,7 +78,6 @@ public class HouseInfo {
     private String xjzdz;
     private String zyzh;
 
-
     public String getBz() {
         return bz;
     }

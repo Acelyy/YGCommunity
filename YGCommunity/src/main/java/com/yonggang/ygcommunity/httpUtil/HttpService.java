@@ -940,10 +940,18 @@ public interface HttpService {
             @Field("sbrid") String sbrid
     );
 
+    //获取工单处理列表
     @POST("get_gdcl_list")
     @FormUrlEncoded
     Observable<HttpResult<List<MissionBean>>> getMissionList(
             @Field("appauth") int appauth,
             @Field("sbrid") String id
+    );
+
+    //获取事件核查列表详情
+    @POST("get_hcrw_detail")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> getTeskDetails(
+            @Field("id") String id
     );
 }

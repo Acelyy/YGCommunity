@@ -1435,7 +1435,7 @@ public class HttpUtil {
     }
 
     /**
-     * 获取核查任务列表
+     * 获取工单处理列表
      *
      * @param subscriber
      * @param appauth
@@ -1446,4 +1446,16 @@ public class HttpUtil {
                 .map(new HttpResultFunc<List<MissionBean>>());
         toSubscribe(observable, subscriber);
     }
+
+    /**
+     * 获取核查任务列表详情
+     *
+     * @param id
+     */
+    public void getTeskDetails(Subscriber subscriber,String id) {
+        Observable observable = httpService.getTeskDetails( id)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
 }
