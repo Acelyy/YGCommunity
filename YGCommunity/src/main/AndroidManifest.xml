@@ -289,7 +289,7 @@
             android:name=".Activity.GuideActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.Splash" >
+            android:theme="@style/AppTheme.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -439,31 +439,37 @@
         <activity android:name=".monitor.MonitorActivity" />
         <activity android:name=".monitor.EventListActivity" />
         <activity android:name=".monitor.MonitorDetailActivity" />
-        <activity android:name=".grid.WorkSpaceActivity"
+        <activity
+            android:name=".grid.WorkSpaceActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.event.EventActivity"
+        <activity
+            android:name=".grid.event.EventActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.GridLoginActivity"
-            android:launchMode="singleTop" >
-
-        </activity>
+        <activity
+            android:name=".grid.GridLoginActivity"
+            android:launchMode="singleTop"></activity>
         <activity
             android:name=".grid.event.AddEventActivity"
-            android:windowSoftInputMode="stateHidden|stateUnchanged"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden|stateUnchanged" />
+        <activity
+            android:name=".grid.event.EventDetailActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.event.EventDetailActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".grid.house.HouseActivity"
+        <activity
+            android:name=".grid.house.HouseActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".grid.house.HouseInfoActivity"
-            android:windowSoftInputMode="stateHidden"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".grid.house.HouseExtraActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.house.HouseExtraActivity"
+        <activity
+            android:name=".grid.house.HouseFamilyActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.house.HouseFamilyActivity"
-            android:launchMode="singleTop" />
-        <activity android:name=".grid.house.AddHouseFamilyActivity"
+        <activity
+            android:name=".grid.house.AddHouseFamilyActivity"
             android:launchMode="singleTop" />
         <activity
             android:name=".grid.folk.FolkActivity"
@@ -474,17 +480,20 @@
         <activity
             android:name=".grid.folk.AddFolkActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.Visit.VisitActivity"
-            android:launchMode="singleTop" >
-
-        </activity>
-        <activity android:name=".grid.Visit.AddVisitActivity"
+        <activity
+            android:name=".grid.Visit.VisitActivity"
+            android:launchMode="singleTop"></activity>
+        <activity
+            android:name=".grid.Visit.AddVisitActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.Visit.VisitDetailsActivity"
+        <activity
+            android:name=".grid.Visit.VisitDetailsActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.house.SelectHouseActivity"/>
-        <activity android:name=".grid.check.CheckListActivity"/>
-
+        <activity android:name=".grid.house.SelectHouseActivity" />
+        <activity android:name=".grid.check.CheckListActivity"
+            android:launchMode="singleTop"/>
+        <activity android:name=".grid.check.CheckListDetailsActivity"
+            android:launchMode="singleTop"></activity>
     </application>
 
 </manifest>
