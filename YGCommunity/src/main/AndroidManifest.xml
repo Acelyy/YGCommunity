@@ -494,6 +494,8 @@
             android:launchMode="singleTop"/>
         <activity android:name=".grid.check.CheckListDetailsActivity"
             android:launchMode="singleTop"></activity>
+        <activity android:name=".grid.mission.MissionListActivity"/>
+        <activity android:name=".grid.mission.MissionDetailActivity"/>
     </application>
 
 </manifest>
