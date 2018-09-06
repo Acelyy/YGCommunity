@@ -40,6 +40,7 @@ import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
 import com.yonggang.ygcommunity.Entry.MissionBean;
+import com.yonggang.ygcommunity.Entry.MissionDetail;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
@@ -969,7 +970,7 @@ public interface HttpService {
     // 获取工单详情
     @POST("get_eventlist_detail")
     @FormUrlEncoded
-    Observable<HttpResult<String>> getMissionDetail(
+    Observable<HttpResult<MissionDetail>> getMissionDetail(
             @Field("id") String id
     );
 

@@ -38,6 +38,7 @@ import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
 import com.yonggang.ygcommunity.Entry.MissionBean;
+import com.yonggang.ygcommunity.Entry.MissionDetail;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
@@ -1480,7 +1481,7 @@ public class HttpUtil {
      */
     public void getMissionDetail(Subscriber subscriber, String id) {
         Observable observable = httpService.getMissionDetail(id)
-                .map(new HttpResultFunc<String>());
+                .map(new HttpResultFunc<MissionDetail>());
         toSubscribe(observable, subscriber);
     }
 
