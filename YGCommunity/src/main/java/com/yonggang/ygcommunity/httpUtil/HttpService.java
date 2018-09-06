@@ -962,6 +962,7 @@ public interface HttpService {
     @FormUrlEncoded
     Observable<HttpResult<String>> setTaskDetails(
             @Field("id") String id,
+            @Field("sbrid") String sbrid,
             @Field("comment") String comment
     );
 }

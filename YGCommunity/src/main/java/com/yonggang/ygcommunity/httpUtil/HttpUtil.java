@@ -1297,8 +1297,8 @@ public class HttpUtil {
      * @param carNumber
      * @param hobby
      */
-    public void setHouseInfo(Subscriber subscriber, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby,String sbrid) {
-        Observable observable = httpService.setHouseInfo(is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby,sbrid)
+    public void setHouseInfo(Subscriber subscriber, int is_community, String id, String name, String sex, String birth, String job, String nation, String political, String address, String phone, String marriage, String education, String permanent, String permanentCode, int is_special, int is_disability, int disabilityLevel, int is_mental, int is_empty, int is_alone, int is_poor, int is_help, int is_low, int is_new, int is_landlord, String disease, String volunteerId, String landlordTel, String carNumber, String hobby, String sbrid) {
+        Observable observable = httpService.setHouseInfo(is_community, id, name, sex, birth, job, nation, political, address, phone, marriage, education, permanent, permanentCode, is_special, is_disability, disabilityLevel, is_mental, is_empty, is_alone, is_poor, is_help, is_low, is_new, is_landlord, disease, volunteerId, landlordTel, carNumber, hobby, sbrid)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
@@ -1453,8 +1453,8 @@ public class HttpUtil {
      *
      * @param id
      */
-    public void getTaskDetails(Subscriber subscriber,String id) {
-        Observable observable = httpService.getTaskDetails( id)
+    public void getTaskDetails(Subscriber subscriber, String id) {
+        Observable observable = httpService.getTaskDetails(id)
                 .map(new HttpResultFunc<CheckDetails>());
         toSubscribe(observable, subscriber);
     }
@@ -1463,10 +1463,11 @@ public class HttpUtil {
      * 提交核查任务列表详情
      *
      * @param id
+     * @param sbrid
      * @param comment
      */
-    public void setTaskDetails(Subscriber subscriber,String id,String comment) {
-        Observable observable = httpService.setTaskDetails( id, comment)
+    public void setTaskDetails(Subscriber subscriber, String id, String sbrid, String comment) {
+        Observable observable = httpService.setTaskDetails(id, sbrid, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
