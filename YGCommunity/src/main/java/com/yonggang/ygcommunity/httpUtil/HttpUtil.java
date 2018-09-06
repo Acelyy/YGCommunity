@@ -1472,4 +1472,16 @@ public class HttpUtil {
         toSubscribe(observable, subscriber);
     }
 
+    /**
+     * 获取工单详情
+     *
+     * @param subscriber
+     * @param id
+     */
+    public void getMissionDetail(Subscriber subscriber, String id) {
+        Observable observable = httpService.getMissionDetail(id)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
 }

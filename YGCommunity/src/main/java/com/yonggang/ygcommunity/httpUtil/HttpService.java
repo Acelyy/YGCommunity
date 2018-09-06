@@ -965,4 +965,12 @@ public interface HttpService {
             @Field("sbrid") String sbrid,
             @Field("comment") String comment
     );
+
+    // 获取工单详情
+    @POST("get_eventlist_detail")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> getMissionDetail(
+            @Field("id") String id
+    );
+
 }
