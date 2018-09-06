@@ -964,6 +964,7 @@ public interface HttpService {
     Observable<HttpResult<String>> setTaskDetails(
             @Field("id") String id,
             @Field("sbrid") String sbrid,
+            @Field("imgs") String imgs,
             @Field("comment") String comment
     );
 

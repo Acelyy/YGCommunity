@@ -77,6 +77,15 @@ public class HouseInfo {
     private String zdxx;
     private String xjzdz;
     private String zyzh;
+    private String tplj;
+
+    public String getTplj() {
+        return tplj;
+    }
+
+    public void setTplj(String tplj) {
+        this.tplj = tplj;
+    }
 
     public String getBz() {
         return bz;

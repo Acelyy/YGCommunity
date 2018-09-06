@@ -1465,10 +1465,11 @@ public class HttpUtil {
      *
      * @param id
      * @param sbrid
+     * @param imgs
      * @param comment
      */
-    public void setTaskDetails(Subscriber subscriber, String id, String sbrid, String comment) {
-        Observable observable = httpService.setTaskDetails(id, sbrid, comment)
+    public void setTaskDetails(Subscriber subscriber, String id, String sbrid,String imgs, String comment) {
+        Observable observable = httpService.setTaskDetails(id, sbrid, imgs, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
