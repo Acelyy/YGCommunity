@@ -993,4 +993,12 @@ public interface HttpService {
             @Field("appauth") int appauth
     );
 
+    // 发出核查通知
+    @POST("app_event_hctz")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> sendCheck(
+            @Field("id") String id,
+            @Field("sbrid") String sbrid
+    );
+
 }

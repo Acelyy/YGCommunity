@@ -1513,4 +1513,17 @@ public class HttpUtil {
         toSubscribe(observable, subscriber);
     }
 
+    /**
+     * 发出核查通知
+     *
+     * @param subscriber
+     * @param id
+     * @param sbrid
+     */
+    public void sendCheck(Subscriber subscriber, String id, String sbrid) {
+        Observable observable = httpService.sendCheck(id, sbrid)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
 }
