@@ -1468,7 +1468,7 @@ public class HttpUtil {
      * @param imgs
      * @param comment
      */
-    public void setTaskDetails(Subscriber subscriber, String id, String sbrid,String imgs, String comment) {
+    public void setTaskDetails(Subscriber subscriber, String id, String sbrid, String imgs, String comment) {
         Observable observable = httpService.setTaskDetails(id, sbrid, imgs, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
@@ -1483,6 +1483,33 @@ public class HttpUtil {
     public void getMissionDetail(Subscriber subscriber, String id) {
         Observable observable = httpService.getMissionDetail(id)
                 .map(new HttpResultFunc<MissionDetail>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 事件签收
+     *
+     * @param subscriber
+     * @param id
+     * @param sbrid
+     */
+    public void signEvent(Subscriber subscriber, String id, String sbrid, int appauth) {
+        Observable observable = httpService.signEvent(id, sbrid, appauth)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 事件完结
+     *
+     * @param subscriber
+     * @param id
+     * @param sbrid
+     * @param appauth
+     */
+    public void endEvent(Subscriber subscriber, String id, String sbrid, int appauth) {
+        Observable observable = httpService.endEvent(id, sbrid, appauth)
+                .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
 

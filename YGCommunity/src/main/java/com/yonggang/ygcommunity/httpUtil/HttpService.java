@@ -975,4 +975,22 @@ public interface HttpService {
             @Field("id") String id
     );
 
+    // 事件签收
+    @POST("app_event_qs")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> signEvent(
+            @Field("id") String id,
+            @Field("sbrid") String sbrid,
+            @Field("appauth") int appauth
+    );
+
+    // 事件完结
+    @POST("app_end_event")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> endEvent(
+            @Field("id") String id,
+            @Field("sbrid") String sbrid,
+            @Field("appauth") int appauth
+    );
+
 }
