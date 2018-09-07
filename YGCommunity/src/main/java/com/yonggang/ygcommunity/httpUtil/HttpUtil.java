@@ -55,6 +55,7 @@ import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
 import com.yonggang.ygcommunity.Entry.Visit;
+import com.yonggang.ygcommunity.Entry.VisitDetail;
 import com.yonggang.ygcommunity.Entry.WechatPay;
 import com.yonggang.ygcommunity.monitor.model.MonitorModel;
 
@@ -1426,7 +1427,7 @@ public class HttpUtil {
     }
 
     /**
-     * 上报信访人员
+     * 获取信访人员
      *
      * @param subscriber
      * @param pcsj
@@ -1435,6 +1436,41 @@ public class HttpUtil {
     public void getXfry(Subscriber subscriber, String pcsj, String sbrid) {
         Observable observable = httpService.getXfry(pcsj, sbrid)
                 .map(new HttpResultFunc<List<Visit>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取信访人员详情
+     *
+     * @param subscriber
+     * @param id
+     */
+    public void getXfryDetails(Subscriber subscriber, String id) {
+        Observable observable = httpService.getXfryDetails(id)
+                .map(new HttpResultFunc<VisitDetail>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 上报信访人员
+     *
+     * @param id
+     * @param subscriber
+     * @param pcsj
+     * @param zdry
+     * @param sswg
+     * @param mdlx
+     * @param sjrs
+     * @param wkcs
+     * @param sbrid
+     * @param swqk
+     * @param xwqk
+     * @param telephone
+     * @param comment
+     */
+    public void upXfryDetails(Subscriber subscriber,String id, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone, String comment) {
+        Observable observable = httpService.upXfryDetails(id,pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone, comment)
+                .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
 

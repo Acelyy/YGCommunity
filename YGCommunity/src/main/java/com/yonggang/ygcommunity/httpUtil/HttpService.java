@@ -57,6 +57,7 @@ import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
 import com.yonggang.ygcommunity.Entry.Visit;
+import com.yonggang.ygcommunity.Entry.VisitDetail;
 import com.yonggang.ygcommunity.Entry.WechatPay;
 import com.yonggang.ygcommunity.monitor.model.MonitorModel;
 
@@ -942,6 +943,31 @@ public interface HttpService {
     Observable<HttpResult<List<Visit>>> getXfry(
             @Field("pcsj") String pcsj,
             @Field("sbrid") String sbrid
+    );
+
+    // 获取信访人员详情
+    @POST("get_xfry_detail")
+    @FormUrlEncoded
+    Observable<HttpResult<VisitDetail>> getXfryDetails(
+            @Field("id") String id
+    );
+
+    // 更新信访人员详情
+    @POST("set_ups_xfry")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> upXfryDetails(
+            @Field("id") String id,
+            @Field("pcsj") String pcsj,
+            @Field("zdry") String zdry,
+            @Field("sswg") String sswg,
+            @Field("mdlx") String mdlx,
+            @Field("sjrs") String sjrs,
+            @Field("wkcs") String wkcs,
+            @Field("sbrid") String sbrid,
+            @Field("swqk") String swqk,
+            @Field("xwqk") String xwqk,
+            @Field("telephone") String telephone,
+            @Field("comment") String comment
     );
 
     // 核查任务
