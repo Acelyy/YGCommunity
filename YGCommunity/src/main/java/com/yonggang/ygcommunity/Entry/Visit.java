@@ -17,6 +17,15 @@ public class Visit {
     private String telephone;
     private String xwqk;
     private String zdry;
+    private String mdlx;
+
+    public String getMdlx() {
+        return mdlx;
+    }
+
+    public void setMdlx(String mdlx) {
+        this.mdlx = mdlx;
+    }
 
     public String getId() {
         return id;
