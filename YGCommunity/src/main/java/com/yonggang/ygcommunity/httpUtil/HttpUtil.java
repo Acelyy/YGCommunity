@@ -54,6 +54,7 @@ import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
+import com.yonggang.ygcommunity.Entry.Visit;
 import com.yonggang.ygcommunity.Entry.WechatPay;
 import com.yonggang.ygcommunity.monitor.model.MonitorModel;
 
@@ -1420,6 +1421,19 @@ public class HttpUtil {
     public void setXfry(Subscriber subscriber, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone) {
         Observable observable = httpService.setXfry(pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone)
                 .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 上报信访人员
+     *
+     * @param subscriber
+     * @param pcsj
+     * @param sbrid
+     */
+    public void getXfry(Subscriber subscriber, String pcsj, String sbrid) {
+        Observable observable = httpService.getXfry(pcsj, sbrid)
+                .map(new HttpResultFunc<Visit>());
         toSubscribe(observable, subscriber);
     }
 

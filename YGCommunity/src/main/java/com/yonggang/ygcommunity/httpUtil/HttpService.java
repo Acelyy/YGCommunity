@@ -56,6 +56,7 @@ import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
+import com.yonggang.ygcommunity.Entry.Visit;
 import com.yonggang.ygcommunity.Entry.WechatPay;
 import com.yonggang.ygcommunity.monitor.model.MonitorModel;
 
@@ -918,7 +919,7 @@ public interface HttpService {
 
     );
 
-    // 上报信访热源
+    // 上报信访人员
     @POST("set_xfry_info")
     @FormUrlEncoded
     Observable<HttpResult<String>> setXfry(
@@ -934,6 +935,13 @@ public interface HttpService {
             @Field("telephone") String telephone
     );
 
+    // 获取信访人员
+    @POST("get_xfry_info")
+    @FormUrlEncoded
+    Observable<HttpResult<Visit>> getXfry(
+            @Field("pcsj") String pcsj,
+            @Field("sbrid") String sbrid
+    );
 
     // 核查任务
     @POST("get_hcrw_list")
