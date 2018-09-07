@@ -932,13 +932,14 @@ public interface HttpService {
             @Field("sbrid") String sbrid,
             @Field("swqk") String swqk,
             @Field("xwqk") String xwqk,
-            @Field("telephone") String telephone
+            @Field("telephone") String telephone,
+            @Field("comment") String comment
     );
 
     // 获取信访人员
     @POST("get_xfry_info")
     @FormUrlEncoded
-    Observable<HttpResult<Visit>> getXfry(
+    Observable<HttpResult<List<Visit>>> getXfry(
             @Field("pcsj") String pcsj,
             @Field("sbrid") String sbrid
     );

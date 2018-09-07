@@ -1417,9 +1417,10 @@ public class HttpUtil {
      * @param swqk
      * @param xwqk
      * @param telephone
+     * @param comment
      */
-    public void setXfry(Subscriber subscriber, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone) {
-        Observable observable = httpService.setXfry(pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone)
+    public void setXfry(Subscriber subscriber, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone, String comment) {
+        Observable observable = httpService.setXfry(pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
@@ -1433,7 +1434,7 @@ public class HttpUtil {
      */
     public void getXfry(Subscriber subscriber, String pcsj, String sbrid) {
         Observable observable = httpService.getXfry(pcsj, sbrid)
-                .map(new HttpResultFunc<Visit>());
+                .map(new HttpResultFunc<List<Visit>>());
         toSubscribe(observable, subscriber);
     }
 
