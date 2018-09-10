@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.yonggang.ygcommunity.BaseActivity
@@ -16,6 +17,7 @@ import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_check_list.*
 import org.jetbrains.anko.find
+import org.jetbrains.anko.startActivity
 import rx.Subscriber
 import java.text.SimpleDateFormat
 import java.util.*
@@ -38,7 +40,9 @@ class CheckListActivity : BaseActivity() {
         val subscriber = object : Subscriber<MutableList<HcrwList>>() {
             override fun onNext(t: MutableList<HcrwList>?) {
                 list.adapter = CheckAdapter(t!!,this@CheckListActivity)
-
+                list.setOnItemClickListener { parent, view, position, id ->
+                    this@CheckListActivity.startActivity<CheckListDetailsActivity>("id" to t[position].id)
+                }
                 refresh.finishRefresh()
             }
 
@@ -66,7 +70,7 @@ class CheckListActivity : BaseActivity() {
                 holder = view.tag as ViewHolder
             }
             holder.title.text = data[position].sjbt
-            var time = data[position].sbsj*1000
+            var time = data[position].sbsj
             Log.i("time", SimpleDateFormat("yyyy-MM-dd").format(Date(time)))
             holder.time.text = SimpleDateFormat("yyyy-MM-dd").format(Date(time))
             return view
@@ -88,5 +92,7 @@ class CheckListActivity : BaseActivity() {
             var title: TextView = view.find(R.id.title)
             var time: TextView = view.find(R.id.time)
         }
+
     }
+
 }

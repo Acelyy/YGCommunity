@@ -2,10 +2,9 @@ package com.yonggang.ygcommunity.grid.house.Fragment
 
 import android.app.Activity
 import android.app.AlertDialog
-import android.content.BroadcastReceiver
-import android.content.Context
-import android.content.Intent
-import android.content.IntentFilter
+import android.content.*
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -16,10 +15,9 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.alibaba.fastjson.JSON
+import com.autonavi.amap.mapcore.tools.GLFileUtil.getCacheDir
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
 import com.baidu.ocr.sdk.exception.OCRError
@@ -28,8 +26,11 @@ import com.baidu.ocr.sdk.model.IDCardResult
 import com.baidu.ocr.ui.camera.CameraActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
+import com.bumptech.glide.Glide
+import com.yalantis.ucrop.UCrop
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
+import com.yonggang.ygcommunity.Util.ImageUtils
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
@@ -38,6 +39,8 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
+import me.iwf.photopicker.PhotoPicker
+import me.iwf.photopicker.PhotoPreview
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import java.io.File
@@ -67,6 +70,8 @@ class HouseInfoFragment : Fragment() {
     private lateinit var myTextWatcher: MyTextWatcher
     private var address_pk: String? = null
     private lateinit var updateAddressBroadcast: UpdateAddressBroadcast
+//    private var face = "1"
+    private val photoPaths = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +102,7 @@ class HouseInfoFragment : Fragment() {
             intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_ID_CARD_FRONT)
             startActivityForResult(intent, REQUEST_CODE_CAMERA)
         }
+
 
         /**
          * 监听身份证的字符长度  18位时进行查询
@@ -236,20 +242,80 @@ class HouseInfoFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_CAMERA && resultCode == Activity.RESULT_OK) {
-            if (data != null) {
-                val contentType = data.getStringExtra(CameraActivity.KEY_CONTENT_TYPE)
-                val filePath = FileUtil.getSaveFile(activity).absolutePath
-                if (!TextUtils.isEmpty(contentType)) {
-                    if (CameraActivity.CONTENT_TYPE_ID_CARD_FRONT == contentType) {
-                        recIDCard(IDCardParams.ID_CARD_SIDE_FRONT, filePath)
-                    } else if (CameraActivity.CONTENT_TYPE_ID_CARD_BACK == contentType) {
-                        recIDCard(IDCardParams.ID_CARD_SIDE_BACK, filePath)
+        if(resultCode == Activity.RESULT_OK){
+            if (requestCode == REQUEST_CODE_CAMERA) {
+                if (data != null) {
+                    val contentType = data.getStringExtra(CameraActivity.KEY_CONTENT_TYPE)
+                    val filePath = FileUtil.getSaveFile(activity).absolutePath
+                    if (!TextUtils.isEmpty(contentType)) {
+                        if (CameraActivity.CONTENT_TYPE_ID_CARD_FRONT == contentType) {
+                            recIDCard(IDCardParams.ID_CARD_SIDE_FRONT, filePath)
+                        } else if (CameraActivity.CONTENT_TYPE_ID_CARD_BACK == contentType) {
+                            recIDCard(IDCardParams.ID_CARD_SIDE_BACK, filePath)
+                        }
                     }
                 }
+
             }
+//            if (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE) { // photopicker的返回
+//                var photos: List<String>? = null
+//                if (data != null) {
+//                    photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS)
+//                }
+//                if (photos != null) {
+//                    val photo = photos[0]
+//                    val uri = Uri.fromFile(File(photo))
+//                    startCropActivity(uri)
+//                }
+//            }
+//            if (requestCode == UCrop.REQUEST_CROP) { // 裁剪的返回
+//                handleCropResult(data!!)
+//            }
         }
+//
+//        if (resultCode == UCrop.RESULT_ERROR) {
+//            handleCropError(data!!)
+//        }
     }
+
+    /**
+     * 开始裁剪
+     *
+     * @param uri
+     */
+//    private fun startCropActivity(uri: Uri) {
+//        val destinationFileName = "zhylhead.png"
+//        var uCrop = UCrop.of(uri, Uri.fromFile(File(getCacheDir(activity), destinationFileName)))
+//        val options = UCrop.Options()
+//        options.setCompressionFormat(Bitmap.CompressFormat.PNG)
+//        options.setCompressionQuality(90)
+//        options.setHideBottomControls(false)
+//        options.setFreeStyleCropEnabled(false)
+//        uCrop = uCrop.withAspectRatio(1f, 1f)
+//        uCrop.withOptions(options)
+//        uCrop.start(activity)
+//    }
+//
+//    private fun handleCropResult(result: Intent) {
+//        val resultUri = UCrop.getOutput(result)
+//        if (resultUri != null) {
+//            Glide.with(activity).load(resultUri).into(head)
+//            face = ImageUtils.bitmapToString(resultUri.path)
+//            Log.i("face", face)
+//        } else {
+//            Toast.makeText(activity, "裁剪头像出错，请重新尝试", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
+//    private fun handleCropError(result: Intent) {
+//        val cropError = UCrop.getError(result)
+//        if (cropError != null) {
+//            Toast.makeText(activity, cropError.message, Toast.LENGTH_LONG).show()
+//        } else {
+//            Toast.makeText(activity, "未知错误", Toast.LENGTH_SHORT).show()
+//        }
+//    }
+
 
     private fun recIDCard(idCardSide: String, filePath: String) {
         val param = IDCardParams()
@@ -446,6 +512,17 @@ class HouseInfoFragment : Fragment() {
                 } else {
                     it.xqah
                 })
+                if (it.tplj != null) {
+                    Glide.with(activity).load(it.tplj).into(head)
+                }
+//                head.setOnClickListener {
+//                    PhotoPicker.builder()
+//                            .setPhotoCount(1)
+//                            .setShowCamera(true)
+//                            .setPreviewEnabled(true)
+//                            .start(activity)
+//                }
+
             } else {
                 if (result != null) {
                     name.text = Editable.Factory.getInstance().newEditable(result.name.toString())

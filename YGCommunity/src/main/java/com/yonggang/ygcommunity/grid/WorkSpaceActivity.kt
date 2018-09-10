@@ -8,6 +8,7 @@ import com.yonggang.ygcommunity.Entry.Gztj
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
+import com.yonggang.ygcommunity.grid.Visit.AddVisitActivity
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
 import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
@@ -46,7 +47,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
 
         layout_my_task.setOnClickListener(this)
         layout_my_work.setOnClickListener(this)
-
+        layout_my_visit.setOnClickListener(this)
         layout_app_hourse.setOnClickListener(this)
         layout_app_event.setOnClickListener(this)
         layout_app_note.setOnClickListener(this)
@@ -61,9 +62,10 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_app_event -> startActivity<AddEventActivity>()
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
-            R.id.layout_app_walk -> startActivity<VisitActivity>()
+            R.id.layout_app_walk -> startActivity<AddVisitActivity>()
             R.id.layout_my_task -> startActivity<CheckListActivity>()
             R.id.layout_my_work -> startActivity<MissionListActivity>()
+            R.id.layout_my_visit -> startActivity<VisitActivity>()
         }
     }
 
