@@ -183,14 +183,6 @@ class AddVisitActivity : BaseActivity() {
             Snackbar.make(submit, "请填写上午见面情况", Snackbar.LENGTH_LONG).show()
             return
         }
-        if (afternoon.text.toString() == "") {
-            Snackbar.make(submit, "请填写下午见面情况", Snackbar.LENGTH_LONG).show()
-            return
-        }
-        if (listtype == "") {
-            Snackbar.make(submit, "请勾选矛盾纠纷类型", Snackbar.LENGTH_LONG).show()
-            return
-        }
 
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("addVisit", it)
@@ -207,7 +199,8 @@ class AddVisitActivity : BaseActivity() {
                 app.grid.id,
                 morning.text.toString().trim(),
                 afternoon.text.toString().trim(),
-                telephone.text.toString().trim()
+                telephone.text.toString().trim(),
+                comment.text.toString().trim()
         )
 
     }

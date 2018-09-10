@@ -48,26 +48,35 @@
             android:padding="25px"
             android:src="@mipmap/pic_add" />
     </RelativeLayout>
-
-    <LinearLayout
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.prolificinteractive.materialcalendarview.MaterialCalendarView
-            android:id="@+id/calendarView"
+        android:layout_height="match_parent"
+        app:srlEnableLoadMore="false"
+        android:id="@+id/refresh">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:mcv_calendarMode="month"
-            app:mcv_selectionColor="#cd2221"
-            app:mcv_showOtherDates="all" />
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="80px"
-            android:paddingRight="80px" />
-    </LinearLayout>
+                <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff"
+                    app:mcv_calendarMode="month"
+                    app:mcv_selectionColor="#cd2221"
+                    app:mcv_showOtherDates="all" />
+
+                <com.yonggang.ygcommunity.View.LinearLayoutForListView
+                    android:id="@+id/list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </ScrollView>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </LinearLayout>

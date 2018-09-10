@@ -19,5 +19,6 @@
 
     <color name="refresh_color">#cd2221</color>
     <!--<color name="refresh_color">#16ADFC</color>-->
+    <color name="refresh_green">#009900</color>
 
 </resources>

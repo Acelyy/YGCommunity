@@ -77,7 +77,7 @@
                         android:layout_height="180px"
                         android:background="@mipmap/title"
                         android:gravity="center"
-                        android:text="日常走访"
+                        android:text="核查信息"
                         android:textColor="#fff"
                         android:textSize="60px" />
                 </LinearLayout>
@@ -105,6 +105,8 @@
                         android:layout_weight="7">
 
                         <TextView
+                            android:id="@+id/check"
+                            android:textStyle=""
                             android:layout_width="180px"
                             android:layout_height="100px"
                             android:background="@drawable/bg_red_round"
@@ -141,6 +143,7 @@
                         android:layout_weight="7">
 
                         <EditText
+                            android:id="@+id/opinion"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -197,7 +200,7 @@
                         android:layout_height="180px"
                         android:background="@mipmap/title"
                         android:gravity="center"
-                        android:text="日常走访"
+                        android:text="基本信息"
                         android:textColor="#fff"
                         android:textSize="60px" />
                 </LinearLayout>
@@ -226,6 +229,7 @@
                         android:layout_weight="7">
 
                         <TextView
+                            android:id="@+id/number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -257,6 +261,7 @@
                         android:layout_weight="7">
 
                         <TextView
+                            android:id="@+id/term"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -288,6 +293,7 @@
                         android:layout_weight="7">
 
                         <TextView
+                            android:id="@+id/serious"
                             android:layout_width="180px"
                             android:layout_height="100px"
                             android:background="@drawable/bg_red_round"
@@ -373,6 +379,7 @@
                         android:layout_weight="7">
 
                         <TextView
+                            android:id="@+id/describe"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@null"
@@ -429,36 +436,37 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="160px"
-                    android:layout_marginBottom="20px"
-                    android:background="@drawable/back_add_event"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="30px">
+                <!--<LinearLayout-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="160px"-->
+                    <!--android:layout_marginBottom="20px"-->
+                    <!--android:background="@drawable/back_add_event"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:orientation="horizontal"-->
+                    <!--android:padding="30px">-->
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="3"
-                        android:text="处理结果"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                    <!--<TextView-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="3"-->
+                        <!--android:text="处理结果"-->
+                        <!--android:textColor="#000000"-->
+                        <!--android:textSize="45px" />-->
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="7">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="0dp"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_weight="7">-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@null"
-                            android:textColor="#000"
-                            android:textSize="45px" />
-                    </LinearLayout>
-                </LinearLayout>
+                        <!--<TextView-->
+                            <!--android:id="@+id/handle"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:background="@null"-->
+                            <!--android:textColor="#000"-->
+                            <!--android:textSize="45px" />-->
+                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
                 <Button
                     android:id="@+id/submit"
