@@ -14,6 +14,7 @@ import com.yonggang.ygcommunity.Entry.CheckDetails;
 import com.yonggang.ygcommunity.Entry.Collect;
 import com.yonggang.ygcommunity.Entry.Comments;
 import com.yonggang.ygcommunity.Entry.Contacts;
+import com.yonggang.ygcommunity.Entry.Depart;
 import com.yonggang.ygcommunity.Entry.Event;
 import com.yonggang.ygcommunity.Entry.EventDetail;
 import com.yonggang.ygcommunity.Entry.Expense;
@@ -1034,6 +1035,12 @@ public interface HttpService {
     Observable<HttpResult<String>> sendCheck(
             @Field("id") String id,
             @Field("sbrid") String sbrid
+    );
+
+    // 获取转派部门的列表
+    @GET("get_bm_list")
+    Observable<HttpResult<Depart>> getDepartList(
+
     );
 
 }

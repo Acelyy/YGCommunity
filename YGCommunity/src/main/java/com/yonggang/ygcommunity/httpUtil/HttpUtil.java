@@ -15,6 +15,7 @@ import com.yonggang.ygcommunity.Entry.CheckDetails;
 import com.yonggang.ygcommunity.Entry.Collect;
 import com.yonggang.ygcommunity.Entry.Comments;
 import com.yonggang.ygcommunity.Entry.Contacts;
+import com.yonggang.ygcommunity.Entry.Depart;
 import com.yonggang.ygcommunity.Entry.EventDetail;
 import com.yonggang.ygcommunity.Entry.Expense;
 import com.yonggang.ygcommunity.Entry.Filter;
@@ -1575,6 +1576,17 @@ public class HttpUtil {
         Observable observable = httpService.sendCheck(id, sbrid)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取准拍部门列表
+     *
+     * @param subscriber
+     */
+    public void getDepartList(Subscriber subscriber){
+        Observable observable =httpService.getDepartList()
+                .map(new HttpResultFunc<Depart>());
+        toSubscribe(observable,subscriber);
     }
 
 }
