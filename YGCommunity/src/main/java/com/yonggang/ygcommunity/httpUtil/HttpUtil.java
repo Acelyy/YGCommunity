@@ -8,6 +8,7 @@ import com.yonggang.ygcommunity.Entry.Address;
 import com.yonggang.ygcommunity.Entry.AdvImg;
 import com.yonggang.ygcommunity.Entry.Alipay;
 import com.yonggang.ygcommunity.Entry.Answer;
+import com.yonggang.ygcommunity.Entry.Assignor;
 import com.yonggang.ygcommunity.Entry.Bbs;
 import com.yonggang.ygcommunity.Entry.BbsSystem;
 import com.yonggang.ygcommunity.Entry.BbsUser;
@@ -1469,8 +1470,8 @@ public class HttpUtil {
      * @param telephone
      * @param comment
      */
-    public void upXfryDetails(Subscriber subscriber,String id, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone, String comment) {
-        Observable observable = httpService.upXfryDetails(id,pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone, comment)
+    public void upXfryDetails(Subscriber subscriber, String id, String pcsj, String zdry, String sswg, String mdlx, String sjrs, String wkcs, String sbrid, String swqk, String xwqk, String telephone, String comment) {
+        Observable observable = httpService.upXfryDetails(id, pcsj, zdry, sswg, mdlx, sjrs, wkcs, sbrid, swqk, xwqk, telephone, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
@@ -1583,10 +1584,21 @@ public class HttpUtil {
      *
      * @param subscriber
      */
-    public void getDepartList(Subscriber subscriber){
-        Observable observable =httpService.getDepartList()
+    public void getDepartList(Subscriber subscriber) {
+        Observable observable = httpService.getDepartList()
                 .map(new HttpResultFunc<List<Depart>>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取指派人列表
+     *
+     * @param subscriber
+     */
+    public void getAssignorList(Subscriber subscriber,String id) {
+        Observable observable = httpService.getAssignorList(id)
+                .map(new HttpResultFunc<List<Assignor>>());
+        toSubscribe(observable, subscriber);
     }
 
 }

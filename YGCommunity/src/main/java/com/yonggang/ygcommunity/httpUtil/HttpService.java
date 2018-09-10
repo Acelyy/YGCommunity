@@ -7,6 +7,7 @@ import com.yonggang.ygcommunity.Entry.Address;
 import com.yonggang.ygcommunity.Entry.AdvImg;
 import com.yonggang.ygcommunity.Entry.Alipay;
 import com.yonggang.ygcommunity.Entry.Answer;
+import com.yonggang.ygcommunity.Entry.Assignor;
 import com.yonggang.ygcommunity.Entry.Bbs;
 import com.yonggang.ygcommunity.Entry.BbsSystem;
 import com.yonggang.ygcommunity.Entry.BbsUser;
@@ -1041,6 +1042,13 @@ public interface HttpService {
     @GET("get_bm_list")
     Observable<HttpResult<List<Depart>>> getDepartList(
 
+    );
+
+    // 获取指派人列表
+    @POST("get_bm_person")
+    @FormUrlEncoded
+    Observable<HttpResult<List<Assignor>>> getAssignorList(
+            @Field("mg_id") String id
     );
 
 }
