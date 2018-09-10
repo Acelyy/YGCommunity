@@ -13,7 +13,6 @@ import com.yonggang.ygcommunity.Entry.MissionBean
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
-import com.yonggang.ygcommunity.grid.check.MissionDetailActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_mission_list.*
 import org.jetbrains.anko.find
@@ -38,6 +37,10 @@ class MissionListActivity : BaseActivity() {
         refresh.setOnRefreshListener {
             getMissionList()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
         refresh.autoRefresh()
     }
 

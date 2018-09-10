@@ -1,6 +1,7 @@
 package com.yonggang.ygcommunity.grid
 
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.view.View
 import com.scwang.smartrefresh.header.WaveSwipeHeader
 import com.yonggang.ygcommunity.BaseActivity
@@ -62,8 +63,20 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<FolkActivity>()
             R.id.layout_app_walk -> startActivity<VisitActivity>()
-            R.id.layout_my_task -> startActivity<CheckListActivity>()
-            R.id.layout_my_work -> startActivity<MissionListActivity>()
+            R.id.layout_my_task -> {
+                if (app.grid.appauth == 1) {
+                    startActivity<CheckListActivity>()
+                } else {
+                    Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
+                }
+            }
+            R.id.layout_my_work -> {
+                if (app.grid.appauth != 1) {
+                    startActivity<MissionListActivity>()
+                } else {
+                    Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
+                }
+            }
         }
     }
 
