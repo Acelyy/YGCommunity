@@ -1585,7 +1585,7 @@ public class HttpUtil {
      */
     public void getDepartList(Subscriber subscriber){
         Observable observable =httpService.getDepartList()
-                .map(new HttpResultFunc<Depart>());
+                .map(new HttpResultFunc<List<Depart>>());
         toSubscribe(observable,subscriber);
     }
 

@@ -1039,7 +1039,7 @@ public interface HttpService {
 
     // 获取转派部门的列表
     @GET("get_bm_list")
-    Observable<HttpResult<Depart>> getDepartList(
+    Observable<HttpResult<List<Depart>>> getDepartList(
 
     );
 
