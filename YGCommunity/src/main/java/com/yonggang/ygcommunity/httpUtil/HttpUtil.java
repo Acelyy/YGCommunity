@@ -1595,9 +1595,29 @@ public class HttpUtil {
      *
      * @param subscriber
      */
-    public void getAssignorList(Subscriber subscriber,String id) {
+    public void getAssignorList(Subscriber subscriber, String id) {
         Observable observable = httpService.getAssignorList(id)
                 .map(new HttpResultFunc<List<Assignor>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 任务指派
+     *
+     * @param subscriber
+     * @param id
+     * @param ids
+     * @param comment
+     */
+    public void transfer(Subscriber subscriber, String id, String ids, String comment) {
+        Observable observable = httpService.transfer(id, ids, comment)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    public void assignor(Subscriber subscriber, String mg_id, String id, String ids, String comment) {
+        Observable observable = httpService.assignor(mg_id, id, ids, comment)
+                .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
 

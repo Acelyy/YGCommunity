@@ -1051,4 +1051,22 @@ public interface HttpService {
             @Field("mg_id") String id
     );
 
+    // 转派部门
+    @POST("app_bm_event")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> transfer(
+            @Field("id") String id,
+            @Field("bmids") String ids,
+            @Field("comment") String comment
+    );
+
+    // 任务指派
+    @POST("app_person_event")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> assignor(
+            @Field("mg_id") String mg_id,
+            @Field("id") String id,
+            @Field("perids") String ids,
+            @Field("comment") String comment
+    );
 }
