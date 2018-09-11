@@ -9,6 +9,7 @@ public class Assignor {
 
     private String id;
     private String name;
+    private boolean select;
 
     public String getId() {
         return id;
@@ -24,6 +25,14 @@ public class Assignor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isSelect() {
+        return select;
+    }
+
+    public void setSelect(boolean select) {
+        this.select = select;
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Depart {
 
     private String bname;
     private String rid;
+    private boolean select;
 
     public String getBname() {
         return bname;
@@ -24,6 +25,14 @@ public class Depart {
 
     public void setRid(String rid) {
         this.rid = rid;
+    }
+
+    public boolean isSelect() {
+        return select;
+    }
+
+    public void setSelect(boolean select) {
+        this.select = select;
     }
 
     @Override
