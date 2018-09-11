@@ -14,6 +14,7 @@ import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_mission_detail.*
+import org.jetbrains.anko.startActivity
 import rx.Subscriber
 import java.util.*
 
@@ -69,7 +70,11 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> View.VISIBLE
                         3 -> View.VISIBLE
 
-                        5 -> View.VISIBLE
+                        5 -> if (app.grid.appauth == 2) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
                         6 -> View.VISIBLE
                         7 -> View.VISIBLE
                         8 -> View.VISIBLE
@@ -102,7 +107,24 @@ class MissionDetailActivity : BaseActivity() {
                         }
                     })
 
-
+                    // 额外的按钮，用于status为2和6的时候指派、
+                    extra.visibility = when (data.status) {
+                        2 -> View.VISIBLE
+                        6 -> if (app.grid.appauth == 2) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
+                        else -> View.GONE
+                    }
+                    extra.text = when (data.status) {
+                        2 -> "转办部门"
+                        6 -> "任务指派"
+                        else -> ""
+                    }
+                    extra.setOnClickListener {
+                        startActivity<TransferActivity>("id" to id, "status" to data.status)
+                    }
 
                     if (data.girdimgs != null && !data.girdimgs.isEmpty()) {
                         layout_pic.setOnClickListener {

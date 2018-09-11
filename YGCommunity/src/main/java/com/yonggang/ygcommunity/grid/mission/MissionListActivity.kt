@@ -37,10 +37,6 @@ class MissionListActivity : BaseActivity() {
         refresh.setOnRefreshListener {
             getMissionList()
         }
-    }
-
-    override fun onResume() {
-        super.onResume()
         refresh.autoRefresh()
     }
 
