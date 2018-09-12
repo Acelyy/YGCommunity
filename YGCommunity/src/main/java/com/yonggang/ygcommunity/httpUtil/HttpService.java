@@ -1010,7 +1010,8 @@ public interface HttpService {
     @POST("get_eventlist_detail")
     @FormUrlEncoded
     Observable<HttpResult<MissionDetail>> getMissionDetail(
-            @Field("id") String id
+            @Field("id") String id,
+            @Field("mg_id") String mg_id
     );
 
     // 事件签收
