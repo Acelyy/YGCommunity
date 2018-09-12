@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
 import android.widget.DatePicker
+import android.widget.TimePicker
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.GridStatus
 import com.yonggang.ygcommunity.Entry.VisitDetail
@@ -51,7 +52,7 @@ class VisitDetailsActivity : BaseActivity() {
         }
         app = application as YGApplication
         id = intent.getStringExtra("id")
-//        initDatePicker()
+        initDatePicker()
         getchoose()
         submit.setOnClickListener(object : NoDoubleClickListener() {
             override fun onNoDoubleClick(v: View) {
@@ -63,7 +64,7 @@ class VisitDetailsActivity : BaseActivity() {
                 if (sBuffer.length > 0) {
                     listtype = sBuffer.substring(0, sBuffer.length - 1)
                 }
-                upXfryDetails()
+                upXfryDetails(listtype)
             }
         });
     }
@@ -92,26 +93,56 @@ class VisitDetailsActivity : BaseActivity() {
     //获取多选框
     private fun getchoose() {
         val subscriberOnNextListener = SubscriberOnNextListener<GridStatus> {
-//            getXfryDetilas()
+            //            getXfryDetilas()
             data = it!!
             //获取数据
             val subscriber = object : Subscriber<VisitDetail>() {
                 override fun onNext(t: VisitDetail?) {
                     if (t != null) {
                         date.text = t.pcsj
-                        person.text = Editable.Factory.getInstance().newEditable(t.zdry)
-                        telephone.text = Editable.Factory.getInstance().newEditable(t.telephone)
-                        number.text = Editable.Factory.getInstance().newEditable(t.sjrs)
-                        measures.text = Editable.Factory.getInstance().newEditable(t.wkcs)
-                        morning.text = Editable.Factory.getInstance().newEditable(t.wkcs)
-                        afternoon.text = Editable.Factory.getInstance().newEditable(t.xwqk)
-                        comment.text = Editable.Factory.getInstance().newEditable(t.comment)
-                        listdata = t.mdlx
-                        for (i in t.mdlx) {
-                            data.sjfl[i.toInt()].selection = true
+                        person.text = Editable.Factory.getInstance().newEditable(if (t.zdry == null) {
+                            ""
+                        } else {
+                            t.zdry
+                        })
+                        telephone.text = Editable.Factory.getInstance().newEditable(if (t.telephone == null) {
+                            ""
+                        } else {
+                            t.telephone
+                        })
+                        number.text = Editable.Factory.getInstance().newEditable(if (t.sjrs == null) {
+                            ""
+                        } else {
+                            t.sjrs
+                        })
+                        measures.text = Editable.Factory.getInstance().newEditable(if (t.wkcs == null) {
+                            ""
+                        } else {
+                            t.wkcs
+                        })
+                        morning.text = Editable.Factory.getInstance().newEditable(if (t.swqk == null) {
+                            ""
+                        } else {
+                            t.swqk
+                        })
+                        afternoon.text = Editable.Factory.getInstance().newEditable(if (t.xwqk == null) {
+                            ""
+                        } else {
+                            t.xwqk
+                        })
+                        comment.text = Editable.Factory.getInstance().newEditable(if (t.comment == null) {
+                            ""
+                        } else {
+                            t.comment
+                        })
+                        if (t.mdlx != null) {
+                            listdata = t.mdlx
+                            for (i in t.mdlx) {
+                                data.sjfl[i.toInt()].selection = true
+                            }
                         }
-                        val myadapter = myAdapter(data.sjfl, this@VisitDetailsActivity)
-                        list.adapter = myadapter
+                        list.adapter = myAdapter(data.sjfl, this@VisitDetailsActivity)
+
                     }
                 }
 
@@ -124,7 +155,6 @@ class VisitDetailsActivity : BaseActivity() {
 
             }
             HttpUtil.getInstance().getXfryDetails(subscriber, id)
-
             list.setOnItemClickListener {
                 data.sjfl[it].selection = !data.sjfl[it].selection
                 list.update()
@@ -175,7 +205,7 @@ class VisitDetailsActivity : BaseActivity() {
 //    }
 
     //更新
-    private fun upXfryDetails() {
+    private fun upXfryDetails(str: String) {
         if (date.text.toString() == "") {
             Snackbar.make(submit, "请选择日期", Snackbar.LENGTH_LONG).show()
             return
@@ -196,10 +226,7 @@ class VisitDetailsActivity : BaseActivity() {
             Snackbar.make(submit, "请填写稳控措施", Snackbar.LENGTH_LONG).show()
             return
         }
-        if (morning.text.toString() == "") {
-            Snackbar.make(submit, "请填写上午见面情况", Snackbar.LENGTH_LONG).show()
-            return
-        }
+
 
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("upVisit", it)
@@ -211,7 +238,7 @@ class VisitDetailsActivity : BaseActivity() {
                 date.text.toString().trim(),
                 person.text.toString().trim(),
                 app.grid.sswg,
-                listtype,
+                str,
                 number.text.toString().trim(),
                 measures.text.toString().trim(),
                 app.grid.id,

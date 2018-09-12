@@ -18,7 +18,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="民情日记"
+            android:text="民情日记详情"
             android:textColor="#FFFFFF"
             android:textSize="50px" />
 
@@ -458,6 +458,7 @@
                     android:padding="30px">
 
                     <LinearLayout
+                        android:id="@+id/layout_photes"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
@@ -472,7 +473,6 @@
                             android:textSize="45px" />
 
                         <LinearLayout
-                            android:id="@+id/layout_photes"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="7"

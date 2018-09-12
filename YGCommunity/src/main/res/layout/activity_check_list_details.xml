@@ -389,6 +389,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/layout_photes"
                     android:layout_width="match_parent"
                     android:layout_height="160px"
                     android:layout_marginBottom="20px"
@@ -412,7 +413,6 @@
                             android:textSize="45px" />
 
                         <LinearLayout
-                            android:id="@+id/layout_photes"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="7"

@@ -317,6 +317,7 @@
                         android:background="@null"
                         android:singleLine="true"
                         android:textColor="#000000"
+                        android:hint="备注"
                         android:textSize="45px" />
 
                 </LinearLayout>

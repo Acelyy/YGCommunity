@@ -48,14 +48,17 @@
             android:padding="25px"
             android:src="@mipmap/pic_add" />
     </RelativeLayout>
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srlEnableLoadMore="false"
-        android:id="@+id/refresh">
+        app:srlEnableLoadMore="false">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,6 +70,7 @@
                     android:layout_height="wrap_content"
                     android:background="#fff"
                     app:mcv_calendarMode="month"
+                    app:mcv_tileHeight="30dp"
                     app:mcv_selectionColor="#cd2221"
                     app:mcv_showOtherDates="all" />
 

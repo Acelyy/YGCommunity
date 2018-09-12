@@ -22,12 +22,14 @@ import rx.Subscriber
 import java.util.*
 import android.support.design.widget.Snackbar
 import android.view.LayoutInflater
+import java.text.SimpleDateFormat
 
 
 class VisitActivity : BaseActivity() {
 
     private lateinit var date: String
     private lateinit var app: YGApplication
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_visit)
@@ -45,6 +47,8 @@ class VisitActivity : BaseActivity() {
         refresh.autoRefresh()
 
         pic_add.setOnClickListener { startActivity<AddVisitActivity>() }
+
+
         calendarView.setSelectedDate(Date())
         date = getTime(calendarView.selectedDate)
         calendarView.setOnDateChangedListener(object : OnDateSelectedListener {

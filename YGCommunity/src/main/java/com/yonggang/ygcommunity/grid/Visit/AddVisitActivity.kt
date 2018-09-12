@@ -57,7 +57,7 @@ class AddVisitActivity : BaseActivity() {
                 if (sBuffer.length > 0) {
                     listtype = sBuffer.substring(0, sBuffer.length - 1)
                 }
-                setGztj()
+                setGztj(listtype)
             }
         });
     }
@@ -158,7 +158,7 @@ class AddVisitActivity : BaseActivity() {
 
     }
 
-    private fun setGztj() {
+    private fun setGztj(str:String) {
         if (date.text.toString() == "") {
             Snackbar.make(submit, "请选择日期", Snackbar.LENGTH_LONG).show()
             return
@@ -179,21 +179,17 @@ class AddVisitActivity : BaseActivity() {
             Snackbar.make(submit, "请填写稳控措施", Snackbar.LENGTH_LONG).show()
             return
         }
-        if (morning.text.toString() == "") {
-            Snackbar.make(submit, "请填写上午见面情况", Snackbar.LENGTH_LONG).show()
-            return
-        }
 
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("addVisit", it)
             Snackbar.make(submit, "上报成功", Snackbar.LENGTH_LONG).show()
-//            finish()
+            finish()
         }
         HttpUtil.getInstance().setXfry(ProgressSubscriber<String>(subscriberOnNextListener, this@AddVisitActivity, "上报中"),
                 date.text.toString().trim(),
                 person.text.toString().trim(),
                 app.grid.sswg,
-                listtype,
+                str,
                 number.text.toString().trim(),
                 measures.text.toString().trim(),
                 app.grid.id,
