@@ -3,6 +3,7 @@ package com.yonggang.ygcommunity.grid.mission
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
 import com.yonggang.ygcommunity.Activity.BbsPicActivity
@@ -28,7 +29,14 @@ class MissionDetailActivity : BaseActivity() {
         app = application as YGApplication
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
         val id = intent.getStringExtra("id")
-        getDetail(id)
+        refresh.setOnRefreshListener {
+            getDetail(id)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refresh.autoRefresh()
     }
 
     /**
@@ -75,9 +83,21 @@ class MissionDetailActivity : BaseActivity() {
                         } else {
                             View.GONE
                         }
-                        6 -> View.VISIBLE
-                        7 -> View.VISIBLE
-                        8 -> View.VISIBLE
+                        6 -> if (app.grid.appauth == 2) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
+                        7 -> if (app.grid.appauth == 2) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
+                        8 -> if (app.grid.appauth == 2) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
 
                         else -> View.GONE
                     }
@@ -137,6 +157,8 @@ class MissionDetailActivity : BaseActivity() {
                         }
                     }
                 }
+
+                refresh.finishRefresh()
             }
 
             override fun onCompleted() {
@@ -145,6 +167,8 @@ class MissionDetailActivity : BaseActivity() {
 
             override fun onError(e: Throwable?) {
                 Log.i("getDetail", e.toString())
+                Snackbar.make(refresh, "获取失败，请稍后再试", Snackbar.LENGTH_LONG).show()
+                refresh.finishRefresh()
             }
         }
         HttpUtil.getInstance().getMissionDetail(subscriber, id)

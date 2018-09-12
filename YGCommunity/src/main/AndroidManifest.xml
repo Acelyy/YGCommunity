@@ -329,7 +329,9 @@
         <activity
             android:name=".Activity.BbsDetailActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
-        <activity android:name=".Activity.BbsPicActivity" />
+        <activity
+            android:name=".Activity.BbsPicActivity"
+            android:launchMode="singleTop" />
         <activity
             android:name=".Activity.BbsCommentsActivity"
             android:windowSoftInputMode="stateHidden|stateUnchanged" />
@@ -447,7 +449,7 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".grid.GridLoginActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".grid.event.AddEventActivity"
             android:launchMode="singleTop"
@@ -482,7 +484,7 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".grid.Visit.VisitActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
         <activity
             android:name=".grid.Visit.AddVisitActivity"
             android:launchMode="singleTop" />
@@ -495,11 +497,18 @@
             android:launchMode="singleTop" />
         <activity
             android:name=".grid.check.CheckListDetailsActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".grid.mission.MissionListActivity" />
         <activity
             android:name=".grid.mission.MissionDetailActivity"
+            android:launchMode="singleTop"
             android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".grid.mission.TransferActivity"
+            android:launchMode="singleTop">
+
+        </activity>
     </application>
 
 </manifest>
