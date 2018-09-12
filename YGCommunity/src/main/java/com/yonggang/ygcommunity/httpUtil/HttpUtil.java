@@ -52,6 +52,7 @@ import com.yonggang.ygcommunity.Entry.Search;
 import com.yonggang.ygcommunity.Entry.Signed;
 import com.yonggang.ygcommunity.Entry.SignedPerson;
 import com.yonggang.ygcommunity.Entry.Signin;
+import com.yonggang.ygcommunity.Entry.Swiper;
 import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
@@ -1621,4 +1622,13 @@ public class HttpUtil {
         toSubscribe(observable, subscriber);
     }
 
+    /**
+     * 获取轮播背景
+     * @param subscriber
+     */
+    public void getSwiper(Subscriber subscriber){
+        Observable observable = httpService.getSwiper()
+                .map(new HttpResultFunc<List<Swiper>>());
+        toSubscribe(observable,subscriber);
+    }
 }

@@ -54,6 +54,7 @@ import com.yonggang.ygcommunity.Entry.Search;
 import com.yonggang.ygcommunity.Entry.Signed;
 import com.yonggang.ygcommunity.Entry.SignedPerson;
 import com.yonggang.ygcommunity.Entry.Signin;
+import com.yonggang.ygcommunity.Entry.Swiper;
 import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
 import com.yonggang.ygcommunity.Entry.User;
@@ -1068,5 +1069,11 @@ public interface HttpService {
             @Field("id") String id,
             @Field("perids") String ids,
             @Field("comment") String comment
+    );
+
+    //获取轮播背景
+    @GET("app_gird_lbt")
+    Observable<HttpResult<List<Swiper>>> getSwiper(
+
     );
 }

@@ -2,17 +2,22 @@ package com.yonggang.ygcommunity.grid
 
 import android.os.Bundle
 import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.View
+import com.amap.api.maps.model.MyLocationStyle
 import com.scwang.smartrefresh.header.WaveSwipeHeader
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Gztj
+import com.yonggang.ygcommunity.Entry.Swiper
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
+import com.yonggang.ygcommunity.grid.Visit.AddVisitActivity
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
 import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
+import com.yonggang.ygcommunity.grid.folk.AddFolkActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.mission.MissionListActivity
@@ -47,13 +52,14 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
 
         layout_my_task.setOnClickListener(this)
         layout_my_work.setOnClickListener(this)
-
+        layout_my_visit.setOnClickListener(this)
         layout_app_hourse.setOnClickListener(this)
         layout_app_event.setOnClickListener(this)
         layout_app_note.setOnClickListener(this)
         layout_app_walk.setOnClickListener(this)
         layout_app_message.setOnClickListener(this)
         getGztj()
+        getSwiper()
     }
 
     override fun onClick(v: View?) {
@@ -61,8 +67,10 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_today_event -> startActivity<EventActivity>()
             R.id.layout_app_event -> startActivity<AddEventActivity>()
             R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
-            R.id.layout_app_note -> startActivity<FolkActivity>()
-            R.id.layout_app_walk -> startActivity<VisitActivity>()
+            R.id.layout_app_note -> startActivity<AddFolkActivity>()
+            R.id.layout_my_visit -> startActivity<VisitActivity>()
+            R.id.layout_app_walk -> startActivity<AddVisitActivity>()
+            R.id.layout_today_walk -> startActivity<FolkActivity>()
             R.id.layout_my_task -> {
                 if (app.grid.appauth == 1) {
                     startActivity<CheckListActivity>()
@@ -101,5 +109,21 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             }
         }
         HttpUtil.getInstance().getGztj(subscriber)
+    }
+
+    private fun getSwiper(){
+        val subscriber = object:Subscriber<MutableList<Swiper>>(){
+            override fun onCompleted() {
+            }
+
+            override fun onError(e: Throwable?) {
+                Log.i("error",e.toString())
+            }
+
+            override fun onNext(t: MutableList<Swiper>?) {
+
+            }
+        }
+        HttpUtil.getInstance().getSwiper(subscriber)
     }
 }
