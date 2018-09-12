@@ -54,13 +54,13 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:srlEnableLoadMore="false"
-            app:srlEnableRefresh="false">
+            android:layout_height="wrap_content"
+            app:srlEnableLoadMore="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -431,6 +431,7 @@
                     android:id="@+id/extra"
                     android:layout_width="match_parent"
                     android:layout_height="150px"
+                    android:layout_marginTop="20px"
                     android:background="@drawable/back_button_grid"
                     android:textColor="#FFFFFF"
                     android:textSize="45px"
