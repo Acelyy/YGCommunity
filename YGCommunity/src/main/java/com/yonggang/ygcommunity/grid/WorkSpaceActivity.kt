@@ -1,10 +1,13 @@
 package com.yonggang.ygcommunity.grid
 
+import android.content.Context
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import com.amap.api.maps.model.MyLocationStyle
+import com.bumptech.glide.Glide
 import com.scwang.smartrefresh.header.WaveSwipeHeader
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Gztj
@@ -22,7 +25,9 @@ import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.mission.MissionListActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
+import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.activity_work_space.*
+import kotlinx.android.synthetic.main.item_iamge_single.*
 import org.jetbrains.anko.startActivity
 import rx.Subscriber
 
@@ -121,7 +126,35 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             }
 
             override fun onNext(t: MutableList<Swiper>?) {
+                if(t != null){
+                    val imageList = ArrayList<String>()
+                    val titleList = ArrayList<String>()
+                    for(i in t){
+                        if(i.status == "1"){
+                            imageList.add("http://"+i.imgurl)
+                            titleList.add("")
+                        }
+                    }
 
+                    banner.setImages(imageList)
+                            .setDelayTime(3000)
+                            .setBannerTitles(titleList)
+                            .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
+                            .setImageLoader(object : com.youth.banner.loader.ImageLoader() {
+                                override fun displayImage(context: Context, path: Any, imageView: ImageView) {
+                                    imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+                                    //ImageLoader.getInstance().displayImage(path.toString(), imageView);
+                                    Glide.with(this@WorkSpaceActivity)
+                                            .load(path.toString())
+                                            .error(R.mipmap.pic_loading_error)
+                                            .into(imageView)
+
+
+                                }
+                            })
+                            .setBannerStyle(BannerConfig.NOT_INDICATOR)
+                            .start()
+                }
             }
         }
         HttpUtil.getInstance().getSwiper(subscriber)

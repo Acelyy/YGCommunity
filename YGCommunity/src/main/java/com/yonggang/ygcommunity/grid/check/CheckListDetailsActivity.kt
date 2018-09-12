@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.util.Log
+import android.view.View
 import com.alibaba.fastjson.JSON
 import com.yonggang.ygcommunity.Activity.BbsPicActivity
 import com.yonggang.ygcommunity.BaseActivity
@@ -14,6 +15,7 @@ import com.yonggang.ygcommunity.PhotoPicker.PhotoAdapter
 import com.yonggang.ygcommunity.PhotoPicker.RecyclerItemClickListener
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.ImageUtils
+import com.yonggang.ygcommunity.Util.NoDoubleClickListener
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
@@ -67,9 +69,11 @@ class CheckListDetailsActivity : BaseActivity() {
                                 .start(this)
                     }
                 }))
-        submit.setOnClickListener {
-            setTask()
-        }
+        submit.setOnClickListener(object: NoDoubleClickListener(){
+            override fun onNoDoubleClick(v: View?) {
+                setTask()
+            }
+        })
         pic_back.setOnClickListener { finish() }
         text_back.setOnClickListener { finish() }
     }
