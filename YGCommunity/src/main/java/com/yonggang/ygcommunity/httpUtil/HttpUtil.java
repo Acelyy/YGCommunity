@@ -55,6 +55,7 @@ import com.yonggang.ygcommunity.Entry.Signin;
 import com.yonggang.ygcommunity.Entry.Swiper;
 import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
+import com.yonggang.ygcommunity.Entry.Trail;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
 import com.yonggang.ygcommunity.Entry.Visit;
@@ -1630,6 +1631,18 @@ public class HttpUtil {
     public void getSwiper(Subscriber subscriber) {
         Observable observable = httpService.getSwiper()
                 .map(new HttpResultFunc<List<Swiper>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取事件轨迹
+     *
+     * @param subscriber
+     * @param id
+     */
+    public void getTrail(Subscriber subscriber, String id) {
+        Observable observable = httpService.getTrail(id)
+                .map(new HttpResultFunc<List<Trail>>());
         toSubscribe(observable, subscriber);
     }
 }
