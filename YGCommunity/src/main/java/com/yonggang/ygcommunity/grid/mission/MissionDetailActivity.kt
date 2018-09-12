@@ -32,6 +32,9 @@ class MissionDetailActivity : BaseActivity() {
         refresh.setOnRefreshListener {
             getDetail(id)
         }
+        trail.setOnClickListener {
+            startActivity<TrailActivity>("id" to id)
+        }
     }
 
     override fun onResume() {
@@ -171,7 +174,7 @@ class MissionDetailActivity : BaseActivity() {
                 refresh.finishRefresh()
             }
         }
-        HttpUtil.getInstance().getMissionDetail(subscriber, id)
+        HttpUtil.getInstance().getMissionDetail(subscriber, id, app.grid.id)
     }
 
     /**
