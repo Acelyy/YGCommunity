@@ -11,6 +11,8 @@ import android.widget.TextView
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.MissionBean
 import com.yonggang.ygcommunity.R
+import com.yonggang.ygcommunity.R.id.refresh
+import com.yonggang.ygcommunity.R.id.text_back
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil

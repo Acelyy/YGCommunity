@@ -55,6 +55,7 @@ import com.yonggang.ygcommunity.Entry.Signin;
 import com.yonggang.ygcommunity.Entry.Swiper;
 import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
+import com.yonggang.ygcommunity.Entry.Trail;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
 import com.yonggang.ygcommunity.Entry.Visit;
@@ -1534,8 +1535,8 @@ public class HttpUtil {
      * @param subscriber
      * @param id
      */
-    public void getMissionDetail(Subscriber subscriber, String id) {
-        Observable observable = httpService.getMissionDetail(id)
+    public void getMissionDetail(Subscriber subscriber, String id, String mg_id) {
+        Observable observable = httpService.getMissionDetail(id, mg_id)
                 .map(new HttpResultFunc<MissionDetail>());
         toSubscribe(observable, subscriber);
     }
@@ -1624,11 +1625,24 @@ public class HttpUtil {
 
     /**
      * 获取轮播背景
+     *
      * @param subscriber
      */
-    public void getSwiper(Subscriber subscriber){
+    public void getSwiper(Subscriber subscriber) {
         Observable observable = httpService.getSwiper()
                 .map(new HttpResultFunc<List<Swiper>>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取事件轨迹
+     *
+     * @param subscriber
+     * @param id
+     */
+    public void getTrail(Subscriber subscriber, String id) {
+        Observable observable = httpService.getTrail(id)
+                .map(new HttpResultFunc<List<Trail>>());
+        toSubscribe(observable, subscriber);
     }
 }

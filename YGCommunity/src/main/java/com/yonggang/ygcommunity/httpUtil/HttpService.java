@@ -57,6 +57,7 @@ import com.yonggang.ygcommunity.Entry.Signin;
 import com.yonggang.ygcommunity.Entry.Swiper;
 import com.yonggang.ygcommunity.Entry.Title;
 import com.yonggang.ygcommunity.Entry.TotalScore;
+import com.yonggang.ygcommunity.Entry.Trail;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Entry.Version;
 import com.yonggang.ygcommunity.Entry.Visit;
@@ -1010,7 +1011,8 @@ public interface HttpService {
     @POST("get_eventlist_detail")
     @FormUrlEncoded
     Observable<HttpResult<MissionDetail>> getMissionDetail(
-            @Field("id") String id
+            @Field("id") String id,
+            @Field("mg_id") String mg_id
     );
 
     // 事件签收
@@ -1071,9 +1073,16 @@ public interface HttpService {
             @Field("comment") String comment
     );
 
-    //获取轮播背景
+    // 获取轮播背景
     @GET("app_gird_lbt")
     Observable<HttpResult<List<Swiper>>> getSwiper(
 
+    );
+
+    // 获取事件轨迹
+    @POST("app_event_gj")
+    @FormUrlEncoded
+    Observable<HttpResult<List<Trail>>> getTrail(
+            @Field("id") String id
     );
 }
