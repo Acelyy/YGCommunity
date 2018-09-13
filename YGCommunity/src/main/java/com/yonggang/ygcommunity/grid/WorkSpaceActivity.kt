@@ -102,6 +102,9 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 size_today_event.withNumber(data!!.sbsj).start()
                 size_today_hourse.withNumber(data.rfcj).start()
                 size_today_walk.withNumber(data.zfqk).start()
+                size_my_task.withNumber(data.my_hcrw).start()
+                size_my_work.withNumber(data.my_gdcl).start()
+                size_my_visit.withNumber(data.my_xfry).start()
                 refresh.finishRefresh()
             }
 
@@ -113,7 +116,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 refresh.finishRefresh()
             }
         }
-        HttpUtil.getInstance().getGztj(subscriber)
+        HttpUtil.getInstance().getGztj(subscriber,app.grid.id)
     }
 
     private fun getSwiper(){

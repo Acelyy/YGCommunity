@@ -1401,9 +1401,10 @@ public class HttpUtil {
 
     /**
      * 获取工作统计
+     * @param id
      */
-    public void getGztj(Subscriber subscriber) {
-        Observable observable = httpService.getGztj()
+    public void getGztj(Subscriber subscriber,String id) {
+        Observable observable = httpService.getGztj(id)
                 .map(new HttpResultFunc<Gztj>());
         toSubscribe(observable, subscriber);
     }

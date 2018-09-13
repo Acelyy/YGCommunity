@@ -11,6 +11,33 @@ public class Gztj {
     private int rfcj;
     private int sbsj;
     private int zfqk;
+    private int my_hcrw;
+    private int my_gdcl;
+    private int my_xfry;
+
+    public int getMy_hcrw() {
+        return my_hcrw;
+    }
+
+    public void setMy_hcrw(int my_hcrw) {
+        this.my_hcrw = my_hcrw;
+    }
+
+    public int getMy_gdcl() {
+        return my_gdcl;
+    }
+
+    public void setMy_gdcl(int my_gdcl) {
+        this.my_gdcl = my_gdcl;
+    }
+
+    public int getMy_xfry() {
+        return my_xfry;
+    }
+
+    public void setMy_xfry(int my_xfry) {
+        this.my_xfry = my_xfry;
+    }
 
     public int getRfcj() {
         return rfcj;

@@ -919,9 +919,10 @@ public interface HttpService {
     );
 
     // 获取工作统计
-    @GET("drgztj")
+    @POST("drgztj")
+    @FormUrlEncoded
     Observable<HttpResult<Gztj>> getGztj(
-
+            @Field("mg_id") String mg_id
     );
 
     // 上报信访人员
