@@ -48,7 +48,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         refresh.setOnRefreshListener {
             getGztj()
         }
-
         pic_back.setOnClickListener { finish() }
         text_back.setOnClickListener { finish() }
         layout_today_event.setOnClickListener(this)
@@ -71,7 +70,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.layout_today_event -> startActivity<EventActivity>()
             R.id.layout_app_event -> startActivity<AddEventActivity>()
-            R.id.layout_today_hourse -> startActivity<HouseInfoActivity>()
+            R.id.layout_app_hourse -> startActivity<HouseInfoActivity>()
             R.id.layout_app_note -> startActivity<AddFolkActivity>()
             R.id.layout_my_visit -> startActivity<VisitActivity>()
             R.id.layout_app_walk -> startActivity<AddVisitActivity>()
