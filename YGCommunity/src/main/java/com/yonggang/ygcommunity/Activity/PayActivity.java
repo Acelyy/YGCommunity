@@ -1,6 +1,11 @@
 package com.yonggang.ygcommunity.Activity;
 
+import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -55,6 +60,11 @@ public class PayActivity extends BaseActivity {
 
     private int pay_type = -1;
 
+    private String id;// 欠费记录的id
+
+    private PayFinish pay;
+
+    @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
 
         public void handleMessage(Message msg) {
@@ -70,6 +80,7 @@ public class PayActivity extends BaseActivity {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
+                        sendMid();
                         Toast.makeText(PayActivity.this, "支付成功,+" + msg.getData().getString("score") + "积分", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
@@ -92,6 +103,13 @@ public class PayActivity extends BaseActivity {
         setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
         app = (YGApplication) getApplication();
+
+        pay = new PayFinish();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction("payFinish");
+        registerReceiver(pay, filter);
+
+        id = getIntent().getExtras().getString("id");
         bean = (Expense) getIntent().getExtras().getSerializable("account");
         //初始化界面
         txtName.setText(bean.getTab_name());
@@ -114,6 +132,12 @@ public class PayActivity extends BaseActivity {
 
         api = WXAPIFactory.createWXAPI(this, Constants.APP_ID, true);
         api.registerApp(Constants.APP_ID);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(pay);
     }
 
     @OnClick({R.id.img_finish, R.id.btn_complete})
@@ -186,10 +210,10 @@ public class PayActivity extends BaseActivity {
         SubscriberOnNextListener onNextListener = new SubscriberOnNextListener<WechatPay>() {
             @Override
             public void onNext(WechatPay data) {
-                Log.i("wxpay",JSON.toJSONString(data));
+                Log.i("wxpay", JSON.toJSONString(data));
                 PayReq req = new PayReq();
 
-                req.extData = "app data"; // optional
+                req.extData = id; // optional
 
                 req.appId = data.getResponse().getAppid();
 
@@ -209,6 +233,19 @@ public class PayActivity extends BaseActivity {
             }
         };
         HttpUtil.getInstance().wxpay(new ProgressSubscriber<WechatPay>(onNextListener, this, "支付中"), app.getUser().getUser_id(), bean.getId(), bean.getType());
+    }
+
+    /**
+     *
+     */
+    private void sendMid() {
+        SubscriberOnNextListener onNextListener = new SubscriberOnNextListener<String>() {
+            @Override
+            public void onNext(String data) {
+                Log.i("sendMid", data);
+            }
+        };
+        HttpUtil.getInstance().sendMid(new ProgressSubscriber<String>(onNextListener, this), id);
     }
 
     /**
@@ -259,6 +296,14 @@ public class PayActivity extends BaseActivity {
          */
         public String getResult() {
             return result;
+        }
+    }
+
+    class PayFinish extends BroadcastReceiver {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            finish();
         }
     }
 }

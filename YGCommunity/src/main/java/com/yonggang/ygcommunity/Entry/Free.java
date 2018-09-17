@@ -82,6 +82,7 @@ public class Free {
         private String price;
         private String quarter;
         private String unit_price;
+        private String id;
 
         public String getAnnual() {
             return annual;
@@ -113,6 +114,14 @@ public class Free {
 
         public void setUnit_price(String unit_price) {
             this.unit_price = unit_price;
+        }
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
         }
     }
 

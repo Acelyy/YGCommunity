@@ -1402,9 +1402,10 @@ public class HttpUtil {
 
     /**
      * 获取工作统计
+     *
      * @param id
      */
-    public void getGztj(Subscriber subscriber,String id) {
+    public void getGztj(Subscriber subscriber, String id) {
         Observable observable = httpService.getGztj(id)
                 .map(new HttpResultFunc<Gztj>());
         toSubscribe(observable, subscriber);
@@ -1657,6 +1658,18 @@ public class HttpUtil {
     public void getNotify(Subscriber subscriber) {
         Observable observable = httpService.getNotify()
                 .map(new HttpResultFunc<List<Notify>>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 支付成功告知后台修改中间状态
+     *
+     * @param subscriber
+     * @param id
+     */
+    public void sendMid(Subscriber subscriber, String id) {
+        Observable observable = httpService.sendMid(id)
+                .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
 

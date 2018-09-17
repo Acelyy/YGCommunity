@@ -558,6 +558,13 @@ public interface HttpService {
             @Field("type") int typ
     );
 
+    // 支付成功告知后台修改中间状态
+    @POST("pay_mid_state")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> sendMid(
+            @Field("id") String id
+    );
+
     // 关于我们
     @POST("about_us")
     @FormUrlEncoded

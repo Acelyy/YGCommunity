@@ -52,6 +52,8 @@ public class FeeListActivity extends BaseActivity {
 
     private String txt_sum;
 
+    private String id;// 记录的id
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +93,7 @@ public class FeeListActivity extends BaseActivity {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("account", bean);
                 bundle.putString("sum", txt_sum);
+                bundle.putString("id", id);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -128,7 +131,19 @@ public class FeeListActivity extends BaseActivity {
                     txt_sum = data.getTotal_price();
                 }
                 listFree.setAdapter(new FreeAdapter(data.getJfmsg()));
-
+                // 记录id
+                StringBuilder sb = new StringBuilder();
+                if (data.getJfmsg() != null && !data.getJfmsg().isEmpty()) {
+                    for (Free.JfmsgBean bean : data.getJfmsg()) {
+                        sb.append(bean.getId());
+                        sb.append(",");
+                    }
+                }
+                if (sb.length() > 0) {
+                    id = sb.substring(0, sb.length() - 1);
+                } else {
+                    id = "";
+                }
             }
         };
         HttpUtil.getInstance().check_costs(subscriber, bean.getId(), bean.getType());
