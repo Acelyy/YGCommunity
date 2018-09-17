@@ -18,7 +18,7 @@ import java.util.*
 
 class FolkAdapter(var data: MutableList<Folk>, val context: Context): BaseAdapter() {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var holder: ViewHolder
+        val holder: ViewHolder
         val view: View
         if (convertView == null) {
             view = LayoutInflater.from(context).inflate(R.layout.item_folk, parent, false)

@@ -44,6 +44,7 @@ import com.yonggang.ygcommunity.Entry.MissionDetail;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
+import com.yonggang.ygcommunity.Entry.Notify;
 import com.yonggang.ygcommunity.Entry.PayRecord;
 import com.yonggang.ygcommunity.Entry.PicBean;
 import com.yonggang.ygcommunity.Entry.Publish;
@@ -1646,4 +1647,17 @@ public class HttpUtil {
                 .map(new HttpResultFunc<List<Trail>>());
         toSubscribe(observable, subscriber);
     }
+
+
+    /**
+     * 消息通知的列表
+     *
+     * @param subscriber
+     */
+    public void getNotify(Subscriber subscriber) {
+        Observable observable = httpService.getNotify()
+                .map(new HttpResultFunc<List<Notify>>());
+        toSubscribe(observable, subscriber);
+    }
+
 }

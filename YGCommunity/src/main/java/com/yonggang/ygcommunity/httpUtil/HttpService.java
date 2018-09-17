@@ -46,6 +46,7 @@ import com.yonggang.ygcommunity.Entry.MissionDetail;
 import com.yonggang.ygcommunity.Entry.MyActivity;
 import com.yonggang.ygcommunity.Entry.NewsItem;
 import com.yonggang.ygcommunity.Entry.Notice;
+import com.yonggang.ygcommunity.Entry.Notify;
 import com.yonggang.ygcommunity.Entry.PayRecord;
 import com.yonggang.ygcommunity.Entry.PicBean;
 import com.yonggang.ygcommunity.Entry.Publish;
@@ -1086,4 +1087,11 @@ public interface HttpService {
     Observable<HttpResult<List<Trail>>> getTrail(
             @Field("id") String id
     );
+
+    //消息通知的列表
+    @GET("gird_get_jlist")
+    Observable<HttpResult<List<Notify>>> getNotify(
+
+    );
+
 }

@@ -506,8 +506,10 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".grid.mission.TransferActivity"
-            android:launchMode="singleTop"></activity>
-        <activity android:name=".grid.mission.TrailActivity"></activity>
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.mission.TrailActivity" />
+        <activity android:name=".grid.notify.NotifyActivity" />
+        <activity android:name=".grid.notify.NotifyDetailsActivity"></activity>
     </application>
 
 </manifest>

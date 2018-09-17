@@ -24,6 +24,7 @@ import com.yonggang.ygcommunity.grid.folk.AddFolkActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.mission.MissionListActivity
+import com.yonggang.ygcommunity.grid.notify.NotifyActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.activity_work_space.*
@@ -89,6 +90,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                     Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
                 }
             }
+            R.id.layout_app_message -> startActivity<NotifyActivity>()
         }
     }
 
