@@ -1313,6 +1313,19 @@ public class HttpUtil {
     }
 
     /**
+     * 上传头像
+     *
+     * @param subscriber
+     * @param sfzh
+     * @param imgs
+     */
+    public void setPhote(Subscriber subscriber,String sfzh,String imgs){
+        Observable observable = httpService.setPhote(sfzh,imgs)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable,subscriber);
+    }
+
+    /**
      * 民情日志获取
      *
      * @param subscriber

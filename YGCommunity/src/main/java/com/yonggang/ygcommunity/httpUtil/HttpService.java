@@ -832,39 +832,47 @@ public interface HttpService {
     @FormUrlEncoded
     @POST("set_rfxx")
     Observable<HttpResult<String>> setHouseInfo(
-            @Field("sfsy") int is_community,
-            @Field("sfzh") String id,
-            @Field("xm") String name,
-            @Field("xb") String sex,
-            @Field("csrq") String birth,
-            @Field("gzdw") String job,
-            @Field("mz") String nation,
-            @Field("zzmm") String political,
-            @Field("fwbm_pk") String address,
-            @Field("lxdh") String phone,
-            @Field("hyzk") String marriage,
-            @Field("whcd") String education,
-            @Field("hjdz") String permanent,
-            @Field("hjbh") String permanentCode,
+            @Field("sfsy") int is_community,//1
+            @Field("sfzh") String id,//2
+            @Field("xm") String name,//3
+            @Field("xb") String sex,//4
+            @Field("csrq") String birth,//5
+            @Field("gzdw") String job,//6
+            @Field("mz") String nation,//7
+            @Field("zzmm") String political,//8
+            @Field("fwbm_pk") String address,//9
+            @Field("lxdh") String phone,//10
+            @Field("hyzk") String marriage,//11
+            @Field("whcd") String education,//12
+            @Field("hjdz") String permanent,//13
+            @Field("hjbh") String permanentCode,//14
 
-            @Field("sfyf") int is_special,
-            @Field("sfcj") int is_disability,
-            @Field("cjdj") int disabilityLevel,
-            @Field("sfjsb") int is_mental,
-            @Field("sfkc") int is_empty,
-            @Field("sfdj") int is_alone,
-            @Field("sfpk") int is_poor,
-            @Field("sftf") int is_help,
-            @Field("sfdbh") int is_low,
-            @Field("sfxsm") int is_new,
-            @Field("sffd") int is_landlord,
+            @Field("sfyf") int is_special,//15
+            @Field("sftf") int is_help,//16
+            @Field("sfjsb") int is_mental,//17
+            @Field("sfkc") int is_empty,//18
+            @Field("sfdj") int is_alone,//19
+            @Field("sfpk") int is_poor,//20
+            @Field("sfdbh") int is_low,//22
+            @Field("sfxsm") int is_new,//22
+            @Field("sffd") int is_landlord,//23
+            @Field("sfcj") int is_disability,//24
+            @Field("cjdj") int disabilityLevel,//25
 
-            @Field("bz") String disease,
-            @Field("zyzzh") String volunteerId,
-            @Field("fdlxdh") String landlordTel,
-            @Field("cph") String carNumber,
-            @Field("xqah") String hobby,
-            @Field("sbrid") String sbrid
+            @Field("bz") String disease,//26
+            @Field("zyzzh") String volunteerId,//27
+            @Field("fdlxdh") String landlordTel,//28
+            @Field("cph") String carNumber,//29
+            @Field("xqah") String hobby,//30
+            @Field("sbrid") String sbrid//31
+    );
+
+    //上传头像
+    @POST("upload_sfz_imgs")
+    @FormUrlEncoded
+    Observable<HttpResult<String>> setPhote(
+            @Field("sfzh") String sfzh,
+            @Field("imgs") String imgs
     );
 
     //民情日志

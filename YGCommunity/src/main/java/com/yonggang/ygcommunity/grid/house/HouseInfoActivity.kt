@@ -54,7 +54,7 @@ class HouseInfoActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-//        fragments.get(0).onActivityResult(requestCode, resultCode, data)
+        fragments.get(0).onActivityResult(requestCode, resultCode, data)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

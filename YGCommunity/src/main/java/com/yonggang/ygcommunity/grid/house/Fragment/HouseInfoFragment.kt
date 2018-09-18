@@ -3,6 +3,8 @@ package com.yonggang.ygcommunity.grid.house.Fragment
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.*
+import android.graphics.Bitmap
+import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -15,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.alibaba.fastjson.JSON
+import com.autonavi.amap.mapcore.tools.GLFileUtil.getCacheDir
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
 import com.baidu.ocr.sdk.exception.OCRError
@@ -24,18 +27,26 @@ import com.baidu.ocr.ui.camera.CameraActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.bumptech.glide.Glide
+import com.yalantis.ucrop.UCrop
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
 import com.yonggang.ygcommunity.Entry.HouseInfo
+import com.yonggang.ygcommunity.Util.ImageUtils
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
+import kotlinx.android.synthetic.main.layout.*
+import me.iwf.photopicker.PhotoPicker
+import me.iwf.photopicker.PhotoPreview
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
+import rx.Subscriber
+import rx.android.schedulers.AndroidSchedulers
+import rx.schedulers.Schedulers
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -63,7 +74,6 @@ class HouseInfoFragment : Fragment() {
     private lateinit var myTextWatcher: MyTextWatcher
     private var address_pk: String? = null
     private lateinit var updateAddressBroadcast: UpdateAddressBroadcast
-    //    private var face = "1"
     private val photoPaths = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -250,25 +260,25 @@ class HouseInfoFragment : Fragment() {
                 }
 
             }
-//            if (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE) { // photopicker的返回
-//                var photos: List<String>? = null
-//                if (data != null) {
-//                    photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS)
-//                }
-//                if (photos != null) {
-//                    val photo = photos[0]
-//                    val uri = Uri.fromFile(File(photo))
-//                    startCropActivity(uri)
-//                }
-//            }
-//            if (requestCode == UCrop.REQUEST_CROP) { // 裁剪的返回
-//                handleCropResult(data!!)
-//            }
+            if (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE) { // photopicker的返回
+                var photos: List<String>? = null
+                if (data != null) {
+                    photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS)
+                }
+                if (photos != null) {
+                    val photo = photos[0]
+                    val uri = Uri.fromFile(File(photo))
+                    startCropActivity(uri, File(photo).name)
+                }
+            }
+            if (requestCode == UCrop.REQUEST_CROP) { // 裁剪的返回
+                handleCropResult(data!!)
+            }
         }
-//
-//        if (resultCode == UCrop.RESULT_ERROR) {
-//            handleCropError(data!!)
-//        }
+
+        if (resultCode == UCrop.RESULT_ERROR) {
+            handleCropError(data!!)
+        }
     }
 
     /**
@@ -276,38 +286,63 @@ class HouseInfoFragment : Fragment() {
      *
      * @param uri
      */
-//    private fun startCropActivity(uri: Uri) {
-//        val destinationFileName = "zhylhead.png"
-//        var uCrop = UCrop.of(uri, Uri.fromFile(File(getCacheDir(activity), destinationFileName)))
-//        val options = UCrop.Options()
-//        options.setCompressionFormat(Bitmap.CompressFormat.PNG)
-//        options.setCompressionQuality(90)
-//        options.setHideBottomControls(false)
-//        options.setFreeStyleCropEnabled(false)
-//        uCrop = uCrop.withAspectRatio(1f, 1f)
-//        uCrop.withOptions(options)
-//        uCrop.start(activity)
-//    }
-//
-//    private fun handleCropResult(result: Intent) {
-//        val resultUri = UCrop.getOutput(result)
-//        if (resultUri != null) {
-//            Glide.with(activity).load(resultUri).into(head)
-//            face = ImageUtils.bitmapToString(resultUri.path)
-//            Log.i("face", face)
-//        } else {
-//            Toast.makeText(activity, "裁剪头像出错，请重新尝试", Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    private fun startCropActivity(uri: Uri, fileName: String) {
+        var uCrop = UCrop.of(uri, Uri.fromFile(File(getCacheDir(activity), fileName)))
+        val options = UCrop.Options()
+        options.setCompressionFormat(Bitmap.CompressFormat.PNG)
+        options.setCompressionQuality(90)
+        options.setHideBottomControls(false)
+        options.setFreeStyleCropEnabled(false)
+        uCrop = uCrop.withAspectRatio(1f, 1f)
+        uCrop.withOptions(options)
+        uCrop.start(activity)
+    }
 
-//    private fun handleCropError(result: Intent) {
-//        val cropError = UCrop.getError(result)
-//        if (cropError != null) {
-//            Toast.makeText(activity, cropError.message, Toast.LENGTH_LONG).show()
-//        } else {
-//            Toast.makeText(activity, "未知错误", Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    private fun handleCropResult(result: Intent) {
+        val resultUri = UCrop.getOutput(result)
+        if (resultUri != null) {
+            var face = ""
+
+            val observable = rx.Observable.create(rx.Observable.OnSubscribe<String> {
+                face = ImageUtils.bitmapToString(resultUri.path)
+                it.onCompleted()
+            }).subscribeOn(Schedulers.io())
+                    .unsubscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+            val subscriber = object:Subscriber<String>(){
+                override fun onNext(t: String?) {
+
+                }
+
+                override fun onCompleted() {
+                    val subscriberOnNextListener = SubscriberOnNextListener<String> {
+                        Glide.with(activity).load(resultUri).into(head)
+                    }
+                    HttpUtil.getInstance().setPhote(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "头像上传中"),number.text.toString().trim(),JSON.toJSONString(face))
+                }
+
+                override fun onError(e: Throwable?) {
+                    Log.i("error",e.toString())
+                }
+
+            }
+            observable.subscribe(subscriber)
+            Log.i("img",JSON.toJSONString(face))
+
+
+        } else {
+            Toast.makeText(activity, "裁剪头像出错，请重新尝试", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun handleCropError(result: Intent) {
+        val cropError = UCrop.getError(result)
+        if (cropError != null) {
+            Toast.makeText(activity, cropError.message, Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(activity, "未知错误", Toast.LENGTH_SHORT).show()
+        }
+    }
 
 
     private fun recIDCard(idCardSide: String, filePath: String) {
@@ -323,8 +358,8 @@ class HouseInfoFragment : Fragment() {
         OCR.getInstance(activity).recognizeIDCard(param, object : OnResultListener<IDCardResult> {
             override fun onResult(result: IDCardResult?) {
                 if (result != null) {
+                    myTextWatcher.result = result
                     number.text = Editable.Factory.getInstance().newEditable("" + result.idNumber)
-
                 } else {
                     Snackbar.make(scanner, "扫描失败", Snackbar.LENGTH_LONG)
                 }
@@ -343,7 +378,7 @@ class HouseInfoFragment : Fragment() {
      */
     private fun getHouseInfo(result: IDCardResult?, id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<HouseInfo> {
-//            Log.i("getHouseInfo", it)
+            //            Log.i("getHouseInfo", it)
 
             Log.i("getHouseInfo", JSON.toJSONString(it))
             onRemoveFragment.onRemoveFragment()
@@ -475,6 +510,7 @@ class HouseInfoFragment : Fragment() {
                         2 -> rg_cj.check(R.id.cj2);
                         3 -> rg_cj.check(R.id.cj3);
                         4 -> rg_cj.check(R.id.cj4);
+                        else -> rg_cj.check(R.id.false_cj)
                     }
                 }
 
@@ -507,16 +543,18 @@ class HouseInfoFragment : Fragment() {
                 } else {
                     it.xqah
                 })
-                if (it.tplj != null) {
+                if (it.tplj != "" && it.tplj != null) {
                     Glide.with(activity).load(it.tplj).into(head)
                 }
-//                head.setOnClickListener {
-//                    PhotoPicker.builder()
-//                            .setPhotoCount(1)
-//                            .setShowCamera(true)
-//                            .setPreviewEnabled(true)
-//                            .start(activity)
-//                }
+                if(it.sfsy != 3){
+                    head.setOnClickListener {
+                        PhotoPicker.builder()
+                                .setPhotoCount(1)
+                                .setShowCamera(true)
+                                .setPreviewEnabled(true)
+                                .start(activity)
+                    }
+                }
 
             } else {
                 if (result != null) {
@@ -525,7 +563,10 @@ class HouseInfoFragment : Fragment() {
                         rg_sex.check(R.id.man) else rg_sex.check(R.id.woman)
                     birth.text = Editable.Factory.getInstance().newEditable(result.birthday.toString())
                     nation.text = Editable.Factory.getInstance().newEditable(result.ethnic.toString())
-                    address.text = Editable.Factory.getInstance().newEditable(result.address.toString())
+//                    address.text = Editable.Factory.getInstance().newEditable(result.address.toString())
+                } else {
+                    //Snackbar.make(refresh, "扫描失败", Snackbar.LENGTH_LONG).show()
+                    Log.i("扫描失败", "扫描失败")
                 }
             }
         }
@@ -645,8 +686,8 @@ class HouseInfoFragment : Fragment() {
             R.id.true_fd -> 1
             else -> 0
         } + "\n" +
-                "残疾：" + when (rg_cj.checkedRadioButtonId) {
-            R.id.false_cj -> 0
+                "残疾：" + when {
+            false_cj.isChecked -> 0
             else -> 1
         } + "====" + when {
             cj1.isChecked -> 1
@@ -670,79 +711,79 @@ class HouseInfoFragment : Fragment() {
                     floating.isChecked -> 3
                     member.isChecked -> 4
                     else -> 0
-                },
-                number.text.toString().trim(),
-                name.text.toString().trim(),
+                },//1
+                number.text.toString().trim(),//2
+                name.text.toString().trim(),//3
 
                 when (rg_sex.checkedRadioButtonId) {
                     R.id.man -> "男"
                     else -> "女"
-                },
+                },//4
 
-                birth.text.toString().trim(),
-                depart.text.toString().trim(),
-                nation.text.toString().trim(),
-                political.text.toString().trim(),
-                address_pk,
-                tell.text.toString().trim(),
-                marriage.text.toString().trim(),
-                education.text.toString().trim(),
-                household.text.toString().trim(),
-                house_id.text.toString().trim(),
+                birth.text.toString().trim(),//5
+                depart.text.toString().trim(),//6
+                nation.text.toString().trim(),//7
+                political.text.toString().trim(),//8
+                address_pk,//9
+                tell.text.toString().trim(),//10
+                marriage.text.toString().trim(),//11
+                education.text.toString().trim(),//12
+                household.text.toString().trim(),//13
+                house_id.text.toString().trim(),//14
 
                 when (rg_yf.checkedRadioButtonId) {
                     R.id.true_yf -> 1
                     else -> 0
-                },
+                },//15
                 when (rg_tf.checkedRadioButtonId) {
                     R.id.true_tf -> 1
                     else -> 0
-                },
+                },//16
                 when (rg_jsb.checkedRadioButtonId) {
                     R.id.true_jsb -> 1
                     else -> 0
-                },
+                },//17
                 when (rg_kc.checkedRadioButtonId) {
                     R.id.true_kc -> 1
                     else -> 0
-                },
+                },//18
                 when (rg_dj.checkedRadioButtonId) {
                     R.id.true_dj -> 1
                     else -> 0
-                },
+                },//19
                 when (rg_pkh.checkedRadioButtonId) {
                     R.id.true_pkh -> 1
                     else -> 0
-                },
+                },//20
                 when (rg_dbh.checkedRadioButtonId) {
                     R.id.true_dbh -> 1
                     else -> 0
-                },
+                },//21
                 when (rg_xsm.checkedRadioButtonId) {
                     R.id.true_xsm -> 1
                     else -> 0
-                },
+                },//22
                 when (rg_fd.checkedRadioButtonId) {
                     R.id.true_fd -> 1
                     else -> 0
-                },
-                when (rg_cj.checkedRadioButtonId) {
-                    R.id.false_cj -> 0
+                },//23
+                when {
+                    false_cj.isChecked -> 0
                     else -> 1
-                },
+                },//24
                 when {
                     cj1.isChecked -> 1
                     cj2.isChecked -> 2
                     cj3.isChecked -> 3
                     cj4.isChecked -> 4
                     else -> 0
-                },
-                disease.text.toString().trim(),
-                volunteerId.text.toString().trim(),
-                landlordTel.text.toString().trim(),
-                carNumber.text.toString().trim(),
-                hobby.text.toString().trim(),
-                app.grid.id
+                },//25
+                disease.text.toString().trim(),//26
+                volunteerId.text.toString().trim(),//27
+                landlordTel.text.toString().trim(),//28
+                carNumber.text.toString().trim(),//29
+                hobby.text.toString().trim(),//30
+                app.grid.id//31
         )
 
     }
