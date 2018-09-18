@@ -90,6 +90,7 @@ class VisitActivity : BaseActivity() {
             }
 
         }
+        Log.i("date",date)
         HttpUtil.getInstance().getXfry(subscriber, date, app.grid.id)
 
 //        val subscriberOnNextListener = SubscriberOnNextListener<MutableList<Visit>> {

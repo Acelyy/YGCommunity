@@ -3,8 +3,6 @@ package com.yonggang.ygcommunity.grid.house.Fragment
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.*
-import android.graphics.Bitmap
-import android.net.Uri
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
@@ -17,7 +15,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.alibaba.fastjson.JSON
-import com.autonavi.amap.mapcore.tools.GLFileUtil.getCacheDir
 import com.baidu.ocr.sdk.OCR
 import com.baidu.ocr.sdk.OnResultListener
 import com.baidu.ocr.sdk.exception.OCRError
@@ -27,20 +24,16 @@ import com.baidu.ocr.ui.camera.CameraActivity
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.bumptech.glide.Glide
-import com.yalantis.ucrop.UCrop
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.FileUtil
-import com.yonggang.ygcommunity.Util.ImageUtils
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.house.SelectHouseActivity
-import com.yonggang.ygcommunity.httpUtil.HouseInfo
+import com.yonggang.ygcommunity.Entry.HouseInfo
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
-import me.iwf.photopicker.PhotoPicker
-import me.iwf.photopicker.PhotoPreview
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import java.io.File
@@ -70,7 +63,7 @@ class HouseInfoFragment : Fragment() {
     private lateinit var myTextWatcher: MyTextWatcher
     private var address_pk: String? = null
     private lateinit var updateAddressBroadcast: UpdateAddressBroadcast
-//    private var face = "1"
+    //    private var face = "1"
     private val photoPaths = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -242,7 +235,7 @@ class HouseInfoFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK){
+        if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_CODE_CAMERA) {
                 if (data != null) {
                     val contentType = data.getStringExtra(CameraActivity.KEY_CONTENT_TYPE)
@@ -350,6 +343,8 @@ class HouseInfoFragment : Fragment() {
      */
     private fun getHouseInfo(result: IDCardResult?, id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<HouseInfo> {
+//            Log.i("getHouseInfo", it)
+
             Log.i("getHouseInfo", JSON.toJSONString(it))
             onRemoveFragment.onRemoveFragment()
             if (it != null) {
@@ -489,25 +484,25 @@ class HouseInfoFragment : Fragment() {
                     it.bz
                 })
 
-                volunteerId.text = Editable.Factory.getInstance().newEditable(if (it.zyzh == null) {
+                volunteerId.text = Editable.Factory.getInstance().newEditable(if (it.zyzzh == null) {
                     ""
                 } else {
-                    it.zyzh
+                    it.zyzzh
                 })
 
-                disease.text = Editable.Factory.getInstance().newEditable(if (it.fdlxdh == null) {
+                landlordTel.text = Editable.Factory.getInstance().newEditable(if (it.fdlxdh == null) {
                     ""
                 } else {
                     it.fdlxdh
                 })
 
-                disease.text = Editable.Factory.getInstance().newEditable(if (it.cph == null) {
+                carNumber.text = Editable.Factory.getInstance().newEditable(if (it.cph == null) {
                     ""
                 } else {
                     it.cph
                 })
 
-                disease.text = Editable.Factory.getInstance().newEditable(if (it.xqah == null) {
+                hobby.text = Editable.Factory.getInstance().newEditable(if (it.xqah == null) {
                     ""
                 } else {
                     it.xqah
@@ -590,6 +585,84 @@ class HouseInfoFragment : Fragment() {
                 else -> 0
             })
         }
+
+        val str = "" +
+                "类型" + when {
+            community.isChecked -> 1
+            register.isChecked -> 2
+            floating.isChecked -> 3
+            member.isChecked -> 4
+            else -> 0
+        } + "\n" +
+                "身份证：" + number.text.toString().trim() + "\n" +
+                "姓名：" + name.text.toString().trim() + "\n" +
+                "性别：" + when (rg_sex.checkedRadioButtonId) {
+            R.id.man -> "男"
+            else -> "女"
+        } + "\n" +
+                "出生日期：" + birth.text.toString().trim() + "\n" +
+                "工作/学校：" + depart.text.toString().trim() + "\n" +
+                "政治面貌：" + nation.text.toString().trim() + "\n" +
+                "地址：" + address_pk + "\n" +
+                "电话：" + tell.text.toString().trim() + "\n" +
+                "婚姻状况：" + marriage.text.toString().trim() + "\n" +
+                "文化程度：" + education.text.toString().trim() + "\n" +
+                "户籍地址：" + household.text.toString().trim() + "\n" +
+                "户籍号：" + house_id.text.toString().trim() + "\n" +
+                "优抚：" + when (rg_yf.checkedRadioButtonId) {
+            R.id.true_yf -> 1
+            else -> 0
+        } + "\n" +
+                "特扶：" + when (rg_tf.checkedRadioButtonId) {
+            R.id.true_tf -> 1
+            else -> 0
+        } + "\n" +
+                "精神病：" + when (rg_jsb.checkedRadioButtonId) {
+            R.id.true_jsb -> 1
+            else -> 0
+        } + "\n" +
+                "空巢：" + when (rg_kc.checkedRadioButtonId) {
+            R.id.true_kc -> 1
+            else -> 0
+        } + "\n" +
+                "独居：" + when (rg_dj.checkedRadioButtonId) {
+            R.id.true_dj -> 1
+            else -> 0
+        } + "\n" +
+                "平困户：" + when (rg_pkh.checkedRadioButtonId) {
+            R.id.true_pkh -> 1
+            else -> 0
+        } + "\n" +
+                "低保：" + when (rg_dbh.checkedRadioButtonId) {
+            R.id.true_dbh -> 1
+            else -> 0
+        } + "\n" +
+                "新市民：" + when (rg_xsm.checkedRadioButtonId) {
+            R.id.true_xsm -> 1
+            else -> 0
+        } + "\n" +
+                "房东：" + when (rg_fd.checkedRadioButtonId) {
+            R.id.true_fd -> 1
+            else -> 0
+        } + "\n" +
+                "残疾：" + when (rg_cj.checkedRadioButtonId) {
+            R.id.false_cj -> 0
+            else -> 1
+        } + "====" + when {
+            cj1.isChecked -> 1
+            cj2.isChecked -> 2
+            cj3.isChecked -> 3
+            cj4.isChecked -> 4
+            else -> 0
+        } + "\n" +
+                "重大疾病：" + disease.text.toString().trim() + "\n" +
+                "志愿者证号：" + volunteerId.text.toString().trim() + "\n" +
+                "房东联系方式：" + landlordTel.text.toString().trim() + "\n" +
+                "车牌号：" + carNumber.text.toString().trim() + "\n" +
+                "爱好：" + hobby.text.toString().trim()
+        Log.i("提交", str)
+
+
         HttpUtil.getInstance().setHouseInfo(ProgressSubscriber<String>(subscriberOnNextListener, activity, "保存信息中"),
                 when {
                     community.isChecked -> 1
