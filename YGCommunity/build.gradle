@@ -105,6 +105,7 @@ dependencies {
     compile project(':OCRUI')
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
     compile 'com.android.support:recyclerview-v7:25.4.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
 }
 repositories {
     mavenCentral()
