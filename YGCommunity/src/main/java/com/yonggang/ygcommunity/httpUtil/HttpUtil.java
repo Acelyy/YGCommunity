@@ -69,6 +69,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.fastjson.FastJsonConverterFactory;
@@ -98,6 +99,16 @@ public class HttpUtil {
     private static HttpUtil INSTANCE = new HttpUtil();
 
     private HttpUtil() {
+        //日志显示级别
+        HttpLoggingInterceptor.Level level = HttpLoggingInterceptor.Level.BASIC;
+        //新建log拦截器
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+            @Override
+            public void log(String message) {
+                Log.d("lyy", "OkHttp====Message:" + message);
+            }
+        });
+        loggingInterceptor.setLevel(level);
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);//设置超时时间
         retrofit = new Retrofit.Builder()
@@ -106,6 +117,8 @@ public class HttpUtil {
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
+        //OkHttp进行添加拦截器loggingInterceptor
+        clientBuilder.addInterceptor(loggingInterceptor);
         httpService = retrofit.create(HttpService.class);
     }
 
@@ -908,6 +921,12 @@ public class HttpUtil {
         Observable observable = httpService.wxpay(user_id, id, type)
                 .map(new HttpResultFunc<WechatPay>());
         toSubscribe(observable, subscriber);
+    }
+
+    public void queryOrder(Subscriber<String> subscriber,String orderId){
+        Observable observable =httpService.queryOrder(orderId)
+                .map(new HttpResultFunc<String>());
+        toSubscribe(observable,subscriber);
     }
 
     /**
