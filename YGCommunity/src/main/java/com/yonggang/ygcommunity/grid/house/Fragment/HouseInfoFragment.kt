@@ -50,6 +50,7 @@ import rx.schedulers.Schedulers
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -301,10 +302,9 @@ class HouseInfoFragment : Fragment() {
     private fun handleCropResult(result: Intent) {
         val resultUri = UCrop.getOutput(result)
         if (resultUri != null) {
-            var face = ""
-
+            val imgs = ArrayList<String>()
             val observable = rx.Observable.create(rx.Observable.OnSubscribe<String> {
-                face = ImageUtils.bitmapToString(resultUri.path)
+                imgs.add(ImageUtils.bitmapToString(resultUri.path))
                 it.onCompleted()
             }).subscribeOn(Schedulers.io())
                     .unsubscribeOn(Schedulers.io())
@@ -317,8 +317,10 @@ class HouseInfoFragment : Fragment() {
                 override fun onCompleted() {
                     val subscriberOnNextListener = SubscriberOnNextListener<String> {
                         Glide.with(activity).load(resultUri).into(head)
+                        Snackbar.make(submit, "上传成功", Snackbar.LENGTH_LONG).show()
+
                     }
-                    HttpUtil.getInstance().setPhote(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "头像上传中"),number.text.toString().trim(),JSON.toJSONString(face))
+                    HttpUtil.getInstance().setPhote(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "头像上传中"),number.text.toString().trim(),JSON.toJSONString(imgs))
                 }
 
                 override fun onError(e: Throwable?) {
@@ -327,8 +329,6 @@ class HouseInfoFragment : Fragment() {
 
             }
             observable.subscribe(subscriber)
-            Log.i("img",JSON.toJSONString(face))
-
 
         } else {
             Toast.makeText(activity, "裁剪头像出错，请重新尝试", Toast.LENGTH_SHORT).show()
@@ -551,7 +551,7 @@ class HouseInfoFragment : Fragment() {
                         PhotoPicker.builder()
                                 .setPhotoCount(1)
                                 .setShowCamera(true)
-                                .setPreviewEnabled(true)
+                                .setPreviewEnabled(false)
                                 .start(activity)
                     }
                 }
@@ -580,40 +580,40 @@ class HouseInfoFragment : Fragment() {
      */
     private fun setHouseInfo() {
         if (number.text.toString().equals("")) {
-            Snackbar.make(submit, "清输入身份证号", 1000).show()
+            Snackbar.make(submit, "清输入身份证号", Snackbar.LENGTH_LONG).show()
             return
         }
         if (name.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入姓名", 1000).show()
+            Snackbar.make(submit, "请输入姓名", Snackbar.LENGTH_LONG).show()
             return
         }
         if (depart.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入工作地址/学校", 1000).show()
+            Snackbar.make(submit, "请输入工作地址/学校", Snackbar.LENGTH_LONG).show()
             return
         }
         if (nation.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入民族", 1000).show()
+            Snackbar.make(submit, "请输入民族", Snackbar.LENGTH_LONG).show()
             return
         }
         if (address_pk == null) {
-            Snackbar.make(submit, "请选择居住地址", 1000).show()
+            Snackbar.make(submit, "请选择居住地址", Snackbar.LENGTH_LONG).show()
             return
 
         }
         if (address.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入居住地址", 1000).show()
+            Snackbar.make(submit, "请输入居住地址", Snackbar.LENGTH_LONG).show()
             return
         }
         if (tell.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入联系电话", 1000).show()
+            Snackbar.make(submit, "请输入联系电话", Snackbar.LENGTH_LONG).show()
             return
         }
         if (household.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入户籍地址", 1000).show()
+            Snackbar.make(submit, "请输入户籍地址", Snackbar.LENGTH_LONG).show()
             return
         }
         if (house_id.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入户籍号", 1000).show()
+            Snackbar.make(submit, "请输入户籍号", Snackbar.LENGTH_LONG).show()
             return
         }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
