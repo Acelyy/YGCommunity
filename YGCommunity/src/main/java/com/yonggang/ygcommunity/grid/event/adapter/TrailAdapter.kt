@@ -48,6 +48,100 @@ class TrailAdapter(var data: GridEventDetail, var context: Context) : RecyclerVi
                 holder.bbs_title?.text = data.detail.sjbt
                 holder.bbs_content?.text = data.detail.sjms
                 holder.bbs_time?.text = data.detail.sbsj
+
+                if (data.detail.imgs == null || data.detail.imgs.isEmpty()) {
+                    holder.layout_pic?.visibility = View.GONE
+                    holder.layout_pic2?.visibility = View.GONE
+                } else {
+                    when (data.detail.imgs.size) {
+                        1 -> {
+                            holder.bbs_pic?.visibility = View.VISIBLE
+                            holder.bbs_pic2?.visibility = View.INVISIBLE
+                            holder.bbs_pic3?.visibility = View.INVISIBLE
+                            holder.bbs_pic4?.visibility = View.INVISIBLE
+                            holder.bbs_pic5?.visibility = View.INVISIBLE
+                            holder.bbs_pic6?.visibility = View.INVISIBLE
+                            holder.layout_pic?.visibility = View.VISIBLE
+                            holder.layout_pic2?.visibility = View.GONE
+
+                            Glide.with(context).load(data.detail.imgs[0]).centerCrop().into(holder.bbs_pic)
+                            holder.bbs_pic?.setOnClickListener { onImageClickListener.onImageClick(it, 0) }
+                        }
+                        2 -> {
+                            holder.bbs_pic?.visibility = View.VISIBLE
+                            holder.bbs_pic2?.visibility = View.VISIBLE
+                            holder.bbs_pic3?.visibility = View.INVISIBLE
+                            holder.bbs_pic4?.visibility = View.INVISIBLE
+                            holder.bbs_pic5?.visibility = View.INVISIBLE
+                            holder.bbs_pic6?.visibility = View.INVISIBLE
+                            holder.layout_pic?.visibility = View.VISIBLE
+                            holder.layout_pic2?.visibility = View.GONE
+
+                            Glide.with(context).load(data.detail.imgs[0]).centerCrop().into(holder.bbs_pic)
+                            Glide.with(context).load(data.detail.imgs[1]).centerCrop().into(holder.bbs_pic2)
+                            holder.bbs_pic?.setOnClickListener { onImageClickListener.onImageClick(it, 0) }
+                            holder.bbs_pic2?.setOnClickListener { onImageClickListener.onImageClick(it, 1) }
+                        }
+                        3 -> {
+                            holder.bbs_pic?.visibility = View.VISIBLE
+                            holder.bbs_pic2?.visibility = View.VISIBLE
+                            holder.bbs_pic3?.visibility = View.VISIBLE
+                            holder.bbs_pic4?.visibility = View.INVISIBLE
+                            holder.bbs_pic5?.visibility = View.INVISIBLE
+                            holder.bbs_pic6?.visibility = View.INVISIBLE
+                            holder.layout_pic?.visibility = View.VISIBLE
+                            holder.layout_pic2?.visibility = View.GONE
+
+                            Glide.with(context).load(data.detail.imgs[0]).centerCrop().into(holder.bbs_pic)
+                            Glide.with(context).load(data.detail.imgs[1]).centerCrop().into(holder.bbs_pic2)
+                            Glide.with(context).load(data.detail.imgs[2]).centerCrop().into(holder.bbs_pic3)
+                            holder.bbs_pic?.setOnClickListener { onImageClickListener.onImageClick(it, 0) }
+                            holder.bbs_pic2?.setOnClickListener { onImageClickListener.onImageClick(it, 1) }
+                            holder.bbs_pic3?.setOnClickListener { onImageClickListener.onImageClick(it, 2) }
+                        }
+                        4 -> {
+                            holder.bbs_pic?.visibility = View.VISIBLE
+                            holder.bbs_pic2?.visibility = View.VISIBLE
+                            holder.bbs_pic3?.visibility = View.VISIBLE
+                            holder.bbs_pic4?.visibility = View.VISIBLE
+                            holder.bbs_pic5?.visibility = View.INVISIBLE
+                            holder.bbs_pic6?.visibility = View.INVISIBLE
+                            holder.layout_pic?.visibility = View.VISIBLE
+                            holder.layout_pic2?.visibility = View.VISIBLE
+
+                            Glide.with(context).load(data.detail.imgs[0]).centerCrop().into(holder.bbs_pic)
+                            Glide.with(context).load(data.detail.imgs[1]).centerCrop().into(holder.bbs_pic2)
+                            Glide.with(context).load(data.detail.imgs[2]).centerCrop().into(holder.bbs_pic3)
+                            Glide.with(context).load(data.detail.imgs[3]).centerCrop().into(holder.bbs_pic4)
+                            holder.bbs_pic?.setOnClickListener { onImageClickListener.onImageClick(it, 0) }
+                            holder.bbs_pic2?.setOnClickListener { onImageClickListener.onImageClick(it, 1) }
+                            holder.bbs_pic3?.setOnClickListener { onImageClickListener.onImageClick(it, 2) }
+                            holder.bbs_pic4?.setOnClickListener { onImageClickListener.onImageClick(it, 3) }
+                        }
+                        5 -> {
+                            holder.bbs_pic?.visibility = View.VISIBLE
+                            holder.bbs_pic2?.visibility = View.VISIBLE
+                            holder.bbs_pic3?.visibility = View.VISIBLE
+                            holder.bbs_pic4?.visibility = View.VISIBLE
+                            holder.bbs_pic5?.visibility = View.VISIBLE
+                            holder.bbs_pic6?.visibility = View.INVISIBLE
+                            holder.layout_pic?.visibility = View.VISIBLE
+                            holder.layout_pic2?.visibility = View.VISIBLE
+
+                            Glide.with(context).load(data.detail.imgs[0]).centerCrop().into(holder.bbs_pic)
+                            Glide.with(context).load(data.detail.imgs[1]).centerCrop().into(holder.bbs_pic2)
+                            Glide.with(context).load(data.detail.imgs[2]).centerCrop().into(holder.bbs_pic3)
+                            Glide.with(context).load(data.detail.imgs[3]).centerCrop().into(holder.bbs_pic4)
+                            Glide.with(context).load(data.detail.imgs[4]).centerCrop().into(holder.bbs_pic5)
+                            holder.bbs_pic?.setOnClickListener { onImageClickListener.onImageClick(it, 0) }
+                            holder.bbs_pic2?.setOnClickListener { onImageClickListener.onImageClick(it, 1) }
+                            holder.bbs_pic3?.setOnClickListener { onImageClickListener.onImageClick(it, 2) }
+                            holder.bbs_pic4?.setOnClickListener { onImageClickListener.onImageClick(it, 3) }
+                            holder.bbs_pic5?.setOnClickListener { onImageClickListener.onImageClick(it, 4) }
+                        }
+                    }
+                }
+
                 if (data.detail.sjdw == null) {
                     holder.layout_position?.visibility = View.GONE
                 } else {
@@ -55,8 +149,8 @@ class TrailAdapter(var data: GridEventDetail, var context: Context) : RecyclerVi
                     holder.bbs_comment?.text = "0"
                     holder.bbs_location?.text = data.detail.sjdw
                 }
-                holder.layout_pic?.visibility = View.GONE
-                holder.layout_pic2?.visibility = View.GONE
+//                holder.layout_pic?.visibility = View.GONE
+//                holder.layout_pic2?.visibility = View.GONE
 
             }
             TYPE_LAYOUT -> {

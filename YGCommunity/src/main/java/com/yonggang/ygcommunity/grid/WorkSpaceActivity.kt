@@ -23,6 +23,7 @@ import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.AddFolkActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
+import com.yonggang.ygcommunity.grid.house.HouseListActivity
 import com.yonggang.ygcommunity.grid.mission.MissionListActivity
 import com.yonggang.ygcommunity.grid.notify.NotifyActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
@@ -71,7 +72,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.layout_today_event -> startActivity<EventActivity>()
             R.id.layout_app_event -> startActivity<AddEventActivity>()
-            R.id.layout_app_hourse -> startActivity<HouseInfoActivity>()
+            R.id.layout_app_hourse -> startActivity<HouseInfoActivity>("sfzh" to "")
             R.id.layout_app_note -> startActivity<AddFolkActivity>()
             R.id.layout_my_visit -> startActivity<VisitActivity>()
             R.id.layout_app_walk -> startActivity<AddVisitActivity>()
@@ -91,6 +92,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 }
             }
             R.id.layout_app_message -> startActivity<NotifyActivity>()
+            R.id.layout_today_hourse -> startActivity<HouseListActivity>()
         }
     }
 

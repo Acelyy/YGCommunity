@@ -28,6 +28,7 @@ class HouseInfoActivity : BaseActivity() {
     private var titles: MutableList<String> = mutableListOf("基本信息")
     private var fragments: MutableList<Fragment> = mutableListOf()
     private lateinit var adapter: HousePageAdapter
+    var sfzh:String = ""
 
     private val onInfoSubmit: OnInfoSubmitListener = object : OnInfoSubmitListener {
         override fun onInfoSubmit(pk: String, sfsy: Int) {
@@ -60,7 +61,8 @@ class HouseInfoActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_house_info)
         StatusBarUtil.setColor(this, resources.getColor(R.color.refresh_color), 0)
-        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit, onRemoveFragment))
+        sfzh = intent.getStringExtra("sfzh")
+        fragments.add(HouseInfoFragment.newInstance(onInfoSubmit, onRemoveFragment,sfzh))
         adapter = HousePageAdapter(supportFragmentManager)
         pager.adapter = adapter
         pager.offscreenPageLimit = 2

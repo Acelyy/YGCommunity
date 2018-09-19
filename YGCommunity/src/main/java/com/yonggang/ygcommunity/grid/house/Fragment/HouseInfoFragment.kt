@@ -39,7 +39,6 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.fragment_house_info.*
-import kotlinx.android.synthetic.main.layout.*
 import me.iwf.photopicker.PhotoPicker
 import me.iwf.photopicker.PhotoPreview
 import org.jetbrains.anko.find
@@ -76,6 +75,7 @@ class HouseInfoFragment : Fragment() {
     private var address_pk: String? = null
     private lateinit var updateAddressBroadcast: UpdateAddressBroadcast
     private val photoPaths = ArrayList<String>()
+    private lateinit var sfzh: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +89,7 @@ class HouseInfoFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initDatePicker()
+
         submit.setOnClickListener {
             setHouseInfo()
         }
@@ -113,6 +114,8 @@ class HouseInfoFragment : Fragment() {
          */
         myTextWatcher = MyTextWatcher(null)
         number.addTextChangedListener(myTextWatcher)
+        number.text = Editable.Factory.getInstance().newEditable(sfzh)
+
 
         // 初始化选择器
         setPicker(layout_political, political, listPolitical, "政治面貌")
@@ -204,10 +207,11 @@ class HouseInfoFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener, onRemoveFragment: HouseInfoActivity.OnRemoveFragment) =
+        fun newInstance(onInfoSubmit: HouseInfoActivity.OnInfoSubmitListener, onRemoveFragment: HouseInfoActivity.OnRemoveFragment, sfzh: String) =
                 HouseInfoFragment().apply {
                     this.onInfoSubmit = onInfoSubmit
                     this.onRemoveFragment = onRemoveFragment
+                    this.sfzh = sfzh
                 }
 
         private val listEducation = listOf(
@@ -309,7 +313,7 @@ class HouseInfoFragment : Fragment() {
             }).subscribeOn(Schedulers.io())
                     .unsubscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-            val subscriber = object:Subscriber<String>(){
+            val subscriber = object : Subscriber<String>() {
                 override fun onNext(t: String?) {
 
                 }
@@ -320,11 +324,11 @@ class HouseInfoFragment : Fragment() {
                         Snackbar.make(submit, "上传成功", Snackbar.LENGTH_LONG).show()
 
                     }
-                    HttpUtil.getInstance().setPhote(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "头像上传中"),number.text.toString().trim(),JSON.toJSONString(imgs))
+                    HttpUtil.getInstance().setPhote(ProgressSubscriber<HouseInfo>(subscriberOnNextListener, activity, "头像上传中"), number.text.toString().trim(), JSON.toJSONString(imgs))
                 }
 
                 override fun onError(e: Throwable?) {
-                    Log.i("error",e.toString())
+                    Log.i("error", e.toString())
                 }
 
             }
@@ -546,7 +550,7 @@ class HouseInfoFragment : Fragment() {
                 if (it.tplj != "" && it.tplj != null) {
                     Glide.with(activity).load(it.tplj).into(head)
                 }
-                if(it.sfsy != 3){
+                if (it.sfsy != 3) {
                     head.setOnClickListener {
                         PhotoPicker.builder()
                                 .setPhotoCount(1)

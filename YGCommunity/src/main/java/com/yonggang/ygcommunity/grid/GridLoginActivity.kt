@@ -3,6 +3,7 @@ package com.yonggang.ygcommunity.grid
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.text.Editable
+import cn.jpush.android.api.JPushInterface
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.GridUser
 import com.yonggang.ygcommunity.R
@@ -58,6 +59,6 @@ class GridLoginActivity : BaseActivity() {
             startActivity<WorkSpaceActivity>("id" to it.id,"sswg" to it.sswg)
             finish()
         }
-        HttpUtil.getInstance().grid_login(ProgressSubscriber<GridUser>(subscriberOnNextListener, this, "登录中"), username, password)
+        HttpUtil.getInstance().grid_login(ProgressSubscriber<GridUser>(subscriberOnNextListener, this, "登录中"), username, password, JPushInterface.getRegistrationID(this))
     }
 }

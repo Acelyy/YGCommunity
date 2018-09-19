@@ -36,12 +36,20 @@ public class GridEventDetail {
          * sjdw : 江苏省苏州市张家港市妙丰公路6号靠近永钢集团办公大楼
          * sjms : 司法解释发链接斯洛伐克教务科加入了看见我开了就而坚朗五金儿科软连接瓦尔基里
          */
-
+        private List<String> imgs;
         private String name;
         private String sbsj;
         private String sjbt;
         private String sjdw;
         private String sjms;
+
+        public List<String> getImgs() {
+            return imgs;
+        }
+
+        public void setImgs(List<String> imgs) {
+            this.imgs = imgs;
+        }
 
         public String getName() {
             return name;

@@ -51,6 +51,7 @@ class TrailAdapter(var data: EventDetail, var context: Context) : RecyclerView.A
                 holder.bbs_title?.text = data.info.title
                 holder.bbs_content?.text = data.info.content
                 holder.bbs_time?.text = data.info.time
+
                 if (data.info.count == null || data.info.position == null) {
                     holder.layout_position?.visibility = View.GONE
                 } else {

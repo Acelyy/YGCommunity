@@ -1,13 +1,16 @@
 package com.yonggang.ygcommunity.grid.event
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.View
+import com.yonggang.ygcommunity.Activity.BbsPicActivity
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.GridEventDetail
 import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
+import com.yonggang.ygcommunity.View.LinearLayoutForListView
 import com.yonggang.ygcommunity.grid.event.adapter.TrailAdapter
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
@@ -42,6 +45,17 @@ class EventDetailActivity : BaseActivity() {
             override fun onNext(it: GridEventDetail?) {
                 rvTrail.layoutManager = LinearLayoutManager(this@EventDetailActivity)
                 val adapter = TrailAdapter(it!!, this@EventDetailActivity)
+                adapter.onImageClickListener = object : TrailAdapter.OnImageClickListener{
+                    override fun onImageClick(view: View, position: Int) {
+                        val intent = Intent(this@EventDetailActivity, BbsPicActivity::class.java)
+                        val bundle = Bundle()
+                        bundle.putStringArrayList("imgs", it.detail.imgs as ArrayList<String>?)
+                        bundle.putInt("index", position)
+                        intent.putExtras(bundle)
+                        startActivity(intent)
+                    }
+                }
+
                 rvTrail.adapter = adapter
             }
 
