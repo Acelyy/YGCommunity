@@ -36,7 +36,7 @@ import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
-import com.yonggang.ygcommunity.Entry.HouseList;
+import com.yonggang.ygcommunity.Entry.HouseInfo;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -111,15 +111,14 @@ public class HttpUtil {
         loggingInterceptor.setLevel(level);
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);//设置超时时间
-        //OkHttp进行添加拦截器loggingInterceptor
-        clientBuilder.addInterceptor(loggingInterceptor);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(clientBuilder.build())
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-
+        //OkHttp进行添加拦截器loggingInterceptor
+        clientBuilder.addInterceptor(loggingInterceptor);
         httpService = retrofit.create(HttpService.class);
     }
 
@@ -1179,8 +1178,8 @@ public class HttpUtil {
      * @param username
      * @param password
      */
-    public void grid_login(Subscriber subscriber, String username, String password) {
-        Observable observable = httpService.grid_login(username, password)
+    public void grid_login(Subscriber subscriber, String username, String password,String registration_id) {
+        Observable observable = httpService.grid_login(username, password,registration_id)
                 .map(new HttpResultFunc<GridUser>());
         toSubscribe(observable, subscriber);
     }
@@ -1264,7 +1263,7 @@ public class HttpUtil {
      */
     public void getHouseInfo(Subscriber subscriber, String id) {
         Observable observable = httpService.getHouseInfo(id)
-                .map(new HttpResultFunc<HouseList>());
+                .map(new HttpResultFunc<HouseInfo>());
         toSubscribe(observable, subscriber);
     }
 
@@ -1361,7 +1360,7 @@ public class HttpUtil {
      */
     public void getHouseList(Subscriber subscriber, int page, String mg_id) {
         Observable observable = httpService.getHouseList(page, mg_id)
-                .map(new HttpResultFunc<List<HouseList>>());
+                .map(new HttpResultFunc<List<HouseInfo>>());
         toSubscribe(observable, subscriber);
     }
 

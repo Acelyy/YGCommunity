@@ -38,7 +38,7 @@ import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
-import com.yonggang.ygcommunity.Entry.HouseList;
+import com.yonggang.ygcommunity.Entry.HouseInfo;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -753,7 +753,8 @@ public interface HttpService {
     @FormUrlEncoded
     Observable<HttpResult<GridUser>> grid_login(
             @Field("gird_username") String username,
-            @Field("gird_pwd") String password
+            @Field("gird_pwd") String password,
+            @Field("registration_id") String registration_id
     );
 
 
@@ -809,7 +810,7 @@ public interface HttpService {
     // 身份信息获取
     @POST("get_rfxx")
     @FormUrlEncoded
-    Observable<HttpResult<HouseList>> getHouseInfo(
+    Observable<HttpResult<HouseInfo>> getHouseInfo(
             @Field("sfzh") String id
     );
 
@@ -887,7 +888,7 @@ public interface HttpService {
     //获取人房列表
     @POST("get_rfxx_list")
     @FormUrlEncoded
-    Observable<HttpResult<List<HouseList>>> getHouseList(
+    Observable<HttpResult<List<HouseInfo>>> getHouseList(
             @Field("page") int page,
             @Field("mg_id") String mg_id
     );
