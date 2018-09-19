@@ -111,14 +111,15 @@ public class HttpUtil {
         loggingInterceptor.setLevel(level);
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);//设置超时时间
+        //OkHttp进行添加拦截器loggingInterceptor
+        clientBuilder.addInterceptor(loggingInterceptor);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(clientBuilder.build())
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        //OkHttp进行添加拦截器loggingInterceptor
-        clientBuilder.addInterceptor(loggingInterceptor);
+
         httpService = retrofit.create(HttpService.class);
     }
 
