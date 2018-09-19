@@ -36,7 +36,7 @@ import com.yonggang.ygcommunity.Entry.Home;
 import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
-import com.yonggang.ygcommunity.Entry.HouseInfo;
+import com.yonggang.ygcommunity.Entry.HouseList;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -1263,7 +1263,7 @@ public class HttpUtil {
      */
     public void getHouseInfo(Subscriber subscriber, String id) {
         Observable observable = httpService.getHouseInfo(id)
-                .map(new HttpResultFunc<HouseInfo>());
+                .map(new HttpResultFunc<HouseList>());
         toSubscribe(observable, subscriber);
     }
 
@@ -1348,6 +1348,19 @@ public class HttpUtil {
     public void setPhote(Subscriber subscriber, String sfzh, String imgs) {
         Observable observable = httpService.setPhote(sfzh, imgs)
                 .map(new HttpResultFunc<String>());
+        toSubscribe(observable, subscriber);
+    }
+
+    /**
+     * 获取人房列表
+     *
+     * @param subscriber
+     * @param page
+     * @param mg_id
+     */
+    public void getHouseList(Subscriber subscriber, int page, String mg_id) {
+        Observable observable = httpService.getHouseList(page, mg_id)
+                .map(new HttpResultFunc<List<HouseList>>());
         toSubscribe(observable, subscriber);
     }
 
