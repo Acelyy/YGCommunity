@@ -25,6 +25,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 import com.yonggang.ygcommunity.BaseActivity;
 import com.yonggang.ygcommunity.Entry.Alipay;
 import com.yonggang.ygcommunity.Entry.Expense;
+import com.yonggang.ygcommunity.Entry.WXPayResponse;
 import com.yonggang.ygcommunity.Entry.WechatPay;
 import com.yonggang.ygcommunity.R;
 import com.yonggang.ygcommunity.View.RadioGroup;
@@ -80,7 +81,7 @@ public class PayActivity extends BaseActivity {
                     // 判断resultStatus 为9000则代表支付成功
                     if (TextUtils.equals(resultStatus, "9000")) {
                         // 该笔订单是否真实支付成功，需要依赖服务端的异步通知。
-                        sendMid();
+//                        sendMid();
                         Toast.makeText(PayActivity.this, "支付成功,+" + msg.getData().getString("score") + "积分", Toast.LENGTH_SHORT).show();
                         finish();
                     } else {
@@ -211,9 +212,14 @@ public class PayActivity extends BaseActivity {
             @Override
             public void onNext(WechatPay data) {
                 Log.i("wxpay", JSON.toJSONString(data));
+
+                WXPayResponse res = new WXPayResponse();
+                res.setId(id);
+                res.setOrder_no(data.getOut_trade_no());
+
                 PayReq req = new PayReq();
 
-                req.extData = id; // optional
+                req.extData = JSON.toJSONString(res);// optional
 
                 req.appId = data.getResponse().getAppid();
 

@@ -923,10 +923,17 @@ public class HttpUtil {
         toSubscribe(observable, subscriber);
     }
 
-    public void queryOrder(Subscriber<String> subscriber,String orderId){
-        Observable observable =httpService.queryOrder(orderId)
-                .map(new HttpResultFunc<String>());
-        toSubscribe(observable,subscriber);
+    /**
+     * 微信确认订单
+     *
+     * @param subscriber
+     * @param orderId
+     * @param id
+     */
+    public void queryOrder(Subscriber subscriber, String orderId, String id) {
+        Observable observable = httpService.queryOrder(orderId, id)
+                .map(new HttpResultFunc<Boolean>());
+        toSubscribe(observable, subscriber);
     }
 
     /**
@@ -1338,10 +1345,10 @@ public class HttpUtil {
      * @param sfzh
      * @param imgs
      */
-    public void setPhote(Subscriber subscriber,String sfzh,String imgs){
-        Observable observable = httpService.setPhote(sfzh,imgs)
+    public void setPhote(Subscriber subscriber, String sfzh, String imgs) {
+        Observable observable = httpService.setPhote(sfzh, imgs)
                 .map(new HttpResultFunc<String>());
-        toSubscribe(observable,subscriber);
+        toSubscribe(observable, subscriber);
     }
 
     /**

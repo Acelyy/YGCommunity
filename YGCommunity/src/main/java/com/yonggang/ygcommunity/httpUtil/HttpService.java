@@ -569,8 +569,9 @@ public interface HttpService {
     // 微信支付主动查询订单状态
     @POST("wxpay_order_query")
     @FormUrlEncoded
-    Observable<HttpResult<String>> queryOrder(
-            @Field("out_trade_no") String orderId
+    Observable<HttpResult<Boolean>> queryOrder(
+            @Field("out_trade_no") String orderId,
+            @Field("id") String id
     );
 
     // 关于我们

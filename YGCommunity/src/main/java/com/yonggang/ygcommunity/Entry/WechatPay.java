@@ -8,6 +8,7 @@ public class WechatPay {
 
     private Response response;
     private String score;
+    private String out_trade_no;
 
     public Response getResponse() {
         return response;
@@ -23,6 +24,14 @@ public class WechatPay {
 
     public void setScore(String score) {
         this.score = score;
+    }
+
+    public String getOut_trade_no() {
+        return out_trade_no;
+    }
+
+    public void setOut_trade_no(String out_trade_no) {
+        this.out_trade_no = out_trade_no;
     }
 
     public class Response {
