@@ -59,6 +59,6 @@ class GridLoginActivity : BaseActivity() {
             startActivity<WorkSpaceActivity>("id" to it.id,"sswg" to it.sswg)
             finish()
         }
-        HttpUtil.getInstance().grid_login(ProgressSubscriber<GridUser>(subscriberOnNextListener, this, "登录中"), username, password, JPushInterface.getRegistrationID(this))
+        HttpUtil.getInstance().grid_login(ProgressSubscriber<GridUser>(subscriberOnNextListener, this, "登录中"), username, password, JPushInterface.getRegistrationID(this@GridLoginActivity))
     }
 }
