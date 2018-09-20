@@ -34,6 +34,8 @@ class CheckListActivity : BaseActivity() {
             getCheckList(1)
         }
         refresh.autoRefresh()
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
     }
 
     private fun getCheckList(page: Int) {
