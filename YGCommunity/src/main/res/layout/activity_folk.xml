@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="民情日志"
+            android:text="民情日记"
             android:textColor="#FFFFFF"
             android:textSize="50px" />
 
