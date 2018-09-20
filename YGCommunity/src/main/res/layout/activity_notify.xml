@@ -16,7 +16,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="信息通知"
+            android:text="信息通知列表"
             android:textColor="#FFFFFF"
             android:textSize="50px" />
 

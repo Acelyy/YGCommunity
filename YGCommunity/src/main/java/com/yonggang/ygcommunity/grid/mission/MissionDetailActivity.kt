@@ -35,6 +35,8 @@ class MissionDetailActivity : BaseActivity() {
         trail.setOnClickListener {
             startActivity<TrailActivity>("id" to id)
         }
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
     }
 
     override fun onResume() {
