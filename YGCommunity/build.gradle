@@ -44,6 +44,10 @@ android {
             signingConfig signingConfigs.config
         }
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
