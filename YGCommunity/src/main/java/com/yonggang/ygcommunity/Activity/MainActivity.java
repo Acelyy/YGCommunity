@@ -182,6 +182,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onNext(final Version data) {
+
                 Log.i("version", data.toString());
                 String version_new = data.getVersion();
                 String version_local = GetVersion(MainActivity.this);

@@ -28,6 +28,8 @@ class TrailActivity : BaseActivity() {
         refresh.setOnRefreshListener {
             getTrail(id)
         }
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
         refresh.autoRefresh()
     }
 

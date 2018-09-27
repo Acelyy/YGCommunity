@@ -85,7 +85,8 @@ import rx.schedulers.Schedulers;
 
 public class HttpUtil {
 
-    public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
+//    public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
+    public static final String BASE_URL = "http://icdc.yong-gang.com/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/index.php/Home/Index/";
 //    public static final String BASE_URL = "http://10.89.13.157:9857/";

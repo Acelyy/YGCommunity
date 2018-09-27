@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.CheckBox
+import android.widget.EditText
 import android.widget.TextView
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Assignor
@@ -46,6 +47,8 @@ class TransferActivity : BaseActivity() {
         }
 
         refresh.autoRefresh()
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
     }
 
     /**
@@ -79,11 +82,14 @@ class TransferActivity : BaseActivity() {
                         msg = StringBuffer(msg.substring(0, msg.length - 1))
                         ids = StringBuffer(ids.substring(0, ids.length - 1))
                     }
+                    val view = LayoutInflater.from(this@TransferActivity).inflate(R.layout.item_input,null)
+                    val input=view.find<EditText>(R.id.input)
                     val builder = AlertDialog.Builder(this@TransferActivity)
                     builder.setTitle("请确认指派的部门")
+                            .setView(view)
                             .setMessage(msg)
                             .setPositiveButton("确定") { _, _ ->
-                                transfer(id, ids.toString(), "甩锅")
+                                transfer(id, ids.toString(), input.text.toString())
                             }.setNegativeButton("取消") { _, _ -> }
                             .create().show()
                 }
@@ -226,6 +232,10 @@ class TransferActivity : BaseActivity() {
      * 转派部门任务
      */
     private fun transfer(id: String, ids: String, comment: String) {
+        if(comment.isEmpty()){
+            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+            return
+        }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("transfer", it)
             finish()
@@ -237,6 +247,10 @@ class TransferActivity : BaseActivity() {
      * 指派任务
      */
     private fun assignor(id: String, ids: String, comment: String) {
+        if(comment.isEmpty()){
+            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+            return
+        }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("assignor", it)
             finish()
