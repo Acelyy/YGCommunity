@@ -6,7 +6,6 @@ import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
-import com.amap.api.maps.model.MyLocationStyle
 import com.bumptech.glide.Glide
 import com.scwang.smartrefresh.header.WaveSwipeHeader
 import com.yonggang.ygcommunity.BaseActivity
@@ -29,7 +28,6 @@ import com.yonggang.ygcommunity.grid.notify.NotifyActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.youth.banner.BannerConfig
 import kotlinx.android.synthetic.main.activity_work_space.*
-import kotlinx.android.synthetic.main.item_iamge_single.*
 import org.jetbrains.anko.startActivity
 import rx.Subscriber
 
@@ -78,7 +76,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             R.id.layout_app_walk -> startActivity<AddVisitActivity>()
             R.id.layout_today_walk -> startActivity<FolkActivity>()
             R.id.layout_my_task -> {
-                if (app.grid.appauth == 1) {
+                if (app.grid.appauth == 1 || app.grid.appauth == 4) {
                     startActivity<CheckListActivity>()
                 } else {
                     Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
@@ -119,25 +117,25 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 refresh.finishRefresh()
             }
         }
-        HttpUtil.getInstance().getGztj(subscriber,app.grid.id)
+        HttpUtil.getInstance().getGztj(subscriber, app.grid.id)
     }
 
-    private fun getSwiper(){
-        val subscriber = object:Subscriber<MutableList<Swiper>>(){
+    private fun getSwiper() {
+        val subscriber = object : Subscriber<MutableList<Swiper>>() {
             override fun onCompleted() {
             }
 
             override fun onError(e: Throwable?) {
-                Log.i("error",e.toString())
+                Log.i("error", e.toString())
             }
 
             override fun onNext(t: MutableList<Swiper>?) {
-                if(t != null){
+                if (t != null) {
                     val imageList = ArrayList<String>()
                     val titleList = ArrayList<String>()
-                    for(i in t){
-                        if(i.status == "1"){
-                            imageList.add("http://"+i.imgurl)
+                    for (i in t) {
+                        if (i.status == "1") {
+                            imageList.add("http://" + i.imgurl)
                             titleList.add("")
                         }
                     }
