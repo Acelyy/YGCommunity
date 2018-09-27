@@ -85,8 +85,8 @@ import rx.schedulers.Schedulers;
 
 public class HttpUtil {
 
-//    public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
-    public static final String BASE_URL = "http://icdc.yong-gang.com/zhyl/Home/Index/";
+    public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
+//    public static final String CS_URL = "http://icdc.yong-gang.com/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/index.php/Home/Index/";
 //    public static final String BASE_URL = "http://10.89.13.157:9857/";
@@ -1631,9 +1631,10 @@ public class HttpUtil {
      * @param subscriber
      * @param id
      * @param sbrid
+     * @param comment
      */
-    public void sendCheck(Subscriber subscriber, String id, String sbrid) {
-        Observable observable = httpService.sendCheck(id, sbrid)
+    public void sendCheck(Subscriber subscriber, String id, String sbrid,String comment) {
+        Observable observable = httpService.sendCheck(id, sbrid,comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }

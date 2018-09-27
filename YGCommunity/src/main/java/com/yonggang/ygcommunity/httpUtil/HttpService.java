@@ -1074,7 +1074,8 @@ public interface HttpService {
     @FormUrlEncoded
     Observable<HttpResult<String>> sendCheck(
             @Field("id") String id,
-            @Field("sbrid") String sbrid
+            @Field("sbrid") String sbrid,
+            @Field("comment") String comment
     );
 
     // 获取转派部门的列表
