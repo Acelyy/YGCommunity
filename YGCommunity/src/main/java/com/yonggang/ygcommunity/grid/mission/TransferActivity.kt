@@ -46,6 +46,8 @@ class TransferActivity : BaseActivity() {
         }
 
         refresh.autoRefresh()
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
     }
 
     /**
