@@ -141,11 +141,13 @@ class TransferActivity : BaseActivity() {
                         msg = StringBuffer(msg.substring(0, msg.length - 1))
                         ids = StringBuffer(ids.substring(0, ids.length - 1))
                     }
+                    val view = LayoutInflater.from(this@TransferActivity).inflate(R.layout.item_input,null)
+                    val input=view.find<EditText>(R.id.input)
                     val builder = AlertDialog.Builder(this@TransferActivity)
                     builder.setTitle("请确认指派的人")
                             .setMessage(msg)
                             .setPositiveButton("确定") { _, _ ->
-                                assignor(id, ids.toString(), "甩锅")
+                                assignor(id, ids.toString(), input.text.toString())
                             }.setNegativeButton("取消") { _, _ -> }
                             .create().show()
                 }

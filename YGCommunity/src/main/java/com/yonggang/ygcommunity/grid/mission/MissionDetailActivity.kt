@@ -1,11 +1,14 @@
 package com.yonggang.ygcommunity.grid.mission
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.EditText
 import com.yonggang.ygcommunity.Activity.BbsPicActivity
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.MissionDetail
@@ -15,6 +18,7 @@ import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_mission_detail.*
+import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import rx.Subscriber
 import java.util.*
@@ -122,12 +126,30 @@ class MissionDetailActivity : BaseActivity() {
                             when (data.status) {
                                 1 -> signEvent(id)
                                 2 -> endEvent(id)
-                                3 -> sendCheck(id)
+                                3 -> {
+                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input,null)
+                                    val input=view.find<EditText>(R.id.input)
+                                    val builder = AlertDialog.Builder(this@MissionDetailActivity)
+                                    builder.setTitle("请输入意见")
+                                            .setPositiveButton("确定") { _, _ ->
+                                                sendCheck(id, input.text.toString())
+                                            }.setNegativeButton("取消") { _, _ -> }
+                                            .create().show()
+                                }
 
                                 5 -> signEvent(id)
                                 6 -> endEvent(id)
                                 7 -> endEvent(id)
-                                8 -> sendCheck(id)
+                                8 -> {
+                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input,null)
+                                    val input=view.find<EditText>(R.id.input)
+                                    val builder = AlertDialog.Builder(this@MissionDetailActivity)
+                                    builder.setTitle("请输入意见")
+                                            .setPositiveButton("确定") { _, _ ->
+                                                sendCheck(id, input.text.toString())
+                                            }.setNegativeButton("取消") { _, _ -> }
+                                            .create().show()
+                                }
                             }
                         }
                     })
@@ -224,7 +246,11 @@ class MissionDetailActivity : BaseActivity() {
     /**
      * 发出核查通知
      */
-    private fun sendCheck(id: String) {
+    private fun sendCheck(id: String,comment: String) {
+        if(comment.isEmpty()){
+            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+            return
+        }
         val subscriber = object : Subscriber<String>() {
             override fun onNext(data: String?) {
                 Log.i("signEvent", data)
@@ -239,6 +265,6 @@ class MissionDetailActivity : BaseActivity() {
                 Log.i("signEvent", e.toString())
             }
         }
-        HttpUtil.getInstance().sendCheck(subscriber, id, app.grid.id)
+        HttpUtil.getInstance().sendCheck(subscriber, id, app.grid.id,comment)
     }
 }
