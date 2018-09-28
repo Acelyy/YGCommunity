@@ -1179,8 +1179,8 @@ public class HttpUtil {
      * @param username
      * @param password
      */
-    public void grid_login(Subscriber subscriber, String username, String password,String registration_id) {
-        Observable observable = httpService.grid_login(username, password,registration_id)
+    public void grid_login(Subscriber subscriber, String username, String password, String registration_id) {
+        Observable observable = httpService.grid_login(username, password, registration_id)
                 .map(new HttpResultFunc<GridUser>());
         toSubscribe(observable, subscriber);
     }
@@ -1632,8 +1632,8 @@ public class HttpUtil {
      * @param id
      * @param sbrid
      */
-    public void sendCheck(Subscriber subscriber, String id, String sbrid) {
-        Observable observable = httpService.sendCheck(id, sbrid)
+    public void sendCheck(Subscriber subscriber, String id, String sbrid, String comment) {
+        Observable observable = httpService.sendCheck(id, sbrid, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
