@@ -39,6 +39,7 @@ import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HouseInfo;
+import com.yonggang.ygcommunity.Entry.HouseQuery;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -1129,4 +1130,15 @@ public interface HttpService {
 
     );
 
+    //人房查询
+    @POST("set_rfxx_tj")
+    @FormUrlEncoded
+    Observable<HttpResult<List<HouseQuery>>> getHouseQuery(
+            @Field("xm") String xm,
+            @Field("lxdh") String lxdh,
+            @Field("sfzh") String sfzh,
+            @Field("cph") String cph,
+            @Field("page") int page
+
+    );
 }
