@@ -86,7 +86,7 @@ import rx.schedulers.Schedulers;
 public class HttpUtil {
 
     public static final String BASE_URL = "http://zhyl.yong-gang.com/zhyl/Home/Index/";
-//    public static final String CS_URL = "http://icdc.yong-gang.com/zhyl/Home/Index/";
+//    public static final String BASE_URL = "http://icdc.yong-gang.com/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/Home/Index/";
 //    public static String BASE_URL = "http://10.89.12.97/zhyl/index.php/Home/Index/";
 //    public static final String BASE_URL = "http://10.89.13.157:9857/";
@@ -112,14 +112,14 @@ public class HttpUtil {
         loggingInterceptor.setLevel(level);
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);//设置超时时间
+        //OkHttp进行添加拦截器loggingInterceptor
+        clientBuilder.addInterceptor(loggingInterceptor);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(clientBuilder.build())
                 .addConverterFactory(FastJsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        //OkHttp进行添加拦截器loggingInterceptor
-        clientBuilder.addInterceptor(loggingInterceptor);
         httpService = retrofit.create(HttpService.class);
     }
 
@@ -1179,8 +1179,8 @@ public class HttpUtil {
      * @param username
      * @param password
      */
-    public void grid_login(Subscriber subscriber, String username, String password,String registration_id) {
-        Observable observable = httpService.grid_login(username, password,registration_id)
+    public void grid_login(Subscriber subscriber, String username, String password, String registration_id) {
+        Observable observable = httpService.grid_login(username, password, registration_id)
                 .map(new HttpResultFunc<GridUser>());
         toSubscribe(observable, subscriber);
     }
@@ -1631,10 +1631,9 @@ public class HttpUtil {
      * @param subscriber
      * @param id
      * @param sbrid
-     * @param comment
      */
-    public void sendCheck(Subscriber subscriber, String id, String sbrid,String comment) {
-        Observable observable = httpService.sendCheck(id, sbrid,comment)
+    public void sendCheck(Subscriber subscriber, String id, String sbrid, String comment) {
+        Observable observable = httpService.sendCheck(id, sbrid, comment)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }

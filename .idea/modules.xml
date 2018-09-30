@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" filepath="$PROJECT_DIR$/jcvideoplayer-lib/jcvideoplayer-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/lazyviewpagerlibrary/lazyviewpagerlibrary.iml" filepath="$PROJECT_DIR$/lazyviewpagerlibrary/lazyviewpagerlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/pullToReflash_library/pullToReflash_library.iml" filepath="$PROJECT_DIR$/pullToReflash_library/pullToReflash_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stepviewdemo/stepviewdemo.iml" filepath="$PROJECT_DIR$/stepviewdemo/stepviewdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/ucrop/ucrop.iml" filepath="$PROJECT_DIR$/ucrop/ucrop.iml" />
     </modules>
   </component>
