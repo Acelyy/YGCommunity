@@ -300,109 +300,143 @@
                 android:background="#E5E5E5" />
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="110px"
-                android:orientation="horizontal">
-
-                <View
-                    android:layout_width="13px"
-                    android:layout_height="70px"
-                    android:layout_margin="20px"
-                    android:background="@color/colorPrimary" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25px"
-                    android:text="社区理治"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
+                android:id="@+id/layout_work"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:visibility="gone">
 
-                <RelativeLayout
-                    android:id="@+id/tab_grid"
-                    android:layout_width="0dp"
-                    android:layout_height="200px"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
+                    <View
+                        android:layout_width="13px"
+                        android:layout_height="70px"
+                        android:layout_margin="20px"
+                        android:background="@color/colorPrimary" />
+
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
+                        android:layout_marginTop="25px"
+                        android:text="社区理治"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:id="@+id/tab_grid"
+                        android:layout_width="0dp"
+                        android:layout_height="200px"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
-                        <ImageView
-                            android:id="@+id/img_grid"
-                            android:layout_width="100px"
-                            android:layout_height="100px"
-                            android:layout_centerInParent="true"
-                            android:layout_gravity="center"
-                            android:src="@mipmap/pic_work_grid" />
-
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/img_grid"
-                            android:layout_centerHorizontal="true"
-                            android:layout_gravity="center"
-                            android:text="网格化"
-                            android:textColor="#999999"
-                            android:textSize="@dimen/server_tab_size"
-                            tools:ignore="HardcodedText" />
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/img_grid"
+                                android:layout_width="100px"
+                                android:layout_height="100px"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/pic_work_grid" />
 
-                </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/img_grid"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center"
+                                android:text="网格化"
+                                android:textColor="#999999"
+                                android:textSize="@dimen/server_tab_size"
+                                tools:ignore="HardcodedText" />
 
+                        </LinearLayout>
 
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="200px"
-                    android:layout_weight="1"
-                    android:background="@drawable/back_mine_line"
-                    android:orientation="vertical">
-
-
-                </RelativeLayout>
-
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="200px"
-                    android:layout_weight="1"
-                    android:background="@drawable/back_mine_line"
-                    android:orientation="vertical">
+                    </RelativeLayout>
 
 
-                </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/tab_work"
+                        android:layout_width="0dp"
+                        android:layout_height="200px"
+                        android:layout_weight="1"
+                        android:background="@drawable/back_mine_line"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/img_work"
+                                android:layout_width="100px"
+                                android:layout_height="100px"
+                                android:layout_centerInParent="true"
+                                android:layout_gravity="center"
+                                android:src="@mipmap/pic_space_work" />
+
+                            <TextView
+                                android:id="@+id/text_work"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/img_order"
+                                android:layout_centerHorizontal="true"
+                                android:layout_gravity="center"
+                                android:text="事件监控台"
+                                android:textColor="#999999"
+                                android:textSize="@dimen/server_tab_size" />
+                        </LinearLayout>
+
+                    </RelativeLayout>
 
 
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="200px"
-                    android:layout_weight="1"
-                    android:background="@drawable/back_mine_line"
-                    android:orientation="vertical">
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="200px"
+                        android:layout_weight="1"
+                        android:background="@drawable/back_mine_line"
+                        android:orientation="vertical">
 
-                </RelativeLayout>
 
+                    </RelativeLayout>
+
+
+                    <RelativeLayout
+                        android:layout_width="0dp"
+                        android:layout_height="200px"
+                        android:layout_weight="1"
+                        android:background="@drawable/back_mine_line"
+                        android:orientation="vertical">
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:background="#E5E5E5" />
 
             </LinearLayout>
-
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="#E5E5E5" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -639,110 +673,110 @@
                 android:layout_marginStart="20dp"
                 android:background="#E5E5E5" />
 
-            <LinearLayout
-                android:id="@+id/layout_work"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
+            <!--<LinearLayout-->
+            <!--android:id="@+id/layout_work"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:visibility="gone">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="110px"
-                    android:orientation="horizontal">
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="110px"-->
+            <!--android:orientation="horizontal">-->
 
-                    <View
-                        android:layout_width="13px"
-                        android:layout_height="70px"
-                        android:layout_margin="20px"
-                        android:background="@color/colorPrimary" />
+            <!--<View-->
+            <!--android:layout_width="13px"-->
+            <!--android:layout_height="70px"-->
+            <!--android:layout_margin="20px"-->
+            <!--android:background="@color/colorPrimary" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25px"
-                        android:text="社区治理"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="18sp" />
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="25px"-->
+            <!--android:text="社区治理"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:textSize="18sp" />-->
 
-                </LinearLayout>
+            <!--</LinearLayout>-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="horizontal">-->
 
-                    <RelativeLayout
-                        android:id="@+id/tab_work"
-                        android:layout_width="0dp"
-                        android:layout_height="200px"
-                        android:layout_weight="1"
-                        android:background="@drawable/back_mine_line"
-                        android:orientation="vertical">
+            <!--<RelativeLayout-->
+            <!--android:id="@+id/tab_work"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="200px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/back_mine_line"-->
+            <!--android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerInParent="true"
-                            android:orientation="vertical">
+            <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:orientation="vertical">-->
 
-                            <ImageView
-                                android:id="@+id/img_work"
-                                android:layout_width="100px"
-                                android:layout_height="100px"
-                                android:layout_centerInParent="true"
-                                android:layout_gravity="center"
-                                android:src="@mipmap/pic_space_work" />
+            <!--<ImageView-->
+            <!--android:id="@+id/img_work"-->
+            <!--android:layout_width="100px"-->
+            <!--android:layout_height="100px"-->
+            <!--android:layout_centerInParent="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@mipmap/pic_space_work" />-->
 
-                            <TextView
-                                android:id="@+id/text_work"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@+id/img_order"
-                                android:layout_centerHorizontal="true"
-                                android:layout_gravity="center"
-                                android:text="事件监控台"
-                                android:textColor="#999999"
-                                android:textSize="@dimen/server_tab_size" />
-                        </LinearLayout>
+            <!--<TextView-->
+            <!--android:id="@+id/text_work"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/img_order"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="事件监控台"-->
+            <!--android:textColor="#999999"-->
+            <!--android:textSize="@dimen/server_tab_size" />-->
+            <!--</LinearLayout>-->
 
-                    </RelativeLayout>
+            <!--</RelativeLayout>-->
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="200px"
-                        android:layout_weight="1"
-                        android:background="@drawable/back_mine_line"
-                        android:orientation="vertical">
+            <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="200px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/back_mine_line"-->
+            <!--android:orientation="vertical">-->
 
-                    </RelativeLayout>
-
-
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="200px"
-                        android:layout_weight="1"
-                        android:background="@drawable/back_mine_line"
-                        android:orientation="vertical">
+            <!--</RelativeLayout>-->
 
 
-                    </RelativeLayout>
+            <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="200px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/back_mine_line"-->
+            <!--android:orientation="vertical">-->
 
 
-                    <RelativeLayout
-                        android:layout_width="0dp"
-                        android:layout_height="200px"
-                        android:layout_weight="1"
-                        android:background="@drawable/back_mine_line"
-                        android:orientation="vertical">
-
-                    </RelativeLayout>
+            <!--</RelativeLayout>-->
 
 
-                </LinearLayout>
+            <!--<RelativeLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="200px"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/back_mine_line"-->
+            <!--android:orientation="vertical">-->
+
+            <!--</RelativeLayout>-->
 
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
+
+
+            <!--</LinearLayout>-->
 
 
         </LinearLayout>
