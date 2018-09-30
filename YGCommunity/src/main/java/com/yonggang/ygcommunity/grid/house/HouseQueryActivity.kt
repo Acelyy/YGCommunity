@@ -3,6 +3,7 @@ package com.yonggang.ygcommunity.grid.house
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.app.AlertDialog
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import com.yonggang.ygcommunity.BaseActivity
+import com.yonggang.ygcommunity.Entry.GridStatus
 import com.yonggang.ygcommunity.Entry.HouseInfo
 import com.yonggang.ygcommunity.Entry.HouseQuery
 import com.yonggang.ygcommunity.R
@@ -21,6 +23,7 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.activity_house_query.*
+import kotlinx.android.synthetic.main.fragment_house_info.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
 import rx.Subscriber
@@ -50,7 +53,7 @@ class HouseQueryActivity : BaseActivity() {
                         phonetext = phone.text.toString().trim()
                         numbertext = number.text.toString().trim()
                         cartext = car.text.toString().trim()
-                        getHouseQuery(nametext,phonetext,numbertext,cartext,1)
+                        getHouse(nametext,phonetext,numbertext,cartext,1)
                     }.setNegativeButton("取消") { _, _ -> }
                     .create().show()
         }
@@ -87,6 +90,26 @@ class HouseQueryActivity : BaseActivity() {
 
         }
         HttpUtil.getInstance().getHouseQuery(subscriber,name,phone,number,car,page)
+    }
+
+    private fun getHouse(name:String,phone:String,number:String,car:String,page:Int){
+        val subscriberOnNextListener = object:SubscriberOnNextListener<MutableList<HouseQuery>>{
+            override fun onNext(t: MutableList<HouseQuery>?) {
+                if(t!!.size == 0){
+                    Snackbar.make(query, "无查询信息", Snackbar.LENGTH_LONG).show()
+                    return
+                }
+                refresh.finishRefresh()
+                refresh.finishLoadMore()
+                adapter = MyAdapter(t,this@HouseQueryActivity)
+                list.adapter = adapter
+                list.setOnItemClickListener { parent, view, position, id ->
+                    this@HouseQueryActivity.startActivity<HouseInfoActivity>("sfzh" to t[position].sfzh)
+                }
+            }
+
+        }
+        HttpUtil.getInstance().getHouseQuery(ProgressSubscriber<String>(subscriberOnNextListener, this, "加载中"),name,phone,number,car,page)
     }
 
     class MyAdapter(var data: MutableList<HouseQuery>, val context: Context) : BaseAdapter() {

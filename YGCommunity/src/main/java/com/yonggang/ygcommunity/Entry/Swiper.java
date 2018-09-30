@@ -7,7 +7,7 @@ public class Swiper {
      */
 
     private String imgurl;
-    private String status;
+    private int status;
 
     public String getImgurl() {
         return imgurl;
@@ -17,11 +17,11 @@ public class Swiper {
         this.imgurl = imgurl;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }

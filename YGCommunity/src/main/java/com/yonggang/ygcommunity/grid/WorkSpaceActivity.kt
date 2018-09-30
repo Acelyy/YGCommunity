@@ -134,17 +134,14 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             override fun onNext(t: MutableList<Swiper>?) {
                 if (t != null) {
                     val imageList = ArrayList<String>()
-                    val titleList = ArrayList<String>()
                     for (i in t) {
-                        if (i.status == "1") {
+                        if (i.status == 1) {
                             imageList.add("http://" + i.imgurl)
-                            titleList.add("")
                         }
                     }
 
                     banner.setImages(imageList)
                             .setDelayTime(3000)
-                            .setBannerTitles(titleList)
                             .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                             .setImageLoader(object : com.youth.banner.loader.ImageLoader() {
                                 override fun displayImage(context: Context, path: Any, imageView: ImageView) {
@@ -154,7 +151,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                                             .load(path.toString())
                                             .error(R.mipmap.pic_loading_error)
                                             .into(imageView)
-
 
                                 }
                             })
