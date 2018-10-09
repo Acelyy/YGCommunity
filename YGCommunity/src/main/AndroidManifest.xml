@@ -507,10 +507,16 @@
         <activity
             android:name=".grid.mission.TransferActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.mission.TrailActivity" />
-        <activity android:name=".grid.notify.NotifyActivity" />
-        <activity android:name=".grid.notify.NotifyDetailsActivity" />
-        <activity android:name=".grid.house.HouseListActivity"></activity>
+        <activity android:name=".grid.mission.TrailActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.notify.NotifyActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.notify.NotifyDetailsActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.house.HouseListActivity"
+            android:launchMode="singleTop" />
+        <activity android:name=".grid.house.HouseQueryActivity"
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

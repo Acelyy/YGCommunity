@@ -30,6 +30,8 @@ class SelectHouseActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_house)
+        text_back.setOnClickListener { finish() }
+        pic_back.setOnClickListener { finish() }
         // 绑定广播
         finishBroadcastReceiver = FinishBroadCast()
         val filter = IntentFilter()

@@ -37,6 +37,7 @@ import com.yonggang.ygcommunity.Entry.HotLine;
 import com.yonggang.ygcommunity.Entry.House;
 import com.yonggang.ygcommunity.Entry.HouseFamily;
 import com.yonggang.ygcommunity.Entry.HouseInfo;
+import com.yonggang.ygcommunity.Entry.HouseQuery;
 import com.yonggang.ygcommunity.Entry.HttpResult;
 import com.yonggang.ygcommunity.Entry.Info;
 import com.yonggang.ygcommunity.Entry.Message;
@@ -73,6 +74,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.fastjson.FastJsonConverterFactory;
+import retrofit2.http.Field;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -1726,5 +1728,22 @@ public class HttpUtil {
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }
+
+    /**
+     * 人房查询
+     *
+     * @param subscriber
+     * @param xm
+     * @param lxdh
+     * @param sfzh
+     * @param cph
+     * @param page
+     */
+    public void getHouseQuery(Subscriber subscriber, String xm, String lxdh, String sfzh, String cph,int page) {
+        Observable observable = httpService.getHouseQuery(xm, lxdh, sfzh, cph,page)
+                .map(new HttpResultFunc<List<HouseQuery>>());
+        toSubscribe(observable, subscriber);
+    }
+
 
 }

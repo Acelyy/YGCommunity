@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:src="@mipmap/houselistname" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30px"
+            android:text="黄玉才"
+            android:textColor="#000000"
+            android:textSize="45px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/sex"
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:src="@mipmap/pic_house_man" />
+
+        <TextView
+            android:id="@+id/address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30px"
+            android:text="男/女"
+            android:textColor="#000000"
+            android:textSize="45px" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40px"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_width="50px"
+            android:layout_height="50px"
+            android:src="@mipmap/pic_house_id" />
+
+        <TextView
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30px"
+            android:text="1111111111111111"
+            android:textColor="#000000"
+            android:textSize="45px" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="30px"
+        android:background="#E1E1E1" />
+</LinearLayout>

@@ -23,6 +23,7 @@ import com.yonggang.ygcommunity.grid.folk.AddFolkActivity
 import com.yonggang.ygcommunity.grid.folk.FolkActivity
 import com.yonggang.ygcommunity.grid.house.HouseInfoActivity
 import com.yonggang.ygcommunity.grid.house.HouseListActivity
+import com.yonggang.ygcommunity.grid.house.HouseQueryActivity
 import com.yonggang.ygcommunity.grid.mission.MissionListActivity
 import com.yonggang.ygcommunity.grid.notify.NotifyActivity
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
@@ -53,7 +54,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         layout_today_event.setOnClickListener(this)
         layout_today_hourse.setOnClickListener(this)
         layout_today_walk.setOnClickListener(this)
-
+        layout_app_query.setOnClickListener(this)
         layout_my_task.setOnClickListener(this)
         layout_my_work.setOnClickListener(this)
         layout_my_visit.setOnClickListener(this)
@@ -91,6 +92,7 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             }
             R.id.layout_app_message -> startActivity<NotifyActivity>()
             R.id.layout_today_hourse -> startActivity<HouseListActivity>()
+            R.id.layout_app_query -> startActivity<HouseQueryActivity>()
         }
     }
 
@@ -132,17 +134,14 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
             override fun onNext(t: MutableList<Swiper>?) {
                 if (t != null) {
                     val imageList = ArrayList<String>()
-                    val titleList = ArrayList<String>()
                     for (i in t) {
-                        if (i.status == "1") {
+                        if (i.status == 1) {
                             imageList.add("http://" + i.imgurl)
-                            titleList.add("")
                         }
                     }
 
                     banner.setImages(imageList)
                             .setDelayTime(3000)
-                            .setBannerTitles(titleList)
                             .setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE)
                             .setImageLoader(object : com.youth.banner.loader.ImageLoader() {
                                 override fun displayImage(context: Context, path: Any, imageView: ImageView) {
@@ -152,7 +151,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                                             .load(path.toString())
                                             .error(R.mipmap.pic_loading_error)
                                             .into(imageView)
-
 
                                 }
                             })
