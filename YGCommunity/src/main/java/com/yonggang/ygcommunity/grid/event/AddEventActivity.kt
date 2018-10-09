@@ -1,12 +1,15 @@
 package com.yonggang.ygcommunity.grid.event
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.OrientationHelper
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.text.Editable
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.alibaba.fastjson.JSON
@@ -29,8 +32,6 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.activity_add_event.*
-import kotlinx.android.synthetic.main.item_collect.view.*
-import kotlinx.android.synthetic.main.item_person.view.*
 import me.iwf.photopicker.PhotoPicker
 import me.iwf.photopicker.PhotoPreview
 import rx.Subscriber
@@ -115,6 +116,16 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
         submit.setOnClickListener { addEvent() }
         pic_back.setOnClickListener { finish() }
 
+        tv_title.onFocusChangeListener = HideKeyBoard(this)
+    }
+
+    class HideKeyBoard(var context: Context) : View.OnFocusChangeListener {
+        override fun onFocusChange(v: View?, hasFocus: Boolean) {
+            if (!hasFocus) {
+                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(v?.windowToken, 0)
+            }
+        }
     }
 
     @SuppressLint("MissingSuperCall")
@@ -143,7 +154,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
      */
     private fun getEventStatus() {
         val subscriberOnNextListener = SubscriberOnNextListener<GridStatus> {
-//            initPicker(layout_area, tv_area, it.xzqh, "请选择行政区域")
+            //            initPicker(layout_area, tv_area, it.xzqh, "请选择行政区域")
 //            initPicker(layout_plan, tv_plan, it.czfa, "请选择处置方案")
 //            initPicker(layout_type, tv_type, it.czlx, "请选择处置类型")
 
@@ -154,14 +165,14 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                 sbcl.setTextColor(this.getResources().getColor(R.color.refresh_color))
                 zxcl.setBackgroundResource(R.drawable.bg_red_round)
                 zxcl.setTextColor(this.getResources().getColor(R.color.white))
-                Log.i("button",zxcl.text.toString())
+                Log.i("button", zxcl.text.toString())
             }
             sbcl.setOnClickListener {
                 sbcl.setBackgroundResource(R.drawable.bg_red_round)
                 sbcl.setTextColor(this.getResources().getColor(R.color.white))
                 zxcl.setBackgroundResource(R.drawable.bg_border)
                 zxcl.setTextColor(this.getResources().getColor(R.color.refresh_color))
-                Log.i("button",sbcl.text.toString())
+                Log.i("button", sbcl.text.toString())
             }
             initPicker(layout_severity, tv_severity, it.yzcd, "请选择严重程度")
             initPicker(layout_classify, tv_classify, it.sjfl, "请选择事件分类")
@@ -231,9 +242,9 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
             return
         }
 
-        Log.i("buttonfinish",when(tv_plan.checkedRadioButtonId){
+        Log.i("buttonfinish", when (tv_plan.checkedRadioButtonId) {
             R.id.zxcl -> "1"
-            else  -> "2"
+            else -> "2"
         })
 
         val imgs: MutableList<String> = mutableListOf()
@@ -261,10 +272,10 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                 }
 
                 HttpUtil.getInstance().addEvent(ProgressSubscriber<String>(subscriberOnNextListener, this@AddEventActivity, "上报中"),
-                        when(tv_plan.checkedRadioButtonId){
+                        when (tv_plan.checkedRadioButtonId) {
                             R.id.zxcl -> "1"
-                            R.id.sbcl  -> "2"
-                            else ->{
+                            R.id.sbcl -> "2"
+                            else -> {
                                 Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
                                 return
                             }
