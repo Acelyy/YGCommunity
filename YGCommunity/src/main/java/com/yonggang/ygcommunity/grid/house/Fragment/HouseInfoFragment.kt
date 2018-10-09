@@ -591,10 +591,6 @@ class HouseInfoFragment : Fragment() {
             Snackbar.make(submit, "请输入姓名", Snackbar.LENGTH_LONG).show()
             return
         }
-        if (depart.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入工作地址/学校", Snackbar.LENGTH_LONG).show()
-            return
-        }
         if (nation.text.toString().equals("")) {
             Snackbar.make(submit, "请输入民族", Snackbar.LENGTH_LONG).show()
             return
@@ -602,7 +598,6 @@ class HouseInfoFragment : Fragment() {
         if (address_pk == null) {
             Snackbar.make(submit, "请选择居住地址", Snackbar.LENGTH_LONG).show()
             return
-
         }
         if (address.text.toString().equals("")) {
             Snackbar.make(submit, "请输入居住地址", Snackbar.LENGTH_LONG).show()
@@ -610,14 +605,6 @@ class HouseInfoFragment : Fragment() {
         }
         if (tell.text.toString().equals("")) {
             Snackbar.make(submit, "请输入联系电话", Snackbar.LENGTH_LONG).show()
-            return
-        }
-        if (household.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入户籍地址", Snackbar.LENGTH_LONG).show()
-            return
-        }
-        if (house_id.text.toString().equals("")) {
-            Snackbar.make(submit, "请输入户籍号", Snackbar.LENGTH_LONG).show()
             return
         }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {

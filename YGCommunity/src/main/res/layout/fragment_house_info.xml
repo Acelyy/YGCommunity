@@ -285,31 +285,6 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:padding="40px">
-
-                    <TextView
-                        android:layout_width="300px"
-                        android:layout_height="wrap_content"
-                        android:text="工作单位/\n学校"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
-
-                    <EditText
-                        android:id="@+id/depart"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@null"
-                        android:hint="请输入工作单位/学校"
-                        android:singleLine="true"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -396,6 +371,49 @@
                         android:layout_weight="1"
                         android:background="@null"
                         android:hint="请输入联系电话"
+                        android:singleLine="true"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#E1E1E1"
+                    android:gravity="center_vertical"
+                    android:padding="20px">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20px"
+                        android:text="选填信息"
+                        android:textColor="#000000"
+                        android:textSize="50px" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:padding="40px">
+
+                    <TextView
+                        android:layout_width="300px"
+                        android:layout_height="wrap_content"
+                        android:text="工作单位/\n学校"
+                        android:textColor="#000000"
+                        android:textSize="45px" />
+
+                    <EditText
+                        android:id="@+id/depart"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="请输入工作单位/学校"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />
@@ -518,23 +536,6 @@
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#E1E1E1"
-                    android:gravity="center_vertical"
-                    android:padding="20px">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="20px"
-                        android:text="选填信息"
-                        android:textColor="#000000"
-                        android:textSize="50px" />
 
                 </LinearLayout>
 

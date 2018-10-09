@@ -779,8 +779,8 @@ public interface HttpService {
             @Field("sswg") String sswg,
             @Field("sjms") String sjms,
             @Field("sjbt") String sjbt,
-            @Field("xzqh") String xzqh,
-            @Field("czlx") String czlx,
+//            @Field("xzqh") String xzqh,
+//            @Field("czlx") String czlx,
             @Field("sbrid") String id,
             @Field("imgs") String imgs
     );

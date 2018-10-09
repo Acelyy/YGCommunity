@@ -1210,13 +1210,13 @@ public class HttpUtil {
      * @param sjdw
      * @param sjdz
      * @param sjms
-     * @param sjbt
-     * @param xzqh
+//     * @param sjbt
+//     * @param xzqh
      * @param czlx
      * @param imgs
      */
-    public void addEvent(Subscriber subscriber, String czfa, String yzcd, String sjfl, String sqr, String sqrdh, String sjdw, String sjdz, String sswg, String sjms, String sjbt, String xzqh, String czlx, String id, String imgs) {
-        Observable observable = httpService.addEvent(czfa, yzcd, sjfl, sqr, sqrdh, sjdw, sjdz, sswg, sjms, sjbt, xzqh, czlx, id, imgs)
+    public void addEvent(Subscriber subscriber, String czfa, String yzcd, String sjfl, String sqr, String sqrdh, String sjdw, String sjdz, String sswg, String sjms, String sjbt, String id, String imgs) {
+        Observable observable = httpService.addEvent(czfa, yzcd, sjfl, sqr, sqrdh, sjdw, sjdz, sswg, sjms, sjbt, id, imgs)
                 .map(new HttpResultFunc<String>());
         toSubscribe(observable, subscriber);
     }

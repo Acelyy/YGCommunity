@@ -29,6 +29,8 @@ import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
 import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.activity_add_event.*
+import kotlinx.android.synthetic.main.item_collect.view.*
+import kotlinx.android.synthetic.main.item_person.view.*
 import me.iwf.photopicker.PhotoPicker
 import me.iwf.photopicker.PhotoPreview
 import rx.Subscriber
@@ -112,6 +114,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
 
         submit.setOnClickListener { addEvent() }
         pic_back.setOnClickListener { finish() }
+
     }
 
     @SuppressLint("MissingSuperCall")
@@ -140,9 +143,26 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
      */
     private fun getEventStatus() {
         val subscriberOnNextListener = SubscriberOnNextListener<GridStatus> {
-            initPicker(layout_area, tv_area, it.xzqh, "请选择行政区域")
-            initPicker(layout_plan, tv_plan, it.czfa, "请选择处置方案")
-            initPicker(layout_type, tv_type, it.czlx, "请选择处置类型")
+//            initPicker(layout_area, tv_area, it.xzqh, "请选择行政区域")
+//            initPicker(layout_plan, tv_plan, it.czfa, "请选择处置方案")
+//            initPicker(layout_type, tv_type, it.czlx, "请选择处置类型")
+
+            zxcl.text = it.czfa[0].name
+            sbcl.text = it.czfa[1].name
+            zxcl.setOnClickListener {
+                sbcl.setBackgroundResource(R.drawable.bg_border)
+                sbcl.setTextColor(this.getResources().getColor(R.color.refresh_color))
+                zxcl.setBackgroundResource(R.drawable.bg_red_round)
+                zxcl.setTextColor(this.getResources().getColor(R.color.white))
+                Log.i("button",zxcl.text.toString())
+            }
+            sbcl.setOnClickListener {
+                sbcl.setBackgroundResource(R.drawable.bg_red_round)
+                sbcl.setTextColor(this.getResources().getColor(R.color.white))
+                zxcl.setBackgroundResource(R.drawable.bg_border)
+                zxcl.setTextColor(this.getResources().getColor(R.color.refresh_color))
+                Log.i("button",sbcl.text.toString())
+            }
             initPicker(layout_severity, tv_severity, it.yzcd, "请选择严重程度")
             initPicker(layout_classify, tv_classify, it.sjfl, "请选择事件分类")
         }
@@ -171,20 +191,20 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
             Snackbar.make(submit, "请填写事件标题", Snackbar.LENGTH_LONG).show()
             return
         }
-        if (layout_area.tag == null) {
-            Snackbar.make(submit, "请选择行政区域", Snackbar.LENGTH_LONG).show()
-            return
-        }
+//        if (layout_area.tag == null) {
+//            Snackbar.make(submit, "请选择行政区域", Snackbar.LENGTH_LONG).show()
+//            return
+//        }
 
-        if (layout_plan.tag == null) {
-            Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
-            return
-        }
+//        if (layout_plan.tag == null) {
+//            Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
+//            return
+//        }
 
-        if (layout_type.tag == null) {
-            Snackbar.make(submit, "请选择处置类型", Snackbar.LENGTH_LONG).show()
-            return
-        }
+//        if (layout_type.tag == null) {
+//            Snackbar.make(submit, "请选择处置类型", Snackbar.LENGTH_LONG).show()
+//            return
+//        }
 
         if (layout_severity.tag == null) {
             Snackbar.make(submit, "请选择严重程度", Snackbar.LENGTH_LONG).show()
@@ -211,6 +231,11 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
             return
         }
 
+        Log.i("buttonfinish",when(tv_plan.checkedRadioButtonId){
+            R.id.zxcl -> "1"
+            else  -> "2"
+        })
+
         val imgs: MutableList<String> = mutableListOf()
 
         val observable = rx.Observable.create(rx.Observable.OnSubscribe<String> {
@@ -221,6 +246,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
         }).subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
+
 
         val subscriber = object : Subscriber<String>() {
             override fun onNext(t: String?) {
@@ -234,9 +260,15 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                     finish()
                 }
 
-
                 HttpUtil.getInstance().addEvent(ProgressSubscriber<String>(subscriberOnNextListener, this@AddEventActivity, "上报中"),
-                        layout_plan.tag as String,
+                        when(tv_plan.checkedRadioButtonId){
+                            R.id.zxcl -> "1"
+                            R.id.sbcl  -> "2"
+                            else ->{
+                                Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
+                                return
+                            }
+                        },
                         layout_severity.tag as String,
                         layout_classify.tag as String,
                         tv_name.text.trim().toString(),
@@ -246,8 +278,8 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                         tv_grid.text.trim().toString(),
                         tv_description.text.trim().toString(),
                         tv_title.text.trim().toString(),
-                        layout_area.tag as String,
-                        layout_type.tag as String,
+//                        layout_area.tag as String,
+//                        layout_type.tag as String,
                         app.grid.id,
                         JSON.toJSONString(imgs)
                 )
