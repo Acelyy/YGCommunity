@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -112,6 +114,9 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         dao = new DBDao(this);
@@ -170,7 +175,7 @@ public class SplashActivity extends BaseActivity {
             public void onNext(AdvImg data) {
                 Log.i("getPic", data.toString());
                 img = data;
-                handler.sendEmptyMessage(SHOW_OVER);
+                handler.sendEmptyMessage(SHOW_PIC);
             }
         };
         HttpUtil.getInstance().getAdvImg(subscriber, 2);
