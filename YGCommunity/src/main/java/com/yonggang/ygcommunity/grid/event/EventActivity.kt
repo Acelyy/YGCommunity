@@ -27,7 +27,7 @@ class EventActivity : BaseActivity() {
             override fun onTitleChange(index: Int, total: Int) {
                 var title = ""
                 when (index) {
-                    1 -> title = "代签收"
+                    1 -> title = "待签收"
                     2 -> title = "已签收"
                     3 -> title = "平台自行处理"
                     4 -> title = "核查通知"
@@ -41,7 +41,7 @@ class EventActivity : BaseActivity() {
                 pager.adapter.notifyDataSetChanged()
             }
         }
-        titles.add("代签收")
+        titles.add("待签收")
         titles.add("已签收")
         titles.add("平台自行处理")
         titles.add("核查通知")
