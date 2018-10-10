@@ -116,7 +116,13 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
 
         submit.setOnClickListener { addEvent() }
         pic_back.setOnClickListener { finish() }
+
         tv_title.onFocusChangeListener = FocusUtil(this)
+        tv_name.onFocusChangeListener = FocusUtil(this)
+        tv_phone.onFocusChangeListener = FocusUtil(this)
+        tv_address.onFocusChangeListener = FocusUtil(this)
+        tv_grid.onFocusChangeListener = FocusUtil(this)
+        tv_description.onFocusChangeListener = FocusUtil(this)
     }
 
     @SuppressLint("MissingSuperCall")
