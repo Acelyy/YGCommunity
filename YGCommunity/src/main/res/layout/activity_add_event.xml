@@ -78,48 +78,48 @@
                 </LinearLayout>
 
                 <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="150px"-->
-                    <!--android:layout_marginBottom="20px"-->
-                    <!--android:background="@drawable/back_add_event"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:padding="30px">-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="150px"-->
+                <!--android:layout_marginBottom="20px"-->
+                <!--android:background="@drawable/back_add_event"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="30px">-->
 
-                    <!--<TextView-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="3"-->
-                        <!--android:text="行政区域"-->
-                        <!--android:textColor="#000000"-->
-                        <!--android:textSize="45px" />-->
+                <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="行政区域"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="45px" />-->
 
-                    <!--<LinearLayout-->
-                        <!--android:id="@+id/layout_area"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="7"-->
-                        <!--android:orientation="horizontal">-->
+                <!--<LinearLayout-->
+                <!--android:id="@+id/layout_area"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="7"-->
+                <!--android:orientation="horizontal">-->
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/tv_area"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_vertical"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:background="@null"-->
-                            <!--android:hint="请选择行政区域"-->
-                            <!--android:singleLine="true"-->
-                            <!--android:textColor="#000000"-->
-                            <!--android:textSize="45px" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/tv_area"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@null"-->
+                <!--android:hint="请选择行政区域"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="45px" />-->
 
-                        <!--<ImageView-->
-                            <!--android:layout_width="100px"-->
-                            <!--android:layout_height="100px"-->
-                            <!--android:padding="25px"-->
-                            <!--android:src="@mipmap/pic_grid_down" />-->
+                <!--<ImageView-->
+                <!--android:layout_width="100px"-->
+                <!--android:layout_height="100px"-->
+                <!--android:padding="25px"-->
+                <!--android:src="@mipmap/pic_grid_down" />-->
 
-                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
                 <!--</LinearLayout>-->
 
@@ -130,7 +130,10 @@
                     android:background="@drawable/back_add_event"
                     android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:padding="30px">
+                    android:paddingTop="10px"
+                    android:paddingBottom="10px"
+                    android:paddingLeft="30px"
+                    android:paddingRight="30px">
 
                     <TextView
                         android:layout_width="0dp"
@@ -146,6 +149,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:orientation="horizontal">
+
                         <RadioGroup
                             android:id="@+id/tv_plan"
                             android:layout_width="match_parent"
@@ -157,87 +161,89 @@
                                 android:id="@+id/zxcl"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:button="@null"
-                                android:textColor="#cd2221"
-                                android:text="1"
+                                android:padding="15px"
                                 android:background="@drawable/bg_border"
-                                />
+                                android:button="@null"
+                                android:text="自行处置归档"
+                                android:textColor="#cd2221" />
+
                             <RadioButton
                                 android:id="@+id/sbcl"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:padding="15px"
                                 android:layout_marginStart="30px"
+                                android:background="@drawable/bg_border"
                                 android:button="@null"
-                                android:text="2"
-                                android:textColor="#cd2221"
-                                android:background="@drawable/bg_border" />
+                                android:text="上报平台处理"
+                                android:textColor="#cd2221" />
 
                         </RadioGroup>
                         <!--<TextView-->
-                            <!--android:id="@+id/tv_plan"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_vertical"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:background="@null"-->
-                            <!--android:hint="请选择处置方案"-->
-                            <!--android:singleLine="true"-->
-                            <!--android:textColor="#000000"-->
-                            <!--android:textSize="45px" />-->
+                        <!--android:id="@+id/tv_plan"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@null"-->
+                        <!--android:hint="请选择处置方案"-->
+                        <!--android:singleLine="true"-->
+                        <!--android:textColor="#000000"-->
+                        <!--android:textSize="45px" />-->
 
                         <!--<ImageView-->
-                            <!--android:layout_width="100px"-->
-                            <!--android:layout_height="100px"-->
-                            <!--android:padding="25px"-->
-                            <!--android:src="@mipmap/pic_grid_down" />-->
+                        <!--android:layout_width="100px"-->
+                        <!--android:layout_height="100px"-->
+                        <!--android:padding="25px"-->
+                        <!--android:src="@mipmap/pic_grid_down" />-->
 
                     </LinearLayout>
 
                 </LinearLayout>
 
                 <!--<LinearLayout-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="150px"-->
-                    <!--android:layout_marginBottom="20px"-->
-                    <!--android:background="@drawable/back_add_event"-->
-                    <!--android:gravity="center_vertical"-->
-                    <!--android:orientation="horizontal"-->
-                    <!--android:padding="30px">-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="150px"-->
+                <!--android:layout_marginBottom="20px"-->
+                <!--android:background="@drawable/back_add_event"-->
+                <!--android:gravity="center_vertical"-->
+                <!--android:orientation="horizontal"-->
+                <!--android:padding="30px">-->
 
-                    <!--<TextView-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="3"-->
-                        <!--android:text="处置类型"-->
-                        <!--android:textColor="#000000"-->
-                        <!--android:textSize="45px" />-->
+                <!--<TextView-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="3"-->
+                <!--android:text="处置类型"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="45px" />-->
 
-                    <!--<LinearLayout-->
-                        <!--android:id="@+id/layout_type"-->
-                        <!--android:layout_width="0dp"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_weight="7"-->
-                        <!--android:orientation="horizontal">-->
+                <!--<LinearLayout-->
+                <!--android:id="@+id/layout_type"-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_weight="7"-->
+                <!--android:orientation="horizontal">-->
 
-                        <!--<TextView-->
-                            <!--android:id="@+id/tv_type"-->
-                            <!--android:layout_width="match_parent"-->
-                            <!--android:layout_height="wrap_content"-->
-                            <!--android:layout_gravity="center_vertical"-->
-                            <!--android:layout_weight="1"-->
-                            <!--android:background="@null"-->
-                            <!--android:hint="请选择处置类型"-->
-                            <!--android:singleLine="true"-->
-                            <!--android:textColor="#000000"-->
-                            <!--android:textSize="45px" />-->
+                <!--<TextView-->
+                <!--android:id="@+id/tv_type"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_weight="1"-->
+                <!--android:background="@null"-->
+                <!--android:hint="请选择处置类型"-->
+                <!--android:singleLine="true"-->
+                <!--android:textColor="#000000"-->
+                <!--android:textSize="45px" />-->
 
-                        <!--<ImageView-->
-                            <!--android:layout_width="100px"-->
-                            <!--android:layout_height="100px"-->
-                            <!--android:padding="25px"-->
-                            <!--android:src="@mipmap/pic_grid_down" />-->
+                <!--<ImageView-->
+                <!--android:layout_width="100px"-->
+                <!--android:layout_height="100px"-->
+                <!--android:padding="25px"-->
+                <!--android:src="@mipmap/pic_grid_down" />-->
 
-                    <!--</LinearLayout>-->
+                <!--</LinearLayout>-->
 
                 <!--</LinearLayout>-->
 
@@ -386,8 +392,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="7"
                         android:background="@null"
-                        android:inputType="number"
                         android:hint="请输入诉求人电话"
+                        android:inputType="number"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />

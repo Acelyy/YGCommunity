@@ -70,7 +70,7 @@ public class EventFragment : Fragment() {
      * 获取事件列表
      */
     private fun getEventList(page: Int) {
-        val status = if (index == 9) {
+        val status = if (index == 8) {
             10
         } else {
             index

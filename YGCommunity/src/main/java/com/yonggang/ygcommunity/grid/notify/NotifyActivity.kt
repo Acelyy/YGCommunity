@@ -3,6 +3,7 @@ package com.yonggang.ygcommunity.grid.notify
 import android.content.Context
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.ContextMenu
 import android.view.LayoutInflater
@@ -49,6 +50,9 @@ class NotifyActivity : BaseActivity() {
 
             override fun onError(e: Throwable?) {
                 Log.i("error", e.toString())
+                refresh.finishRefresh()
+                refresh.finishLoadMore()
+                Snackbar.make(refresh, "刷新失败，请重新尝试", Snackbar.LENGTH_SHORT).show()
             }
 
         }

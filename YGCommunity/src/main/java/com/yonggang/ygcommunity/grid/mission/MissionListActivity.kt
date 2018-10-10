@@ -2,6 +2,7 @@ package com.yonggang.ygcommunity.grid.mission
 
 import android.content.Context
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -62,6 +63,8 @@ class MissionListActivity : BaseActivity() {
             override fun onError(e: Throwable?) {
                 Log.i("getMissionList", e.toString())
                 refresh.finishRefresh()
+                refresh.finishLoadMore()
+                Snackbar.make(refresh, "刷新失败，请重新尝试", Snackbar.LENGTH_SHORT).show()
             }
         }
 

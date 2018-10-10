@@ -15,6 +15,15 @@ public class Trail {
     private String comment;
     private int status;
     private String time;
+    private String phone;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
     public String getBm() {
         return bm;

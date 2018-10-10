@@ -202,6 +202,15 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
             Snackbar.make(submit, "请填写事件标题", Snackbar.LENGTH_LONG).show()
             return
         }
+        val czfa = when (tv_plan.checkedRadioButtonId) {
+            R.id.zxcl -> "1"
+            R.id.sbcl -> "2"
+            else -> ""
+        }
+        if(czfa == ""){
+            Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
+            return
+        }
 //        if (layout_area.tag == null) {
 //            Snackbar.make(submit, "请选择行政区域", Snackbar.LENGTH_LONG).show()
 //            return
@@ -272,14 +281,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
                 }
 
                 HttpUtil.getInstance().addEvent(ProgressSubscriber<String>(subscriberOnNextListener, this@AddEventActivity, "上报中"),
-                        when (tv_plan.checkedRadioButtonId) {
-                            R.id.zxcl -> "1"
-                            R.id.sbcl -> "2"
-                            else -> {
-                                Snackbar.make(submit, "请选择处置方案", Snackbar.LENGTH_LONG).show()
-                                return
-                            }
-                        },
+                        czfa,
                         layout_severity.tag as String,
                         layout_classify.tag as String,
                         tv_name.text.trim().toString(),
