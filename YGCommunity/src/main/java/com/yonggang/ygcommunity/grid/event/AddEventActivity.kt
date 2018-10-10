@@ -25,6 +25,7 @@ import com.yonggang.ygcommunity.Entry.GridStatus
 import com.yonggang.ygcommunity.PhotoPicker.PhotoAdapter
 import com.yonggang.ygcommunity.PhotoPicker.RecyclerItemClickListener
 import com.yonggang.ygcommunity.R
+import com.yonggang.ygcommunity.Util.FocusUtil
 import com.yonggang.ygcommunity.Util.ImageUtils
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
@@ -115,17 +116,7 @@ class AddEventActivity : BaseActivity(), AMapLocationListener {
 
         submit.setOnClickListener { addEvent() }
         pic_back.setOnClickListener { finish() }
-
-        tv_title.onFocusChangeListener = HideKeyBoard(this)
-    }
-
-    class HideKeyBoard(var context: Context) : View.OnFocusChangeListener {
-        override fun onFocusChange(v: View?, hasFocus: Boolean) {
-            if (!hasFocus) {
-                val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-                imm.hideSoftInputFromWindow(v?.windowToken, 0)
-            }
-        }
+        tv_title.onFocusChangeListener = FocusUtil(this)
     }
 
     @SuppressLint("MissingSuperCall")
