@@ -1,7 +1,11 @@
 package com.yonggang.ygcommunity.grid.mission
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.util.Log
@@ -9,6 +13,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.EditText
+import android.widget.ListView
 import android.widget.TextView
 import com.yonggang.ygcommunity.BaseActivity
 import com.yonggang.ygcommunity.Entry.Trail
@@ -16,6 +22,7 @@ import com.yonggang.ygcommunity.R
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
 import kotlinx.android.synthetic.main.activity_trail.*
+import org.jetbrains.anko.find
 import rx.Subscriber
 
 class TrailActivity : BaseActivity() {
@@ -57,6 +64,7 @@ class TrailActivity : BaseActivity() {
 
 
     class TrailAdapter(val data: List<Trail>, val context: Context) : BaseAdapter() {
+        @SuppressLint("MissingPermission")
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val view: View
             val mholder: ViewHolder
@@ -75,20 +83,37 @@ class TrailActivity : BaseActivity() {
             if (data[position].bpname != null) {
                 s += "处理人：" + data[position].bpname + "\n"
             }
+            if(data[position].phone != null){
+                s +="联系电话；"+ data[position].phone + "\n"
+                mholder.textinfo.setOnClickListener {
+                    val alertview = LayoutInflater.from(context).inflate(R.layout.event_phone,null)
+                    val name=alertview.find<TextView>(R.id.name)
+                    val phone=alertview.find<TextView>(R.id.telephone)
+                    val call=alertview.find<TextView>(R.id.call)
+                    name.text = data[position].bpname
+                    phone.text = data[position].phone
+                    call.setOnClickListener {
+                        val telephone = "tel:"+data[position].phone
+                        val intent = Intent(Intent.ACTION_CALL, Uri.parse(telephone))
+                        context.startActivity(intent)
+                    }
+                    val builder = AlertDialog.Builder(context)
+                    builder.setView(alertview)
+                            .create().show()
+                }
+            }
             if (data[position].comment != null) {
                 s += "处理意见：" + data[position].comment + "\n"
             }
             s += "处理状态：" + when (data[position].status) {
-                0 -> "草稿"
                 1 -> "待签收"
                 2 -> "已签收"
                 3 -> "平台自行处理"
                 4 -> "核查通知"
                 5 -> "转派部门"
-                6 -> "部门签收"
-                7 -> "部门处理"
+                7 -> "部门处理中"
                 8 -> "部门完结"
-                9 -> "任务完成"
+                10 -> "任务完成"
                 else -> {
                     ""
                 }
@@ -97,6 +122,7 @@ class TrailActivity : BaseActivity() {
                 s += "处理时间：" + data[position].time
             }
             mholder.textinfo.text = s
+
             return view
         }
 

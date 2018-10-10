@@ -27,7 +27,6 @@ class EventActivity : BaseActivity() {
             override fun onTitleChange(index: Int, total: Int) {
                 var title = ""
                 when (index) {
-                    0 -> title = "草稿"
                     1 -> title = "代签收"
                     2 -> title = "已签收"
                     3 -> title = "平台自行处理"
@@ -38,11 +37,10 @@ class EventActivity : BaseActivity() {
                     8 -> title = "部门完结"
                     9 -> title = "任务结束"
                 }
-                titles[index] = "$title $total"
+                titles[index-1] = "$title $total"
                 pager.adapter.notifyDataSetChanged()
             }
         }
-        titles.add("草稿")
         titles.add("代签收")
         titles.add("已签收")
         titles.add("平台自行处理")
@@ -54,7 +52,7 @@ class EventActivity : BaseActivity() {
         titles.add("任务结束")
 
         for (index in titles.indices) {
-            fragments.add(EventFragment.getInstance(index, onTitleChangeListener))
+            fragments.add(EventFragment.getInstance(index+1, onTitleChangeListener))
         }
         pager.adapter = MyPagerAdapter(supportFragmentManager)
         pager.offscreenPageLimit = 10

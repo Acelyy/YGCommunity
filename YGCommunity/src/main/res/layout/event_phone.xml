@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/refresh_color"
+        android:paddingBottom="20px"
+        android:paddingLeft="20px"
+        android:paddingTop="20px">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="呼叫"
+            android:textColor="#fff"
+            android:textSize="70px" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180px"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_marginLeft="20px"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6px"
+                android:singleLine="true"
+                android:text="大西瓜"
+                android:textColor="#999999"
+                android:textSize="50px" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6px"
+                android:singleLine="true"
+                android:text="13843838438"
+                android:textColor="#999999"
+                android:textSize="50px" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/call"
+            android:layout_width="200px"
+            android:layout_height="100px"
+            android:layout_gravity="center_vertical"
+            android:layout_margin="30px"
+            android:background="@drawable/back_back_hotline"
+            android:paddingBottom="10px"
+            android:paddingEnd="20px"
+            android:paddingStart="20px"
+            android:paddingTop="10px"
+            android:text="呼叫"
+            android:textColor="#FFFFFF"
+            android:textSize="70px" />
+
+    </LinearLayout>
+
+</LinearLayout>
