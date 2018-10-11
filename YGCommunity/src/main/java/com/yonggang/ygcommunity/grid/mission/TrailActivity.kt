@@ -105,19 +105,7 @@ class TrailActivity : BaseActivity() {
             if (data[position].comment != null) {
                 s += "处理意见：" + data[position].comment + "\n"
             }
-            s += "处理状态：" + when (data[position].status) {
-                1 -> "待签收"
-                2 -> "已签收"
-                3 -> "平台自行处理"
-                4 -> "核查通知"
-                5 -> "转派部门"
-                7 -> "部门处理中"
-                8 -> "部门完结"
-                10 -> "任务完成"
-                else -> {
-                    ""
-                }
-            } + "\n"
+            s += "处理状态：" + data[position].status+ "\n"
             if (data[position].time != null) {
                 s += "处理时间：" + data[position].time
             }

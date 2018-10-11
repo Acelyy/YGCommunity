@@ -70,13 +70,11 @@ class MissionDetailActivity : BaseActivity() {
                     } + "张图片"
 
                     tv_status.text = when (data.status) {
-                        0 -> "草稿"
                         1 -> "待签收"
                         2 -> "已签收"
                         3 -> "平台自行处理"
                         4 -> "核查通知"
                         5 -> "转派部门"
-                        6 -> "部门签收"
                         7 -> "部门处理"
                         8 -> "部门完结"
                         10 -> "任务完成"
