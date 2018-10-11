@@ -121,10 +121,11 @@ class MissionDetailActivity : BaseActivity() {
                                 1 -> signEvent(id)
                                 2 -> endEvent(id)
                                 3 -> {
-                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input,null)
-                                    val input=view.find<EditText>(R.id.input)
+                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input, null)
+                                    val input = view.find<EditText>(R.id.input)
                                     val builder = AlertDialog.Builder(this@MissionDetailActivity)
                                     builder.setTitle("请输入意见")
+                                            .setView(view)
                                             .setPositiveButton("确定") { _, _ ->
                                                 sendCheck(id, input.text.toString())
                                             }.setNegativeButton("取消") { _, _ -> }
@@ -134,10 +135,11 @@ class MissionDetailActivity : BaseActivity() {
                                 5 -> endEvent(id)
                                 7 -> endEvent(id)
                                 8 -> {
-                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input,null)
-                                    val input=view.find<EditText>(R.id.input)
+                                    val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input, null)
+                                    val input = view.find<EditText>(R.id.input)
                                     val builder = AlertDialog.Builder(this@MissionDetailActivity)
                                     builder.setTitle("请输入意见")
+                                            .setView(view)
                                             .setPositiveButton("确定") { _, _ ->
                                                 sendCheck(id, input.text.toString())
                                             }.setNegativeButton("取消") { _, _ -> }
@@ -239,9 +241,9 @@ class MissionDetailActivity : BaseActivity() {
     /**
      * 发出核查通知
      */
-    private fun sendCheck(id: String,comment: String) {
-        if(comment.isEmpty()){
-            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+    private fun sendCheck(id: String, comment: String) {
+        if (comment.isEmpty()) {
+            Snackbar.make(pic_back, "意见不能为空", Snackbar.LENGTH_LONG).show()
             return
         }
         val subscriber = object : Subscriber<String>() {
@@ -258,6 +260,6 @@ class MissionDetailActivity : BaseActivity() {
                 Log.i("signEvent", e.toString())
             }
         }
-        HttpUtil.getInstance().sendCheck(subscriber, id, app.grid.id,comment)
+        HttpUtil.getInstance().sendCheck(subscriber, id, app.grid.id, comment)
     }
 }

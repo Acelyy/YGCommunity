@@ -145,6 +145,7 @@ class TransferActivity : BaseActivity() {
                     val input=view.find<EditText>(R.id.input)
                     val builder = AlertDialog.Builder(this@TransferActivity)
                     builder.setTitle("请确认指派的人")
+                            .setView(view)
                             .setMessage(msg)
                             .setPositiveButton("确定") { _, _ ->
                                 assignor(id, ids.toString(), input.text.toString())
@@ -235,7 +236,7 @@ class TransferActivity : BaseActivity() {
      */
     private fun transfer(id: String, ids: String, comment: String) {
         if(comment.isEmpty()){
-            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG).show()
             return
         }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
@@ -250,7 +251,7 @@ class TransferActivity : BaseActivity() {
      */
     private fun assignor(id: String, ids: String, comment: String) {
         if(comment.isEmpty()){
-            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG)
+            Snackbar.make(pic_back,"意见不能为空",Snackbar.LENGTH_LONG).show()
             return
         }
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
