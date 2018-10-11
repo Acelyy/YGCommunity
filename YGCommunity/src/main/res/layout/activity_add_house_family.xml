@@ -59,7 +59,7 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <EditText
+            <com.yonggang.ygcommunity.View.AutoHideEditText
                 android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <EditText
+            <com.yonggang.ygcommunity.View.AutoHideEditText
                 android:id="@+id/number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <EditText
+            <com.yonggang.ygcommunity.View.AutoHideEditText
                 android:id="@+id/tell"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <EditText
+            <com.yonggang.ygcommunity.View.AutoHideEditText
                 android:id="@+id/relationship"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                 android:textColor="#000000"
                 android:textSize="45px" />
 
-            <EditText
+            <com.yonggang.ygcommunity.View.AutoHideEditText
                 android:id="@+id/job"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

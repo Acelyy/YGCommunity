@@ -63,7 +63,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_name"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_figure"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_reason"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -307,7 +307,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_process"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -337,7 +337,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_result"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -366,7 +366,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_label"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -395,7 +395,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tv_person"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"

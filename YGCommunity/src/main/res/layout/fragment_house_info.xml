@@ -66,14 +66,24 @@
                             android:paddingBottom="10px"
                             android:paddingTop="10px">
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="150px"
                                 android:layout_height="wrap_content"
-                                android:text="姓名"
-                                android:textColor="#000000"
-                                android:textSize="45px" />
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="姓名"
+                                    android:textColor="#000000"
+                                    android:textSize="45px" />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/start"/>
+                            </LinearLayout>
 
-                            <EditText
+
+                            <com.yonggang.ygcommunity.View.AutoHideEditText
                                 android:id="@+id/name"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -93,13 +103,22 @@
                             android:paddingBottom="10px"
                             android:paddingTop="10px">
 
-                            <TextView
+
+                            <LinearLayout
                                 android:layout_width="150px"
                                 android:layout_height="wrap_content"
-                                android:text="性别"
-                                android:textColor="#000000"
-                                android:textSize="45px" />
-
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="性别"
+                                    android:textColor="#000000"
+                                    android:textSize="45px" />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/start"/>
+                            </LinearLayout>
 
                             <RadioGroup
                                 android:id="@+id/rg_sex"
@@ -134,14 +153,24 @@
                             android:paddingBottom="10px"
                             android:paddingTop="10px">
 
-                            <TextView
+
+                            <LinearLayout
                                 android:layout_width="150px"
                                 android:layout_height="wrap_content"
-                                android:text="民族"
-                                android:textColor="#000000"
-                                android:textSize="45px" />
+                                android:gravity="center_vertical">
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="民族"
+                                    android:textColor="#000000"
+                                    android:textSize="45px" />
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@mipmap/start"/>
+                            </LinearLayout>
 
-                            <EditText
+                            <com.yonggang.ygcommunity.View.AutoHideEditText
                                 android:id="@+id/nation"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -164,21 +193,33 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="身份证"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
 
-                    <EditText
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="身份证"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
+
+
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/number"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@null"
-                        android:maxLength="18"
                         android:hint="请输入身份证号"
+                        android:maxLength="18"
                         android:singleLine="true"
                         android:textColor="#000000"
                         android:textSize="45px" />
@@ -198,12 +239,24 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="类型"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="类型"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
 
 
                     <com.yonggang.ygcommunity.View.RadioGroup
@@ -265,12 +318,23 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="出生年月"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="出生年月"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/birth"
@@ -286,7 +350,6 @@
                 </LinearLayout>
 
 
-
                 <LinearLayout
                     android:id="@+id/layout_political"
                     android:layout_width="match_parent"
@@ -294,12 +357,23 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="政治面貌"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="政治面貌"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/political"
@@ -326,12 +400,23 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="居住地址"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="居住地址"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/address"
@@ -357,14 +442,26 @@
                     android:gravity="center_vertical"
                     android:padding="40px">
 
-                    <TextView
+
+                    <LinearLayout
                         android:layout_width="300px"
                         android:layout_height="wrap_content"
-                        android:text="联系电话"
-                        android:textColor="#000000"
-                        android:textSize="45px" />
+                        android:gravity="center_vertical">
 
-                    <EditText
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="联系电话"
+                            android:textColor="#000000"
+                            android:textSize="45px" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/start" />
+                    </LinearLayout>
+
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/tell"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -407,7 +504,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/depart"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -499,7 +596,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/household"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -526,7 +623,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/house_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -978,7 +1075,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/disease"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1004,7 +1101,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/volunteerId"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1030,7 +1127,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/landlordTel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1056,7 +1153,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/carNumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -1082,7 +1179,7 @@
                         android:textColor="#000000"
                         android:textSize="45px" />
 
-                    <EditText
+                    <com.yonggang.ygcommunity.View.AutoHideEditText
                         android:id="@+id/hobby"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
