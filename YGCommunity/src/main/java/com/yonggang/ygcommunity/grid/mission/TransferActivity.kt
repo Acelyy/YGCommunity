@@ -37,12 +37,12 @@ class TransferActivity : BaseActivity() {
         refresh.setOnRefreshListener {
             when (intent.getIntExtra("status", 0)) {
                 2 -> getDepartList()
-                6 -> getAssignorList()
+                5 -> getAssignorList()
             }
         }
         tv_title.text = when (intent.getIntExtra("status", 0)) {
             2 -> "请选择指派的部门"
-            6 -> "请选择指派的人"
+            5 -> "请选择指派的人"
             else -> ""
         }
 

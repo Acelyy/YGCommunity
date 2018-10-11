@@ -75,7 +75,7 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> "已签收"
                         3 -> "平台自行处理"
                         4 -> "核查通知"
-                        6 -> "部门签收"
+                        5 -> "转派部门"
                         7 -> "部门处理"
                         8 -> "部门完结"
                         10 -> "任务完成"
@@ -86,11 +86,12 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> View.VISIBLE
                         3 -> View.VISIBLE
 
-                        6 -> if (app.grid.appauth == 2) {
+                        5 -> if (app.grid.appauth == 2) {
                             View.VISIBLE
                         } else {
                             View.GONE
                         }
+
                         7 -> if (app.grid.appauth == 2) {
                             View.VISIBLE
                         } else {
