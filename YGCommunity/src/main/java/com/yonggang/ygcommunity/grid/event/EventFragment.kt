@@ -27,6 +27,7 @@ public class EventFragment : Fragment() {
     private lateinit var onTitleChangeListener: EventActivity.OnTitleChangeListener
 
     private var index = -1
+    private var status=-1
 
     private lateinit var app: YGApplication
 
@@ -35,10 +36,10 @@ public class EventFragment : Fragment() {
     private lateinit var adapter: EventAdapter
 
     companion object {
-        fun getInstance(index: Int, onTitleChangeListener: EventActivity.OnTitleChangeListener): EventFragment {
+        fun getInstance(index: Int, status: Int, onTitleChangeListener: EventActivity.OnTitleChangeListener): EventFragment {
             val f = EventFragment()
             f.onTitleChangeListener = onTitleChangeListener
-            f.arguments = bundleOf("index" to index)
+            f.arguments = bundleOf("index" to index, "status" to status)
             return f
         }
     }
@@ -47,6 +48,7 @@ public class EventFragment : Fragment() {
         super.onCreate(savedInstanceState)
         app = activity.application as YGApplication
         index = arguments.getInt("index")
+        status = arguments.getInt("status")
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -70,11 +72,6 @@ public class EventFragment : Fragment() {
      * 获取事件列表
      */
     private fun getEventList(page: Int) {
-        val status = if (index == 8) {
-            10
-        } else {
-            index
-        }
 
         val subscriber = object : Subscriber<GridEvent>() {
             override fun onNext(data: GridEvent?) {
