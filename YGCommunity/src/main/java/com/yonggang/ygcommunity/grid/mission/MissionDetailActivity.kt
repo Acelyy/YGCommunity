@@ -75,7 +75,6 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> "已签收"
                         3 -> "平台自行处理"
                         4 -> "核查通知"
-                        5 -> "转派部门"
                         6 -> "部门签收"
                         7 -> "部门处理"
                         8 -> "部门完结"
@@ -87,11 +86,6 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> View.VISIBLE
                         3 -> View.VISIBLE
 
-                        5 -> if (app.grid.appauth == 2) {
-                            View.VISIBLE
-                        } else {
-                            View.GONE
-                        }
                         6 -> if (app.grid.appauth == 2) {
                             View.VISIBLE
                         } else {
@@ -115,8 +109,7 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> "平台自行处理"
                         3 -> "发出核查通知"
 
-                        5 -> "签收"
-                        6 -> "任务完结"
+                        5 -> "任务完结"
                         7 -> "任务完结"
                         8 -> "发出核查通知"
                         else -> ""
@@ -137,8 +130,7 @@ class MissionDetailActivity : BaseActivity() {
                                             .create().show()
                                 }
 
-                                5 -> signEvent(id)
-                                6 -> endEvent(id)
+                                5 -> endEvent(id)
                                 7 -> endEvent(id)
                                 8 -> {
                                     val view = LayoutInflater.from(this@MissionDetailActivity).inflate(R.layout.item_input,null)
@@ -154,10 +146,10 @@ class MissionDetailActivity : BaseActivity() {
                         }
                     })
 
-                    // 额外的按钮，用于status为2和6的时候指派、
+                    // 额外的按钮，用于status为2和5的时候指派、
                     extra.visibility = when (data.status) {
                         2 -> View.VISIBLE
-                        6 -> if (app.grid.appauth == 2) {
+                        5 -> if (app.grid.appauth == 2) {
                             View.VISIBLE
                         } else {
                             View.GONE
@@ -166,7 +158,7 @@ class MissionDetailActivity : BaseActivity() {
                     }
                     extra.text = when (data.status) {
                         2 -> "转办部门"
-                        6 -> "任务指派"
+                        5 -> "任务指派"
                         else -> ""
                     }
                     extra.setOnClickListener {
