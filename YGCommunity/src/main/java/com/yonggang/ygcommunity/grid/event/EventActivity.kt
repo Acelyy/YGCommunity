@@ -27,33 +27,43 @@ class EventActivity : BaseActivity() {
             override fun onTitleChange(index: Int, total: Int) {
                 var title = ""
                 when (index) {
-                    1 -> title = "待签收"
-                    2 -> title = "已签收"
-                    3 -> title = "平台自行处理"
-                    4 -> title = "核查通知"
-                    5 -> title = "转派部门"
-                    6 -> title = "部门签收"
-                    7 -> title = "部门处理中"
-                    8 -> title = "部门完结"
-                    9 -> title = "任务结束"
+                    0 -> title = "待签收"
+                    1 -> title = "已签收"
+                    2 -> title = "平台自行处理"
+                    3 -> title = "核查通知"
+                    4 -> title = "转派部门"
+                    5 -> title = "部门处理中"
+                    6 -> title = "部门完结"
+                    7 -> title = "任务结束"
                 }
-                titles[index-1] = "$title $total"
+                titles[index] = "$title $total"
                 pager.adapter.notifyDataSetChanged()
             }
         }
         titles.add("待签收")
-        titles.add("已签收")
-        titles.add("平台自行处理")
-        titles.add("核查通知")
-        titles.add("转派部门")
-        titles.add("部门签收")
-        titles.add("部门处理中")
-        titles.add("部门完结")
-        titles.add("任务结束")
+        fragments.add(EventFragment.getInstance(0, 1, onTitleChangeListener))
 
-        for (index in titles.indices) {
-            fragments.add(EventFragment.getInstance(index+1, onTitleChangeListener))
-        }
+        titles.add("已签收")
+        fragments.add(EventFragment.getInstance(1, 2, onTitleChangeListener))
+
+        titles.add("平台自行处理")
+        fragments.add(EventFragment.getInstance(2, 3, onTitleChangeListener))
+
+        titles.add("核查通知")
+        fragments.add(EventFragment.getInstance(3, 4, onTitleChangeListener))
+
+        titles.add("转派部门")
+        fragments.add(EventFragment.getInstance(4, 5, onTitleChangeListener))
+
+        titles.add("部门处理中")
+        fragments.add(EventFragment.getInstance(5, 7, onTitleChangeListener))
+
+        titles.add("部门完结")
+        fragments.add(EventFragment.getInstance(6, 8, onTitleChangeListener))
+
+        titles.add("任务结束")
+        fragments.add(EventFragment.getInstance(7, 10, onTitleChangeListener))
+
         pager.adapter = MyPagerAdapter(supportFragmentManager)
         pager.offscreenPageLimit = 10
         tab.tabMode = TabLayout.MODE_SCROLLABLE
