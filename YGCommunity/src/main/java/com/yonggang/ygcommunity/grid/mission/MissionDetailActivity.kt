@@ -86,6 +86,12 @@ class MissionDetailActivity : BaseActivity() {
                         2 -> View.VISIBLE
                         3 -> View.VISIBLE
 
+                        4 -> if (app.grid.appauth == 3) {
+                            View.VISIBLE
+                        } else {
+                            View.GONE
+                        }
+
                         5 -> if (app.grid.appauth == 2) {
                             View.VISIBLE
                         } else {
@@ -109,6 +115,7 @@ class MissionDetailActivity : BaseActivity() {
                         1 -> "签收"
                         2 -> "平台自行处理"
                         3 -> "发出核查通知"
+                        4 -> "任务完结"
 
                         5 -> "任务完结"
                         7 -> "任务完结"
@@ -131,6 +138,7 @@ class MissionDetailActivity : BaseActivity() {
                                             }.setNegativeButton("取消") { _, _ -> }
                                             .create().show()
                                 }
+                                4 -> endEvent(id)
 
                                 5 -> endEvent(id)
                                 7 -> endEvent(id)

@@ -16,7 +16,6 @@ import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.grid.Visit.AddVisitActivity
 import com.yonggang.ygcommunity.grid.Visit.VisitActivity
-import com.yonggang.ygcommunity.grid.check.CheckListActivity
 import com.yonggang.ygcommunity.grid.event.AddEventActivity
 import com.yonggang.ygcommunity.grid.event.EventActivity
 import com.yonggang.ygcommunity.grid.folk.AddFolkActivity
@@ -55,7 +54,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
         layout_today_hourse.setOnClickListener(this)
         layout_today_walk.setOnClickListener(this)
         layout_app_query.setOnClickListener(this)
-        layout_my_task.setOnClickListener(this)
         layout_my_work.setOnClickListener(this)
         layout_my_visit.setOnClickListener(this)
         layout_app_hourse.setOnClickListener(this)
@@ -69,19 +67,24 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.layout_today_event -> startActivity<EventActivity>()
+            R.id.layout_today_event -> if (app.grid.appauth != 1) {
+                startActivity<EventActivity>()
+            } else {
+                Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
+            }
             R.id.layout_app_event -> startActivity<AddEventActivity>()
             R.id.layout_app_hourse -> startActivity<HouseInfoActivity>("sfzh" to "")
             R.id.layout_app_note -> startActivity<AddFolkActivity>()
-            R.id.layout_my_visit -> startActivity<VisitActivity>()
+            R.id.layout_my_visit -> if (app.grid.appauth != 1) {
+                startActivity<VisitActivity>()
+            } else {
+                Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
+            }
             R.id.layout_app_walk -> startActivity<AddVisitActivity>()
-            R.id.layout_today_walk -> startActivity<FolkActivity>()
-            R.id.layout_my_task -> {
-                if (app.grid.appauth == 1 || app.grid.appauth == 4) {
-                    startActivity<CheckListActivity>()
-                } else {
-                    Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
-                }
+            R.id.layout_today_walk -> if (app.grid.appauth != 1) {
+                startActivity<FolkActivity>()
+            } else {
+                Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
             }
             R.id.layout_my_work -> {
                 if (app.grid.appauth != 1) {
@@ -91,7 +94,11 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 }
             }
             R.id.layout_app_message -> startActivity<NotifyActivity>()
-            R.id.layout_today_hourse -> startActivity<HouseListActivity>()
+            R.id.layout_today_hourse -> if (app.grid.appauth != 1) {
+                startActivity<HouseListActivity>()
+            } else {
+                Snackbar.make(refresh, "抱歉！您无此权限", Snackbar.LENGTH_LONG).show()
+            }
             R.id.layout_app_query -> startActivity<HouseQueryActivity>()
         }
     }
@@ -105,7 +112,6 @@ class WorkSpaceActivity : BaseActivity(), View.OnClickListener {
                 size_today_event.withNumber(data!!.sbsj).start()
                 size_today_hourse.withNumber(data.rfcj).start()
                 size_today_walk.withNumber(data.zfqk).start()
-                size_my_task.withNumber(data.my_hcrw).start()
                 size_my_work.withNumber(data.my_gdcl).start()
                 size_my_visit.withNumber(data.my_xfry).start()
                 refresh.finishRefresh()
