@@ -1,5 +1,6 @@
 package com.yonggang.ygcommunity.grid.folk
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.util.AttributeSet
@@ -36,6 +37,7 @@ class FolkDetailsActivity : BaseActivity() {
 
     private fun getFolkDetails(id: String) {
         val subscriber = object : Subscriber<FolkDetails>() {
+            @SuppressLint("SetTextI18n")
             override fun onNext(it: FolkDetails?) {
                 data = it!!
                 tv_name.text = data.dyxm
@@ -49,7 +51,11 @@ class FolkDetailsActivity : BaseActivity() {
                 tv_result.text = data.result
                 tv_label.text = data.tag
                 tv_process.text = data.handling_process
-                tv_photes.text = "共" + data.mqrj_imgs.size + "张图片"
+                tv_photes.text = "共" + if (data.mqrj_imgs == null || (data.mqrj_imgs.size == 1 && data.mqrj_imgs[0] == "")) {
+                    0
+                } else {
+                    data.mqrj_imgs.size
+                } + "张图片"
                 for (i in datadzb) {
                     if (data.dzbxxb_id.equals(i.id)) {
                         tv_team.text = i.name
@@ -60,9 +66,13 @@ class FolkDetailsActivity : BaseActivity() {
                         tv_area.text = i.name
                     }
                 }
-                layout_photes.setOnClickListener {
-                    this@FolkDetailsActivity.startActivity<BbsPicActivity>("imgs" to data.mqrj_imgs, "index" to 0)
+                if (data.mqrj_imgs == null || (data.mqrj_imgs.size == 1 && data.mqrj_imgs[0] == "")) {
+                }else{
+                    layout_photes.setOnClickListener {
+                        this@FolkDetailsActivity.startActivity<BbsPicActivity>("imgs" to data.mqrj_imgs, "index" to 0)
+                    }
                 }
+
             }
 
             override fun onCompleted() {

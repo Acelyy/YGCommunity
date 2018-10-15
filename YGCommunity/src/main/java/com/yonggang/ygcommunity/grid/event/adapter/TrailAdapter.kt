@@ -49,7 +49,7 @@ class TrailAdapter(var data: GridEventDetail, var context: Context) : RecyclerVi
                 holder.bbs_content?.text = data.detail.sjms
                 holder.bbs_time?.text = data.detail.sbsj
 
-                if (data.detail.imgs == null || data.detail.imgs.isEmpty()) {
+                if (data.detail.imgs == null || data.detail.imgs.isEmpty() ||(data.detail.imgs.size == 1 && data.detail.imgs[0] == "")) {
                     holder.layout_pic?.visibility = View.GONE
                     holder.layout_pic2?.visibility = View.GONE
                 } else {

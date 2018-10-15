@@ -63,7 +63,7 @@ class MissionDetailActivity : BaseActivity() {
                     tv_location.text = data.sjdw
                     tv_des.text = data.sjms
 
-                    tv_photes.text = "共" + if (data.girdimgs == null) {
+                    tv_photes.text = "共" + if (data.girdimgs == null|| (data.girdimgs.size == 1 && data.girdimgs[0] == "")) {
                         0
                     } else {
                         data.girdimgs.size
@@ -176,7 +176,8 @@ class MissionDetailActivity : BaseActivity() {
                         startActivity<TransferActivity>("id" to id, "status" to data.status)
                     }
 
-                    if (data.girdimgs != null && !data.girdimgs.isEmpty()) {
+                    if (data.girdimgs == null && data.girdimgs.isEmpty() || (data.girdimgs.size == 1 && data.girdimgs[0] =="")) {
+                    }else{
                         layout_pic.setOnClickListener {
                             val intent = Intent(this@MissionDetailActivity, BbsPicActivity::class.java)
                             val bundle = Bundle()

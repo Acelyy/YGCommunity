@@ -73,6 +73,7 @@ public class LoginActivity extends BaseActivity {
             Toast.makeText(this, "密码应为6~20位", Toast.LENGTH_SHORT).show();
             return;
         }
+        Log.i("pwd",JPushInterface.getRegistrationID(this));
         SubscriberOnNextListener onNextListener = new SubscriberOnNextListener<User>() {
             @Override
             public void onNext(User user) {
