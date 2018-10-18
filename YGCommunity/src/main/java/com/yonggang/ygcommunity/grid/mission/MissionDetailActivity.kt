@@ -17,6 +17,8 @@ import com.yonggang.ygcommunity.Util.NoDoubleClickListener
 import com.yonggang.ygcommunity.Util.StatusBarUtil
 import com.yonggang.ygcommunity.YGApplication
 import com.yonggang.ygcommunity.httpUtil.HttpUtil
+import com.yonggang.ygcommunity.httpUtil.ProgressSubscriber
+import com.yonggang.ygcommunity.httpUtil.SubscriberOnNextListener
 import kotlinx.android.synthetic.main.activity_mission_detail.*
 import org.jetbrains.anko.find
 import org.jetbrains.anko.startActivity
@@ -63,7 +65,7 @@ class MissionDetailActivity : BaseActivity() {
                     tv_location.text = data.sjdw
                     tv_des.text = data.sjms
 
-                    tv_photes.text = "共" + if (data.girdimgs == null|| (data.girdimgs.size == 1 && data.girdimgs[0] == "")) {
+                    tv_photes.text = "共" + if (data.girdimgs == null || (data.girdimgs.size == 1 && data.girdimgs[0] == "")) {
                         0
                     } else {
                         data.girdimgs.size
@@ -176,8 +178,8 @@ class MissionDetailActivity : BaseActivity() {
                         startActivity<TransferActivity>("id" to id, "status" to data.status)
                     }
 
-                    if (data.girdimgs == null && data.girdimgs.isEmpty() || (data.girdimgs.size == 1 && data.girdimgs[0] =="")) {
-                    }else{
+                    if (data.girdimgs == null && data.girdimgs.isEmpty() || (data.girdimgs.size == 1 && data.girdimgs[0] == "")) {
+                    } else {
                         layout_pic.setOnClickListener {
                             val intent = Intent(this@MissionDetailActivity, BbsPicActivity::class.java)
                             val bundle = Bundle()
@@ -230,21 +232,11 @@ class MissionDetailActivity : BaseActivity() {
      * 事件完结：平台自行处理或者
      */
     private fun endEvent(id: String) {
-        val subscriber = object : Subscriber<String>() {
-            override fun onNext(data: String?) {
-                Log.i("signEvent", data)
-                finish()
-            }
-
-            override fun onCompleted() {
-
-            }
-
-            override fun onError(e: Throwable?) {
-                Log.i("signEvent", e.toString())
-            }
+        val subscriberOnNextListener = SubscriberOnNextListener<String> {
+            Log.i("signEvent", it)
+            finish()
         }
-        HttpUtil.getInstance().endEvent(subscriber, id, app.grid.id, app.grid.appauth)
+        HttpUtil.getInstance().endEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
     }
 
     /**
@@ -255,20 +247,10 @@ class MissionDetailActivity : BaseActivity() {
             Snackbar.make(pic_back, "意见不能为空", Snackbar.LENGTH_LONG).show()
             return
         }
-        val subscriber = object : Subscriber<String>() {
-            override fun onNext(data: String?) {
-                Log.i("signEvent", data)
-                finish()
-            }
-
-            override fun onCompleted() {
-
-            }
-
-            override fun onError(e: Throwable?) {
-                Log.i("signEvent", e.toString())
-            }
+        val subscriberOnNextListener = SubscriberOnNextListener<String> {
+            Log.i("signEvent", it)
+            finish()
         }
-        HttpUtil.getInstance().sendCheck(subscriber, id, app.grid.id, comment)
+        HttpUtil.getInstance().sendCheck(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, comment)
     }
 }
