@@ -6,15 +6,15 @@ public class Swiper {
      * status : 1
      */
 
-    private String imgurl;
+    private String title;
     private int status;
 
-    public String getImgurl() {
-        return imgurl;
+    public String getTitle() {
+        return title;
     }
 
-    public void setImgurl(String imgurl) {
-        this.imgurl = imgurl;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public int getStatus() {

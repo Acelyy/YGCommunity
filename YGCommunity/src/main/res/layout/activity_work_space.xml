@@ -48,10 +48,18 @@
 
         </RelativeLayout>
 
-        <com.youth.banner.Banner
+
+        <!--<com.youth.banner.Banner-->
+            <!--android:id="@+id/banner"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="220px"/>-->
+        <com.yonggang.ygcommunity.View.ViewAnimatorWordComponent
             android:id="@+id/banner"
             android:layout_width="match_parent"
+            android:layout_marginTop="20px"
+            android:padding="10px"
             android:layout_height="220px"/>
+
 
     </LinearLayout>
 

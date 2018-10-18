@@ -1212,7 +1212,7 @@ public class HttpUtil {
      * @param sjms
 //     * @param sjbt
 //     * @param xzqh
-     * @param czlx
+//     * @param czlx
      * @param imgs
      */
     public void addEvent(Subscriber subscriber, String czfa, String yzcd, String sjfl, String sqr, String sqrdh, String sjdw, String sjdz, String sswg, String sjms, String sjbt, String id, String imgs) {
