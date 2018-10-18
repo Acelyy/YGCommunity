@@ -211,21 +211,11 @@ class MissionDetailActivity : BaseActivity() {
      * 事件签收
      */
     private fun signEvent(id: String) {
-        val subscriber = object : Subscriber<String>() {
-            override fun onNext(data: String?) {
-                Log.i("signEvent", data)
-                finish()
-            }
-
-            override fun onCompleted() {
-
-            }
-
-            override fun onError(e: Throwable?) {
-                Log.i("signEvent", e.toString())
-            }
+        val subscriberOnNextListener = SubscriberOnNextListener<String> {
+            Log.i("signEvent", it)
+            finish()
         }
-        HttpUtil.getInstance().signEvent(subscriber, id, app.grid.id, app.grid.appauth)
+        HttpUtil.getInstance().signEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
     }
 
     /**
