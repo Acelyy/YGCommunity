@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,7 +29,8 @@ public class ViewAnimatorWordComponent extends RelativeLayout {
                 textView.setText(strings.get(i));
                 //任意设置你的文字样式，在这里
                 textView.setTextColor(getResources().getColor(android.R.color.white));
-                textView.setTextSize(20);
+                textView.setGravity(Gravity.CENTER);
+                textView.setTextSize(16);
                 viewAnimator.addView(textView, i);
             }
         }

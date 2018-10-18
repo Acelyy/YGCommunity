@@ -213,7 +213,7 @@ class MissionDetailActivity : BaseActivity() {
     private fun signEvent(id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("signEvent", it)
-            finish()
+            refresh.autoRefresh()
         }
         HttpUtil.getInstance().signEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
     }
@@ -224,7 +224,7 @@ class MissionDetailActivity : BaseActivity() {
     private fun endEvent(id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("signEvent", it)
-            finish()
+            refresh.autoRefresh()
         }
         HttpUtil.getInstance().endEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
     }
