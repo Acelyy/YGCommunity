@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.renderscript.Sampler
 import android.support.design.widget.Snackbar
 import android.util.Log
 import android.view.LayoutInflater
@@ -213,6 +214,7 @@ class MissionDetailActivity : BaseActivity() {
     private fun signEvent(id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("signEvent", it)
+            Snackbar.make(submit, "签收成功", Snackbar.LENGTH_LONG).show()
             refresh.autoRefresh()
         }
         HttpUtil.getInstance().signEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
@@ -224,6 +226,7 @@ class MissionDetailActivity : BaseActivity() {
     private fun endEvent(id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("signEvent", it)
+            Snackbar.make(submit, "完结成功", Snackbar.LENGTH_LONG).show()
             refresh.autoRefresh()
         }
         HttpUtil.getInstance().endEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
