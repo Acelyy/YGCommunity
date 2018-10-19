@@ -226,7 +226,7 @@ class MissionDetailActivity : BaseActivity() {
     private fun endEvent(id: String) {
         val subscriberOnNextListener = SubscriberOnNextListener<String> {
             Log.i("signEvent", it)
-            Snackbar.make(submit, "完结成功", Snackbar.LENGTH_LONG).show()
+            Snackbar.make(submit, "事件完结成功", Snackbar.LENGTH_LONG).show()
             refresh.autoRefresh()
         }
         HttpUtil.getInstance().endEvent(ProgressSubscriber<String>(subscriberOnNextListener, this), id, app.grid.id, app.grid.appauth)
