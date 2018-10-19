@@ -24,8 +24,8 @@ android {
         applicationId "com.yonggang.ygcommunity"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 27
-        versionName "1.97"
+        versionCode 28
+        versionName "1.98"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
