@@ -14,7 +14,7 @@ android {
         config {
             keyAlias 'android_lyy'
             keyPassword '12348888'
-            storeFile file('/Users/liyangyang/Documents/ASWorkspace/YGCommunity/android_lyy.jks')
+            storeFile file('./android_lyy.jks')
             storePassword '12345678'
         }
     }
@@ -110,6 +110,13 @@ dependencies {
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
     compile 'com.android.support:recyclerview-v7:25.4.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.1.2'
+
+    compile 'com.just.agentweb:agentweb:4.0.2' // (必选)
+    compile 'com.just.agentweb:download:4.0.2' // (可选)
+    compile 'com.just.agentweb:filechooser:4.0.2'// (可选)
+
+    // 二维码
+    compile 'cn.yipianfengye.android:zxing-library:2.2'
 }
 repositories {
     mavenCentral()

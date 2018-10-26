@@ -17,6 +17,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.yonggang.ygcommunity.Activity.BikeActivity;
 import com.yonggang.ygcommunity.Activity.MapViewActivity;
 import com.yonggang.ygcommunity.Activity.Server.ComActActivity;
 import com.yonggang.ygcommunity.Activity.Server.ExpensesActivity;
@@ -56,7 +57,7 @@ public class ServerFragment extends Fragment {
 
     private YGApplication app;
 
-    @OnClick({R.id.tab_search, R.id.tab_tel, R.id.tab_activity, R.id.tab_water, R.id.tab_notice, R.id.tab_order, R.id.tab_rechage, R.id.tab_grid, R.id.tab_red, R.id.tab_work})
+    @OnClick({R.id.tab_search, R.id.tab_tel, R.id.tab_activity, R.id.tab_water, R.id.tab_notice, R.id.tab_order, R.id.tab_rechage, R.id.tab_grid, R.id.tab_red, R.id.tab_work, R.id.tab_bike})
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -114,6 +115,11 @@ public class ServerFragment extends Fragment {
                     intent = new Intent(getActivity(), MonitorActivity.class);
                     startActivity(intent);
                 }
+                break;
+
+            case R.id.tab_bike:
+                intent = new Intent(getActivity(), BikeActivity.class);
+                startActivity(intent);
                 break;
         }
 

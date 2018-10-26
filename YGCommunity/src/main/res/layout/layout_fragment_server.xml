@@ -295,8 +295,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="#E5E5E5" />
 
             <LinearLayout
@@ -433,8 +433,8 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:layout_marginEnd="20dp"
                     android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"
                     android:background="#E5E5E5" />
 
             </LinearLayout>
@@ -565,8 +565,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="#E5E5E5" />
 
             <LinearLayout
@@ -633,11 +633,38 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/tab_bike"
                     android:layout_width="0dp"
                     android:layout_height="200px"
                     android:layout_weight="1"
                     android:background="@drawable/back_mine_line"
                     android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:orientation="vertical">
+
+
+                        <ImageView
+                            android:layout_width="100px"
+                            android:layout_height="100px"
+                            android:layout_centerInParent="true"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/bike" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_gravity="center"
+                            android:text="公共自行车"
+                            android:textColor="#999999"
+                            android:textSize="@dimen/server_tab_size"
+                            tools:ignore="HardcodedText" />
+
+                    </LinearLayout>
 
 
                 </RelativeLayout>
@@ -670,8 +697,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="20dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
                 android:background="#E5E5E5" />
 
             <!--<LinearLayout-->

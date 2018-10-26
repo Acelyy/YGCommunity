@@ -522,7 +522,9 @@
         <activity
             android:name=".grid.house.HouseQueryActivity"
             android:launchMode="singleTop" />
-        <activity android:name=".grid.event.EventPhone"></activity>
+        <activity
+            android:name=".Activity.BikeActivity"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

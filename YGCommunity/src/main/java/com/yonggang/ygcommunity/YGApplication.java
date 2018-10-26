@@ -19,6 +19,7 @@ import com.tencent.smtt.sdk.QbSdk;
 import com.umeng.socialize.Config;
 import com.umeng.socialize.PlatformConfig;
 import com.umeng.socialize.UMShareAPI;
+import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 import com.yonggang.ygcommunity.Entry.GridUser;
 import com.yonggang.ygcommunity.Entry.User;
 import com.yonggang.ygcommunity.Util.SpUtil;
@@ -92,6 +93,7 @@ public class YGApplication extends Application {
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
             StrictMode.setVmPolicy(builder.build());
         }
+        ZXingLibrary.initDisplayOpinion(this);
     }
 
     private void initTbs() {
