@@ -60,9 +60,9 @@ public class AssemblyFragment extends Fragment {
     @OnClick({R.id.layout_today, R.id.layout_all, R.id.layout_done, R.id.bbs_add})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-//            case R.id.layout_today:
-//                pager.setCurrentItem(0);
-//                break;
+            case R.id.layout_today:
+                pager.setCurrentItem(0);
+                break;
             case R.id.layout_all:
                 pager.setCurrentItem(1);
                 break;
